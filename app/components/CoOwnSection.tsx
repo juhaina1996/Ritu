@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function CoOwnSection() {
   return (
-    <section className="w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-26 ">
+    <section className="w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-10 lg:px-26 ">
 
       {/* TOP WATERMARK */}
       <div className="co-own-back absolute top-[40px] left-[40px] z-0 pointer-events-none hidden md:block">
