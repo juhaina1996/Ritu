@@ -1,0 +1,301 @@
+"use client";
+
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+
+export default function HamburgerMenu() {
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleOpen = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpen(true);
+  };
+
+  const handleClose = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    };
+  }, [open]);
+
+
+  const menuContent = open ? (
+    <div 
+      style={{ 
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 999999,
+        backgroundColor: '#f6f3ee',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        margin: 0,
+        padding: '64px 24px',
+        boxSizing: 'border-box'
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      
+      {/* CLOSE BUTTON */}
+      <button
+        onClick={handleClose}
+        style={{ 
+          position: 'absolute',
+          top: '32px',
+          right: '32px',
+          zIndex: 1000000,
+          background: 'transparent',
+          border: 'none',
+          padding: '8px',
+          fontSize: '32px',
+          color: '#A29279',
+          cursor: 'pointer',
+          transition: 'opacity 0.3s ease'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+        onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        aria-label="Close menu"
+        type="button"
+      >
+        ✕
+      </button>
+
+      {/* NAVIGATION */}
+      <nav 
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '22px',
+          color: '#000000',
+          flex: 1,
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '600px'
+        }}
+      >
+
+        <span 
+        className="navigation-menu"
+          style={{
+            padding: '6px 42px',
+            border: '1px solid #A29279',
+            borderRadius: '50px',
+            fontSize: '18px',
+            fontWeight: '500',
+            color: '#000000'
+          }}
+        >
+          Home
+        </span>
+
+       
+
+      
+
+       
+        <a 
+          href="#" 
+                  className="navigation-menu"
+
+          style={{
+            fontSize: '18px',
+            color: '#000000',
+            textDecoration: 'none',
+            transition: 'opacity 0.3s ease',
+            fontWeight: '400'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        >
+          Download Brochure
+        </a>
+
+        <a 
+          href="#" 
+                  className="navigation-menu"
+
+          style={{
+            fontSize: '18px',
+            color: '#000000',
+            textDecoration: 'none',
+            transition: 'opacity 0.3s ease',
+            fontWeight: '400'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        >
+          Schedule a Call
+        </a>
+
+        <a 
+          href="#contact" 
+                  className="navigation-menu"
+
+          style={{
+            fontSize: '18px',
+            color: '#000000',
+            textDecoration: 'none',
+            transition: 'opacity 0.3s ease',
+            fontWeight: '400'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        >
+          Contact 
+        </a>
+
+        {/* SOCIAL ICONS */}
+        <div 
+          style={{
+            display: 'flex',
+            gap: '32px',
+            marginTop: '32px'
+          }}
+        >
+          <a 
+            href="#" 
+            aria-label="Instagram" 
+            style={{
+              transition: 'opacity 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+          >
+            <Image
+              src="/images/instagramIcon.png"
+              alt="Instagram"
+              width={32}
+              height={32}
+            />
+          </a>
+
+          <a 
+            href="#" 
+                    className="navigation-menu"
+
+            aria-label="Facebook" 
+            style={{
+              transition: 'opacity 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+          >
+            <Image
+              src="/images/facebookIcon.png"
+              alt="Facebook"
+              width={32}
+              height={32}
+            />
+          </a>
+        </div>
+      </nav>
+
+      {/* FOOTER */}
+      <div 
+      
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '16px',
+          fontSize: '14px',
+          color: '#9c8f7a'
+        }}
+      >
+        <div 
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            marginTop:"80px"
+          }}
+        >
+          <Image
+            src="/images/szDeveloper.png"
+            alt="SZ Developers"
+            width={102}
+            height={60}
+          />
+        </div>
+
+        <p className="sz-developer-text"
+          style={{
+            textAlign: 'center',
+            lineHeight: '1.5',
+            margin: 0
+          }}
+        >
+          SZ Developers © 2026 <br />
+          All Rights Reserved
+        </p>
+      </div>
+    </div>
+  ) : null;
+
+  return (
+    <>
+      {/* HAMBURGER BUTTON */}
+      <button
+        onClick={handleOpen}
+        className="header-image flex flex-col items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer"
+        style={{ 
+          zIndex: 102,
+          position: 'relative',
+          background: 'transparent',
+          border: 'none',
+          padding: '8px'
+        }}
+        aria-label="Open menu"
+        type="button"
+      >
+        <Image
+          src="/images/hamburger.png"
+          alt="Menu"
+          width={89}
+          height={47}
+          priority
+          
+          style={{ pointerEvents: 'none' }}
+        />
+      </button>
+
+      {/* RENDER MENU IN PORTAL */}
+      {mounted && menuContent && createPortal(menuContent, document.body)}
+    </>
+  );
+}

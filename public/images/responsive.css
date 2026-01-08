@@ -1,0 +1,374 @@
+@media only screen and (min-width: 1920px) and (max-width: 2560px) {
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1919px) {
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1599px) {
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1439px) {
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+
+    h2 {
+        font-size: 3.2rem;
+    }
+
+    .homeVideo .Bantext h2 {
+        font-size: 4rem;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1279px) {
+
+    h2 {
+        font-size: 3.2rem;
+    }
+
+    .homeVideo .Bantext h2 {
+        font-size: 4rem;
+    }
+
+    .kids {
+        border-radius: 0 17rem 0 0;
+    }
+
+    .footer h1 a {
+        font-size: 8rem;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    .homeVideo .Bantext h2 {
+        font-size: 4rem;
+    }
+
+    .about .image .ab {
+        width: 400px;
+        gap: 4rem;
+    } 
+
+    .footer h1 a {
+        font-size: 7rem;
+    }
+
+    .text {
+        width: 95%;
+        padding-left: 6rem;
+    }
+
+    .amenities .heading h5 {
+        font-size: 16px;
+    }
+
+    .vayal .bx {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .homeVideo .Bantext h2 {
+        font-size: 3rem;
+    }
+
+    .homeVideo .Bantext p {
+        font-size: 18px;
+    }
+
+    .about .image .ab {
+        width: 300px;
+        gap: 3rem;
+    }
+
+    .about .image {
+        margin-top: 2rem;
+    }
+
+    .footer h1 a {
+        font-size: 7rem;
+    }
+
+    .text {
+        width: 100%;
+        padding-left: 4rem;
+    }
+
+    .experiences .marquee-inner .bx h3 {
+        font-size: 18px;
+    }
+
+    .experiences .marquee-inner {
+        gap: 4vw;
+    }
+
+    .kids {
+        border-radius: 0;
+    }
+    
+    .kids .w-100 {
+        width: 50% !important;
+    }
+
+    .flower:before {
+        right: 15%;
+    }
+
+    .philosophy .w-100 {
+        width: 50% !important;
+    }
+
+    .vayal .box {
+        padding: 50px 50px;
+    }
+
+    .vayal .bx {
+        width: 100%;
+    }
+
+    .footer .ft_bx .btn {
+        margin-left: 0;
+    }
+
+    .experience .line {
+        display: none;
+    }
+
+    .innerBanner .Bantext h2 {
+        font-size: 3rem;
+    }
+
+    .experience h5 {
+        width: 100%;
+    }
+
+    .experience .lg {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    .experience .mt-10 {
+        margin-top: 0rem;
+    }
+
+    .season .box {
+        display: block;
+    }
+
+    .season .img {
+        width: 100%;
+    }
+
+    .season .content {
+        width: 100%;
+    }
+
+    .what p {
+        width: 100%;
+    }
+
+    .what img {
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .harvest p {
+        width: 100%;
+    }
+
+    .events .bx {
+        padding: 0 0rem;
+    }
+
+}
+
+@media only screen and (min-width: 150px) and (max-width: 767px) {
+
+    .nav {
+        padding: 100px 10px;
+    }
+
+    .nav .nav_list_item .nav_link {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    header .logo {
+        width: 80px;
+    }
+
+    header .btn {
+        display: none;
+    }
+
+    header .row {
+        display: block;
+    }
+
+    .homeVideo .Bantext h2 {
+        font-size: 3rem;
+    }
+
+    .homeVideo .Bantext p {
+        font-size: 18px;
+    }
+
+    .about .image .ab {
+        width: 100%;
+        gap: 0;
+    }
+
+    .about .image {
+        margin-top: 2rem;
+        display: block;
+    }
+
+    .footer h1 a {
+        font-size: 5rem;
+    }
+
+    .text {
+        width: 100%;
+        padding-left: 0rem;
+    }
+
+    .text p {
+        width: 100%;
+    }
+
+    .experiences .marquee-inner .bx h3 {
+        font-size: 18px;
+    }
+
+    .experiences .marquee-inner {
+        gap: 10vw;
+    }
+
+    .experiences .marquee-inner .bx img {
+        width: 50vw;
+    }
+
+    .amenities .heading h5 {
+        font-size: 25px;
+    }
+
+    .kids {
+        border-radius: 0;
+    }
+
+    .flower:before {
+        right: 15%;
+    }
+
+    .vayal .box {
+        padding: 30px 30px;
+    }
+
+    .vayal .bx {
+        width: 100%;
+    }
+
+    .footer .ft_bx .btn {
+        margin-left: 0;
+    }
+
+    .footer .ft_bx {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .footer .ft_bx .logo {
+        margin-bottom: 0rem;
+    }
+
+    .footer .btn {
+        margin-bottom: 1.5rem;
+    }
+
+    .experience .line {
+        display: none;
+    }
+
+    .innerBanner .Bantext h2 {
+        font-size: 2.5rem;
+    }
+
+    .menu-btn {
+        height: 42px;
+    }
+
+    .experience h5 {
+        width: 100%;
+    }
+
+    .experience .lg {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    .experience .mt-10 {
+        margin-top: 0rem;
+    }
+
+    .season .box {
+        display: block;
+    }
+
+    .season .img {
+        width: 100%;
+    }
+
+    .season .content {
+        width: 100%;
+    }
+
+    .what p {
+        width: 100%;
+    }
+
+    .what img {
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .harvest p {
+        width: 100%;
+    }
+
+    .contact .container {
+        width: 100%;
+    }
+
+    .events .bx {
+        padding: 0 0rem;
+    }
+
+
+}
+
+@media only screen and (max-width: 375px) {
+}
+
+@media only screen and (max-width: 360px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+}

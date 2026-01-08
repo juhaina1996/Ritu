@@ -1,0 +1,314 @@
+.header {
+  background-color: #e4e3e3;
+  border: 1px solid #d4d0d0;
+}
+.experience-main {
+  padding-top: 60px;
+  font-family: "Arsenal", sans-serif;
+  font-size: 62px;
+}
+.experience-sub {
+  font-size: 14px;
+}
+.hero-buttton {
+  margin-top: 20px;
+}
+/* .main {
+  margin: 50px;
+  margin-top: 280px;
+  margin-bottom: 280px;
+} */
+ .main {
+  background: #f7f5f2;
+  padding: 280px 50px;
+  padding-bottom: 0;
+  position: relative;
+}
+
+/* SECTION */
+.experience-section {
+  background: #f7f5f2;
+  padding: 100px 0;
+  overflow: hidden;
+  padding-top: 350px;
+}
+
+.experience-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 48px;
+}
+
+/* HEADER */
+.experience-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 50px;
+  /* flex-direction: column; */
+  gap: 16px;
+  margin-bottom: 40px;
+   
+}
+
+.experience-header h2 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #6b6b6b;
+}
+
+/* ARROWS */
+.experience-arrows {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  margin-left: 46px;
+}
+
+.experience-arrows button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.experience-arrows button:hover {
+  opacity: 1;
+}
+
+/* SUBTITLE */
+.experience-header p {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+  margin-right: 70px;
+  font-weight: 100px;
+}
+
+/* SLIDER */
+.experience-slider {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  padding-right: 48px; /* 🔥 IMPORTANT */
+  scrollbar-width: none;
+}
+
+.experience-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.experience-card {
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.experience-image {
+  position: relative;
+  height: 400px;
+
+  margin-bottom: 12px;
+}
+
+.experience-card p {
+  font-size: 14px;
+  color: #6f6f6f;
+}
+.experience-header h2 {
+  font-size: 78px;
+  letter-spacing: 2px;
+  color: #000000;
+  font-family: "Arsenal", sans-serif;
+}
+.experience-slider p {
+  font-size: 28px;
+  font-family: "Arsenal", sans-serif;
+}
+.reminising {
+  font-size: 85px;
+  font-family: "Arsenal", sans-serif;
+  line-height: 100px;
+}
+.reminising-sub {
+  margin-left: 20%;
+  margin-top: 30px;
+  font-family: "Arsenal", sans-serif;
+  font-size: 18px;
+  color: #000000;
+  font-weight: 100;
+  line-height: 27px;
+}
+.co-own {
+  font-family: "Arsenal", sans-serif;
+  font-size: 88px;
+  line-height: 100px;
+}
+.land {
+  font-family: "Arsenal", sans-serif;
+  font-size: 48px;
+  font-weight: 100;
+}
+.be-a-proud {
+  font-family: "Arsenal", sans-serif;
+  font-size: 25px;
+  font-weight: 100;
+}
+.dowload {
+  font-family: "Arsenal", sans-serif;
+  font-size: 17px;
+  font-weight: 100;
+}
+.experince-sub{
+  background: url("/images/experienceMain.png");
+}
+.where-experince {
+    font-family: "Arsenal", sans-serif;
+  font-size: 56px;
+  font-weight: 100;
+}
+.immerse {
+    font-family: "Arsenal", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 100;
+}
+.experience-section-logo{
+  right:10px;
+  top:1600px;
+  z-index: 0;
+  height: 300px;
+  opacity: 0.5;
+}
+.co-own-back{
+    opacity: 0.7;
+    z-index: 0;
+
+}
+.download {
+  font-family: "Arsenal", sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  padding: 28px 10px;
+}
+.lettalk{
+   font-family: "Arsenal", sans-serif;
+  font-size: 88px;
+  font-weight: 100;
+}
+.contact{
+    font-family: "Arsenal", sans-serif;
+  font-size: 34px;
+  font-weight: 100;
+}
+.contact-sub{
+   font-family: "Arsenal", sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+}
+.navigation-menu{
+     font-family: "Arsenal", sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+}
+.sz-developer-text{
+  font-size: 10px;
+       font-family: "Arsenal", sans-serif;
+  font-weight: 100;
+
+}
+  .immerse-mob{
+   
+    display: none;
+  }
+   .where-experince-mob{
+   
+    display: none;
+  }
+@media (max-width: 991px) {
+  .header-image {
+    height: 50px;  
+    width: 50px;
+  }
+  .where-experince {
+   display:none;
+}
+  .header{
+    padding:20px ;
+  }
+  .experience-main{
+    padding-top: 100px;
+    font-size: 30px;
+  }
+  .immerse{
+
+    display: none;
+  }
+  .where-experince-mob{
+    font-size: 30px;
+    color:#000000;
+    padding: 10px;
+  }
+  .experince-sub{
+     padding: 20px;
+     /* display: none; */
+  }
+  .main{
+    padding: 20px;
+  }
+  .immerse-mob{
+color:#000000;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin: 0 20px;
+  }
+    .where-experince-mob{
+       font-size: 30px;
+color:#000000;
+    display: block;
+     text-align: center;
+      margin: 0 20px;
+      padding-top: 70px;
+  }
+  .experience-section {
+    padding-top: 60px;
+  }
+  .experience-header{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .experience-card {
+  min-width: 200px;
+}
+
+.experience-image {
+  height: 300px;
+
+}
+.experience-arrows{
+  justify-content: center;
+}
+.reminising{
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+}
+.reminising-sub {
+  margin: 20px;
+  font-size: 14px;
+}
+.be-a-proud {
+
+  font-size: 12px;
+}
+.land{
+  font-size: 30px;
+}
+.download{
+  font-size: 10px;
+  padding: 10px;
+}
+}

@@ -1,0 +1,244 @@
+/* Enhanced Custom AOS animations with dramatic effects */
+
+/* Dramatic zoom-in with rotation and scale */
+[data-aos="zoom-in"] {
+  transform: scale(0.3) rotate(-10deg);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+[data-aos="zoom-in"].aos-animate {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* Enhanced zoom-in-up with dramatic scale and movement */
+[data-aos="zoom-in-up"] {
+  transform: scale(0.4) translateY(150px) rotate(5deg);
+  opacity: 0;
+  filter: blur(10px) brightness(0.5);
+}
+
+[data-aos="zoom-in-up"].aos-animate {
+  transform: scale(1) translateY(0) rotate(0deg);
+  opacity: 1;
+  filter: blur(0px) brightness(1);
+}
+
+/* Dramatic zoom-in-right with perspective */
+[data-aos="zoom-in-right"] {
+  transform: scale(0.3) translateX(-200px) rotateY(-45deg);
+  opacity: 0;
+  filter: blur(12px);
+  transform-origin: left center;
+}
+
+[data-aos="zoom-in-right"].aos-animate {
+  transform: scale(1) translateX(0) rotateY(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* Dramatic zoom-in-left with perspective */
+[data-aos="zoom-in-left"] {
+  transform: scale(0.3) translateX(200px) rotateY(45deg);
+  opacity: 0;
+  filter: blur(12px);
+  transform-origin: right center;
+}
+
+[data-aos="zoom-in-left"].aos-animate {
+  transform: scale(1) translateX(0) rotateY(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* New dramatic slide-up animation */
+[data-aos="slide-up-dramatic"] {
+  transform: translateY(200px) scale(0.8) rotateX(45deg);
+  opacity: 0;
+  filter: blur(15px);
+  transform-origin: bottom center;
+}
+
+[data-aos="slide-up-dramatic"].aos-animate {
+  transform: translateY(0) scale(1) rotateX(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* New flip-in animation */
+[data-aos="flip-in"] {
+  transform: rotateY(-90deg) scale(0.5);
+  opacity: 0;
+  transform-origin: center center;
+}
+
+[data-aos="flip-in"].aos-animate {
+  transform: rotateY(0deg) scale(1);
+  opacity: 1;
+}
+
+/* New bounce-in animation */
+[data-aos="bounce-in"] {
+  transform: scale(0.3);
+  opacity: 0;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+[data-aos="bounce-in"].aos-animate {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* New spiral-in animation */
+[data-aos="spiral-in"] {
+  transform: scale(0.1) rotate(720deg);
+  opacity: 0;
+  filter: blur(20px);
+}
+
+[data-aos="spiral-in"].aos-animate {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* New elegant fade-scale animation - no rotation */
+[data-aos="fade-scale"] {
+  transform: scale(0.6);
+  opacity: 0;
+  filter: blur(5px);
+}
+
+[data-aos="fade-scale"].aos-animate {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* New smooth zoom without rotation */
+[data-aos="zoom-smooth"] {
+  transform: scale(0.5);
+  opacity: 0;
+  filter: blur(8px) brightness(0.7);
+}
+
+[data-aos="zoom-smooth"].aos-animate {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0px) brightness(1);
+}
+
+/* New elegant slide-in from bottom */
+[data-aos="slide-in-bottom"] {
+  transform: translateY(100px) scale(0.9);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+[data-aos="slide-in-bottom"].aos-animate {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* Enhanced fade effects with dramatic movement */
+[data-aos="fade-up"] {
+  transform: translateY(100px) scale(0.9);
+  opacity: 0;
+  filter: blur(5px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-100px) scale(0.9) rotateZ(-5deg);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0) scale(1) rotateZ(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(100px) scale(0.9) rotateZ(5deg);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0) scale(1) rotateZ(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* New wave animation for text */
+[data-aos="wave-in"] {
+  transform: translateY(50px) skewX(-10deg);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+[data-aos="wave-in"].aos-animate {
+  transform: translateY(0) skewX(0deg);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* Enhanced easing functions */
+[data-aos-easing="ease-out-back"] {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-aos-easing="ease-out-quart"] {
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-aos-easing="ease-out-expo"] {
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+[data-aos-easing="ease-out-elastic"] {
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Smooth transitions for all AOS elements with GPU acceleration */
+[data-aos] {
+  transition-property: transform, opacity, filter;
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Special hover effects for animated elements */
+[data-aos].aos-animate:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Stagger animation for multiple elements */
+[data-aos][data-aos-delay="100"] { transition-delay: 0.1s; }
+[data-aos][data-aos-delay="200"] { transition-delay: 0.2s; }
+[data-aos][data-aos-delay="300"] { transition-delay: 0.3s; }
+[data-aos][data-aos-delay="400"] { transition-delay: 0.4s; }
+[data-aos][data-aos-delay="500"] { transition-delay: 0.5s; }
+[data-aos][data-aos-delay="600"] { transition-delay: 0.6s; }
+[data-aos][data-aos-delay="700"] { transition-delay: 0.7s; }
+[data-aos][data-aos-delay="800"] { transition-delay: 0.8s; }
+[data-aos][data-aos-delay="900"] { transition-delay: 0.9s; }
+[data-aos][data-aos-delay="1000"] { transition-delay: 1.0s; }
+[data-aos][data-aos-delay="1100"] { transition-delay: 1.1s; }
+[data-aos][data-aos-delay="1200"] { transition-delay: 1.2s; }
+[data-aos][data-aos-delay="1300"] { transition-delay: 1.3s; }
+[data-aos][data-aos-delay="1400"] { transition-delay: 1.4s; }
+[data-aos][data-aos-delay="1500"] { transition-delay: 1.5s; }
+[data-aos][data-aos-delay="1600"] { transition-delay: 1.6s; }

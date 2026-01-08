@@ -1,0 +1,12 @@
+@import "../public/css/bootstrap.css";
+@import "../public/css/adox-layout.css";
+@import "../public/css/adox-home.css";
+@import "../public/css/responsive.css";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
