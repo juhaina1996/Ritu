@@ -50,10 +50,10 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM ROW */}
-        <div className="grid  grid-cols-2 md:grid-cols-3 gap-10 text-[#d6d6d6] text-sm mt-30">
+        <div className="bottom-row grid  grid-cols-2 md:grid-cols-3 gap-10 text-[#d6d6d6] text-sm mt-30">
           {/* Contact */}
           <div
-            className="ml-20 md:ml-0"
+           
           >
             <h5 className="text-white mb-3 contact">Contact</h5>
             <p className="contact-sub">+91 9539 00 33 06</p>
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           {/* Social */}
-        <div className="ml-20 md:ml-0">
+        <div>
   <h5 className="text-white mb-3 contact">Social</h5>
 
   <p className="contact-sub group cursor-pointer">

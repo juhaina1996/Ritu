@@ -259,6 +259,12 @@ text-align: justify;
   .experience-header h2{
     font-size: 30px;
   }
+  .bottom-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:40%
+  }
   .experience-header p{
 font-size: 14px;
 text-align: center;
