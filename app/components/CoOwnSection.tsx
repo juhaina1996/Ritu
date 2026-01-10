@@ -42,18 +42,42 @@ export default function CoOwnSection() {
       {/* CONTENT */}
      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 z-100 relative">
   {/* ROW 1 */}
-  <div className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between">
-    <div className="land text-4xl text-[#2f6b6a] font-light">4.5 Acres</div>
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between"
+    data-aos="bounce-in"
+    data-aos-duration="1500"
+    data-aos-delay="300"
+    data-aos-easing="ease-out-elastic"
+  >
+    <div className="land text-4xl text-[#2f6b6a] font-light">
+      4.5 Acres
+    </div>
     <p className="text-sm text-[#2f6b6a]">Total Area</p>
   </div>
 
-  <div className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between">
-    <div className="land text-4xl text-[#2f6b6a] font-light">1 Acre</div>
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between"
+    data-aos="flip-in"
+    data-aos-duration="1600"
+    data-aos-delay="450"
+    data-aos-easing="ease-out-back"
+  >
+    <div className="land text-4xl text-[#2f6b6a] font-light">
+      1 Acre
+    </div>
     <p className="text-sm text-[#2f6b6a]">Farmland</p>
   </div>
 
-  <div className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between">
-    <div className="land text-4xl text-[#2f6b6a] font-light">57</div>
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between"
+    data-aos="slide-up-dramatic"
+    data-aos-duration="1700"
+    data-aos-delay="600"
+    data-aos-easing="ease-out-quart"
+  >
+    <div className="land text-4xl text-[#2f6b6a] font-light">
+      57
+    </div>
     <p className="text-sm text-[#2f6b6a]">Keys</p>
   </div>
 
@@ -61,20 +85,42 @@ export default function CoOwnSection() {
   <div className="hidden md:block"></div>
 
   {/* ROW 2 */}
-  <div className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between">
-    <div className="land text-4xl text-[#2f6b6a] font-light">70</div>
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between"
+    data-aos="zoom-in-right"
+    data-aos-duration="1800"
+    data-aos-delay="750"
+    data-aos-easing="ease-out-expo"
+  >
+    <div className="land text-4xl text-[#2f6b6a] font-light">
+      70
+    </div>
     <p className="text-sm text-[#2f6b6a]">Rooms</p>
   </div>
 
   {/* EMPTY SLOT – CENTER */}
   <div className="hidden md:block"></div>
 
-  <div className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between">
-    <div className="land text-4xl text-[#2f6b6a] font-light">20+</div>
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] lg:min-h-[280px] flex flex-col justify-between"
+    data-aos="spiral-in"
+    data-aos-duration="2000"
+    data-aos-delay="900"
+    data-aos-easing="ease-out-expo"
+  >
+    <div className="land text-4xl text-[#2f6b6a] font-light">
+      20+
+    </div>
     <p className="text-sm text-[#2f6b6a]">Amenities</p>
   </div>
 
-  <div className="border border-[#bdb4a7] p-6 h-[200px]   md:h-[280px] flex flex-col justify-between">
+  <div 
+    className="border border-[#bdb4a7] p-6 h-[200px] md:h-[280px] flex flex-col justify-between"
+    data-aos="fade-up"
+    data-aos-duration="1500"
+    data-aos-delay="1050"
+    data-aos-easing="ease-out-quart"
+  >
     <p className="be-a-proud text-[#2f6b6a] leading-relaxed">
       Be a proud owner <br />
       of Wayanad&apos;s next <br />
