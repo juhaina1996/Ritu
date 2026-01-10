@@ -28,7 +28,7 @@ export default function ExperiencesSlider() {
     <section className="experience-section">
       <div className="experience-section-logo absolute  pointer-events-none">
         <Image
-          src="/images/logoBackground.png"
+          src="/images/backgroundRight.svg"
           alt="Logo Background"
           width={400}
           height={200}
@@ -40,6 +40,7 @@ export default function ExperiencesSlider() {
         {/* Header */}
         <div className="experience-header">
           <h2 
+          className="experience-header-one"
             data-aos="slide-up-dramatic"
             data-aos-duration="1800"
             data-aos-delay="200"
@@ -84,31 +85,47 @@ export default function ExperiencesSlider() {
           ))}
         </div>
       </div>
-      <div 
-        className="experience-arrows"
-        data-aos="flip-in"
-        data-aos-duration="1500"
-        data-aos-delay="700"
-        data-aos-easing="ease-out-back"
-      >
-        <button onClick={() => scroll("left")}>
-          <Image
-            src="/images/leftArrow.png"
-            alt="Previous"
-            width={40}
-            height={40}
-          />
-        </button>
+<div className="experience-arrows flex items-center gap-6">
 
-        <button onClick={() => scroll("right")}>
-          <Image
-            src="/images/rightArrow.png"
-            alt="Next"
-            width={40}
-            height={40}
-          />
-        </button>
-      </div>
+  {/* LEFT ARROW → expand to LEFT */}
+  <button 
+    onClick={() => scroll("left")}
+    className="group"
+  >
+    <Image
+      src="/images/arrowLeft.svg"
+      alt="Previous"
+      width={38}
+      height={15}
+      className="
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-125
+        origin-right
+      "
+    />
+  </button>
+
+  {/* RIGHT ARROW → expand to RIGHT */}
+  <button 
+    onClick={() => scroll("right")}
+    className="group"
+  >
+    <Image
+      src="/images/arrowRight.svg"
+      alt="Next"
+      width={38}
+      height={15}
+      className="
+        transition-transform duration-300 ease-out
+        group-hover:scale-x-125
+        origin-left
+      "
+    />
+  </button>
+
+</div>
+
+
     </section>
   );
 }

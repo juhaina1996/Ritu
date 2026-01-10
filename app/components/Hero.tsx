@@ -1,6 +1,4 @@
-import React from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
 
 export default function KeralaFarmHero() {
@@ -15,28 +13,26 @@ export default function KeralaFarmHero() {
           muted
           playsInline
           className="absolute inset-0  h-[70vh] lg:h-full w-full object-cover"
+          style={{ filter: 'brightness(0.6)' }}
           data-aos="zoom-in"
           data-aos-duration="3000"
           data-aos-easing="ease-out-expo"
         />
-        {/* Overlay */}
       </div>
 
       {/* Navigation */}
-      <nav className="header relative flex items-center justify-between px-8 py-6" style={{ zIndex: 100 }}>
+      <nav className="header relative flex items-center justify-between px-20 py-6 pl-20" style={{ zIndex: 100 }}>
         {/* Logo */}
         <div 
           className="flex items-center" 
-          data-aos="slide-up-dramatic" 
-          data-aos-duration="1500" 
-          data-aos-delay="800"
-          data-aos-easing="ease-out-back"
+         
         >
           <Image
-            src="/images/logo.png"
+            src="/images/logoMain.svg"
             alt="Ritu Logo"
-            width={120}
-            height={40}
+            width={130}
+          
+            height={66}
             priority
             className="object-contain header-image"
           />
@@ -46,10 +42,7 @@ export default function KeralaFarmHero() {
         <div 
           className="relative"
           style={{ zIndex: 101 }}
-          data-aos="bounce-in" 
-          data-aos-duration="1500" 
-          data-aos-delay="1000"
-          data-aos-easing="ease-out-elastic"
+         
         >
           <HamburgerMenu />
         </div>
@@ -104,6 +97,7 @@ backdrop-blur-none   px-3 py-1
    
     transition-transform
     group-hover:translate-x-0.5
+    animate-pulse-horizontal
   "
           >
             <Image

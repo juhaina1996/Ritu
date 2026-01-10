@@ -17,9 +17,9 @@ export default function CoOwnSection() {
       </div>
 
       {/* BOTTOM WATERMARK */}
-      <div className="co-own-back absolute bottom-[-120px] right-[40px] z-0 pointer-events-none hidden md:block">
+      <div className="co-own-back absolute bottom-[-220px] right-[40px] z-0 pointer-events-none hidden md:block">
         <Image
-          src="/images/logoBackground.png"
+          src="/images/backgroundRight.svg"
           alt=""
          width={420}
           height={220}
@@ -81,17 +81,20 @@ export default function CoOwnSection() {
       Legacy
     </p>
 
-    <button className="download mt-6 inline-flex items-center gap-3 bg-[#2f6b6a] text-white px-6 py-3 rounded-sm w-fit hover:bg-[#275b5a] transition">
-      Download Brochure
-      <span className="flex items-center justify-center rounded-full">
-        <Image
-          src="/images/arrow-right.png"
-          alt="Arrow"
-          width={22}
-          height={22}
-        />
-      </span>
-    </button>
+ <button className="download mt-6 inline-flex items-center gap-3 bg-[#2f6b6a] text-white px-6 py-3 rounded-sm w-fit hover:bg-[#275b5a] transition group">
+  Download Brochure
+  
+  <span className="flex items-center justify-center rounded-full">
+    <Image
+      src="/images/arrow-right.png"
+      alt="Arrow"
+      width={25}
+      height={25}
+      className="transform -rotate-45 transition-transform duration-300 ease-out group-hover:rotate-0"
+    />
+  </span>
+</button>
+
   </div>
 
 </div>

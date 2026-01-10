@@ -1,6 +1,6 @@
 .header {
-  background-color: #e4e3e3;
-  border: 1px solid #d4d0d0;
+  /* background-color: #e4e3e3; */
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
 }
 .experience-main {
   padding-top: 60px;
@@ -30,11 +30,12 @@
   background: #f7f5f2;
   padding: 100px 0;
   overflow: hidden;
-  padding-top: 350px;
+  padding-top: 300px;
+  margin: 0 30px;
 }
 
 .experience-container {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
   padding-left: 48px;
 }
@@ -61,7 +62,7 @@
 .experience-arrows {
   display: flex;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 46px;
 }
 
@@ -129,16 +130,18 @@
 .reminising {
   font-size: 85px;
   font-family: "Arsenal", sans-serif;
-  line-height: 100px;
+  line-height: 83px;
 }
 .reminising-sub {
   margin-left: 20%;
-  margin-top: 30px;
+  margin-top: 25px;
   font-family: "Arsenal", sans-serif;
   font-size: 18px;
   color: #000000;
   font-weight: 100;
   line-height: 27px;
+  margin-bottom: 25px;
+text-align: justify;
 }
 .co-own {
   font-family: "Arsenal", sans-serif;
@@ -162,11 +165,14 @@
 }
 .experince-sub{
   background: url("/images/experienceMain.png");
+  padding-bottom: 20px;
+  width:90vw;
 }
 .where-experince {
     font-family: "Arsenal", sans-serif;
   font-size: 56px;
   font-weight: 100;
+  margin-top: 30px;
 }
 .immerse {
     font-family: "Arsenal", sans-serif;
@@ -176,9 +182,9 @@
 }
 .experience-section-logo{
   right:10px;
-  top:1600px;
+  top:1500px;
   z-index: 0;
-  height: 300px;
+  height: 500px;
   opacity: 0.5;
 }
 .co-own-back{
@@ -191,6 +197,9 @@
   font-size: 18px;
   font-weight: 100;
   padding: 28px 10px;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
 }
 .lettalk{
    font-family: "Arsenal", sans-serif;
@@ -226,7 +235,38 @@
    
     display: none;
   }
+  .contact-mob{
+    font-size: 12px;
+    color:#B4B4B4;
+    width: 60%;
+    text-align: center;
+    margin-bottom:  50px;
+  }
+  .contact-mob-sub{
+    font-size: 12px;
+    color:#B4B4B4;
+  
+    text-align: center;
+  }
+  .contact-mob-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+   align-items: center;
+  }
 @media (max-width: 991px) {
+  .experience-header h2{
+    font-size: 30px;
+  }
+  .experience-header p{
+font-size: 14px;
+text-align: center;
+margin-right: 0;
+  }
+  .experience-slider p{
+font-size: 14px;
+  }
   .header-image {
     height: 50px;  
     width: 50px;
@@ -252,10 +292,12 @@
   }
   .experince-sub{
      padding: 20px;
+     min-height: auto;
      /* display: none; */
   }
   .main{
     padding: 20px;
+    min-height: auto;
   }
   .immerse-mob{
 color:#000000;
@@ -310,5 +352,32 @@ color:#000000;
 .download{
   font-size: 10px;
   padding: 10px;
+}.lettalk {
+  text-align: center;
+  font-size: 40px;
 }
+.lettakButton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
+
+/* Arrow horizontal moving animation */
+@keyframes pulse-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+.animate-pulse-horizontal {
+  animation: pulse-horizontal 2s ease-in-out infinite;
+}
+
+/* Pause animation on hover to show the hover effect */
+.group:hover .animate-pulse-horizontal {
+  animation-play-state: paused;
 }

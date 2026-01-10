@@ -219,12 +219,6 @@
   perspective: 1000px;
 }
 
-/* Special hover effects for animated elements */
-[data-aos].aos-animate:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
-}
-
 /* Stagger animation for multiple elements */
 [data-aos][data-aos-delay="100"] { transition-delay: 0.1s; }
 [data-aos][data-aos-delay="200"] { transition-delay: 0.2s; }

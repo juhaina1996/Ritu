@@ -1,11 +1,14 @@
 import Image from "next/image";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 export default function VayalNaaduSection() {
+  const isMobile = useIsMobile();
+
   return (
     <section className="w-full py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         {/* TOP CONTENT */}
-        <div className="grid mb-14">
+        <div className="grid">
           {/* Heading */}
           <h2 
             className="reminising text-3xl md:text-4xl font-light italic text-gray-700 leading-snug"
@@ -42,11 +45,8 @@ export default function VayalNaaduSection() {
 
         {/* MAIN IMAGE */}
         <div 
-          className="relative w-full h-[420px] mb-1 lg:mb-6"
-          data-aos="zoom-in-up"
-          data-aos-duration="2000"
-          data-aos-delay="600"
-          data-aos-easing="ease-out-expo"
+          className={`relative w-full ${isMobile ? 'h-[130px]' : 'h-[250px]'} mb-1`}
+       
         >
           <Image
             src="/images/image1.png"
@@ -58,13 +58,10 @@ export default function VayalNaaduSection() {
         </div>
 
         {/* IMAGE GRID */}
-        <div className="grid grid-cols-3 gap-1 lg:gap-4">
+        <div className="grid grid-cols-3 gap-1">
           <div 
-            className="relative h-[260px]"
-            data-aos="slide-up-dramatic"
-            data-aos-duration="1600"
-            data-aos-delay="800"
-            data-aos-easing="ease-out-back"
+            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
+          
           >
             <Image
               src="/images/image2.png"
@@ -75,11 +72,8 @@ export default function VayalNaaduSection() {
           </div>
 
           <div 
-            className="relative h-[260px]"
-            data-aos="zoom-in"
-            data-aos-duration="1800"
-            data-aos-delay="1000"
-            data-aos-easing="ease-out-expo"
+            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
+          
           >
             <Image
               src="/images/image3.png"
@@ -90,11 +84,8 @@ export default function VayalNaaduSection() {
           </div>
 
           <div 
-            className="relative h-[260px]"
-            data-aos="slide-up-dramatic"
-            data-aos-duration="1600"
-            data-aos-delay="1200"
-            data-aos-easing="ease-out-back"
+            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
+           
           >
             <Image
               src="/images/image4.png"

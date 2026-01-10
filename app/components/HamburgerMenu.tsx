@@ -284,10 +284,10 @@ export default function HamburgerMenu() {
         type="button"
       >
         <Image
-          src="/images/hamburger.png"
+          src="/images/hamburger.svg"
           alt="Menu"
-          width={89}
-          height={47}
+          width={50}
+          height={25}
           priority
           
           style={{ pointerEvents: 'none' }}
