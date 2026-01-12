@@ -42,9 +42,9 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
 
         {/* Hamburger Menu */}
         <div className="relative" style={{ zIndex: 101 }}>
-          <HamburgerMenu 
-            onOpenBrochure={onOpenBrochure} 
-            onOpenScheduleCall={onOpenScheduleCall} 
+          <HamburgerMenu
+            onOpenBrochure={onOpenBrochure}
+            onOpenScheduleCall={onOpenScheduleCall}
           />
         </div>
       </nav>

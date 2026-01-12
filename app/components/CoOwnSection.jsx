@@ -121,7 +121,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
             Legacy
           </p>
 
-          <button 
+          <button
             onClick={onOpenBrochure}
             className="download mt-6 cursor-pointer inline-flex items-center gap-3 bg-[#1A6A6D] text-white px-6 py-3 rounded-sm w-fit hover:bg-[#275b5a] transition group"
           >

@@ -12,13 +12,13 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
     setMounted(true);
   }, []);
 
-  const handleOpen = (e: React.MouseEvent) => {
+  const handleOpen = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setOpen(true);
   };
 
-  const handleClose = (e: React.MouseEvent) => {
+  const handleClose = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setOpen(false);
@@ -26,62 +26,60 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
-      document.documentElement.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "unset";
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = 'unset';
-      document.documentElement.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "unset";
     };
   }, [open]);
 
-
   const menuContent = open ? (
-    <div 
-      style={{ 
-        position: 'fixed',
+    <div
+      style={{
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        width: '100vw',
-        height: '100vh',
+        width: "100vw",
+        height: "100vh",
         zIndex: 999999,
-        backgroundColor: '#f6f3ee',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        backgroundColor: "#f6f3ee",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
         margin: 0,
-        padding: '64px 24px',
-        boxSizing: 'border-box'
+        padding: "64px 24px",
+        boxSizing: "border-box",
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      
       {/* CLOSE BUTTON */}
       <button
         onClick={handleClose}
-        style={{ 
-          position: 'absolute',
-          top: '32px',
-          right: '32px',
+        style={{
+          position: "absolute",
+          top: "32px",
+          right: "32px",
           zIndex: 1000000,
-          background: 'transparent',
-          border: 'none',
-          padding: '8px',
-          fontSize: '32px',
-          color: '#A29279',
-          cursor: 'pointer',
-          transition: 'opacity 0.3s ease'
+          background: "transparent",
+          border: "none",
+          padding: "8px",
+          fontSize: "32px",
+          color: "#A29279",
+          cursor: "pointer",
+          transition: "opacity 0.3s ease",
         }}
-        onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-        onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         aria-label="Close menu"
         type="button"
       >
@@ -89,41 +87,35 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
       </button>
 
       {/* NAVIGATION */}
-      <nav 
+      <nav
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '22px',
-          color: '#000000',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "22px",
+          color: "#000000",
           flex: 1,
-          justifyContent: 'center',
-          width: '100%',
-          maxWidth: '600px'
+          justifyContent: "center",
+          width: "100%",
+          maxWidth: "600px",
         }}
       >
-
-        <span 
-        className="navigation-menu"
+        <span
+          className="navigation-menu"
           style={{
-            padding: '6px 42px',
-            border: '1px solid #A29279',
-            borderRadius: '50px',
-            fontSize: '18px',
-            fontWeight: '500',
-            color: '#000000'
+            padding: "6px 42px",
+            border: "1px solid #A29279",
+            borderRadius: "50px",
+            fontSize: "18px",
+            fontWeight: "500",
+            color: "#000000",
           }}
         >
           Home
         </span>
 
-       
-
-      
-
-       
-        <a 
-          href="#" 
+        <a
+          href="#"
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
@@ -133,10 +125,10 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           }}
           className="navigation-menu group cursor-pointer"
           style={{
-            fontSize: '18px',
-            color: '#000000',
-            textDecoration: 'none',
-            fontWeight: '400'
+            fontSize: "18px",
+            color: "#000000",
+            textDecoration: "none",
+            fontWeight: "400",
           }}
         >
           <span className="relative">
@@ -145,8 +137,8 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           </span>
         </a>
 
-        <a 
-          href="#" 
+        <a
+          href="#"
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
@@ -156,10 +148,10 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           }}
           className="navigation-menu group cursor-pointer"
           style={{
-            fontSize: '18px',
-            color: '#000000',
-            textDecoration: 'none',
-            fontWeight: '400'
+            fontSize: "18px",
+            color: "#000000",
+            textDecoration: "none",
+            fontWeight: "400",
           }}
         >
           <span className="relative">
@@ -168,14 +160,14 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           </span>
         </a>
 
-        <a 
-          href="#contact" 
+        <a
+          href="#contact"
           className="navigation-menu group cursor-pointer"
           style={{
-            fontSize: '18px',
-            color: '#000000',
-            textDecoration: 'none',
-            fontWeight: '400'
+            fontSize: "18px",
+            color: "#000000",
+            textDecoration: "none",
+            fontWeight: "400",
           }}
         >
           <span className="relative">
@@ -185,24 +177,24 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
         </a>
 
         {/* SOCIAL ICONS */}
-        <div 
+        <div
           style={{
-            display: 'flex',
-            gap: '32px',
-            marginTop: '32px'
+            display: "flex",
+            gap: "32px",
+            marginTop: "32px",
           }}
         >
-          <a 
-            href="#" 
-            aria-label="Instagram" 
+          <a
+            href="#"
+            aria-label="Instagram"
             style={{
-              transition: 'opacity 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
+              transition: "opacity 0.3s ease",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             <Image
               src="/images/instagram.svg"
@@ -212,17 +204,17 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
             />
           </a>
 
-          <a 
-            href="#" 
-            aria-label="Facebook" 
+          <a
+            href="#"
+            aria-label="Facebook"
             style={{
-              transition: 'opacity 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
+              transition: "opacity 0.3s ease",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             <Image
               src="/images/facebook.svg"
@@ -235,23 +227,22 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
       </nav>
 
       {/* FOOTER */}
-      <div 
-      
+      <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '16px',
-          fontSize: '14px',
-          color: '#9c8f7a'
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "16px",
+          fontSize: "14px",
+          color: "#9c8f7a",
         }}
       >
-        <div 
+        <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            marginTop:"80px"
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            marginTop: "80px",
           }}
         >
           <Image
@@ -262,11 +253,12 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           />
         </div>
 
-        <p className="sz-developer-text"
+        <p
+          className="sz-developer-text"
           style={{
-            textAlign: 'center',
-            lineHeight: '1.5',
-            margin: 0
+            textAlign: "center",
+            lineHeight: "1.5",
+            margin: 0,
           }}
         >
           SZ Developers © 2026 <br />
@@ -282,12 +274,12 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
       <button
         onClick={handleOpen}
         className="header-image flex flex-col items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer"
-        style={{ 
+        style={{
           zIndex: 102,
-          position: 'relative',
-          background: 'transparent',
-          border: 'none',
-          padding: '8px'
+          position: "relative",
+          background: "transparent",
+          border: "none",
+          padding: "8px",
         }}
         aria-label="Open menu"
         type="button"
@@ -298,8 +290,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           width={50}
           height={25}
           priority
-          
-          style={{ pointerEvents: 'none' }}
+          style={{ pointerEvents: "none" }}
         />
       </button>
 

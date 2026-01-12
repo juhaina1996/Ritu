@@ -28,7 +28,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "app/components/CoOwnSection.jsx",
+    "app/components/Hero.jsx",
+    "app/components/HamburgerMenu.jsx",
+    "app/components/Footer.jsx"
   ],
   "exclude": ["node_modules"]
 }
