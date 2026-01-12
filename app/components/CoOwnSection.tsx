@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function CoOwnSection() {
+export default function CoOwnSection({ onOpenBrochure }) {
   return (
     <section className="coown-section w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-10 lg:px-26 ">
       {/* TOP WATERMARK */}
@@ -121,7 +121,10 @@ export default function CoOwnSection() {
             Legacy
           </p>
 
-          <button className="download mt-6 cursor-pointer inline-flex items-center gap-3 bg-[#1A6A6D] text-white px-6 py-3 rounded-sm w-fit hover:bg-[#275b5a] transition group">
+          <button 
+            onClick={onOpenBrochure}
+            className="download mt-6 cursor-pointer inline-flex items-center gap-3 bg-[#1A6A6D] text-white px-6 py-3 rounded-sm w-fit hover:bg-[#275b5a] transition group"
+          >
             Download Brochure
             <span className="flex items-center justify-center rounded-full">
               <Image

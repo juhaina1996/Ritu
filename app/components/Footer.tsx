@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useIsMobile } from "../hooks";
 
-export default function Footer() {
+export default function Footer({ onOpenScheduleCall }) {
   const isMobile = useIsMobile();
 
   return (
@@ -15,7 +15,10 @@ export default function Footer() {
               Let's talk
             </h2>
 
-            <button className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group">
+            <button 
+              onClick={onOpenScheduleCall}
+              className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group"
+            >
               <span className="text-sm">Schedule a Call</span>
               <span className="flex h-6 w-6 items-center justify-center animate-pulse-horizontal">
                 <Image

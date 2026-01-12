@@ -2,7 +2,7 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import { useIsMobile } from "../hooks";
 
-export default function KeralaFarmHero() {
+export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
   const isMobile = useIsMobile();
 
   return (
@@ -42,7 +42,10 @@ export default function KeralaFarmHero() {
 
         {/* Hamburger Menu */}
         <div className="relative" style={{ zIndex: 101 }}>
-          <HamburgerMenu />
+          <HamburgerMenu 
+            onOpenBrochure={onOpenBrochure} 
+            onOpenScheduleCall={onOpenScheduleCall} 
+          />
         </div>
       </nav>
 

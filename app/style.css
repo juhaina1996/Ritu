@@ -262,9 +262,273 @@
 .co-own-text {
   color: #1a6a6d;
 }
+
+.brochure-overlay {
+  background: rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.brochure-card {
+  position: relative;
+  background: #eae9e7;
+  padding: 40px 50px;
+  width: 548px;
+  max-width: 90%;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-family: "Arsenal", sans-serif;
+  margin: 20px auto;
+}
+
+.brochure-card h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 200;
+  color: #000000;
+}
+
+.brochure-card p {
+  font-style: italic;
+  color: #000000;
+  font-size: 11px;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0 25px;
+}
+
+.divider span {
+  width: 6px;
+  height: 6px;
+  background: #d5d0cb;
+  border-radius: 50%;
+}
+
+.brochure-form input[type="text"] {
+  width: 100%;
+  padding: 0px;
+  margin-bottom: 0px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: "Arsenal", sans-serif;
+  background: white;
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+  background: white;
+  margin-bottom: 0px;
+}
+
+.phone-field span {
+  padding: 0px;
+  color: #999;
+  border-right: 1px solid #eee;
+}
+
+.phone-field input {
+  border: none;
+  flex: 1;
+  padding: 0px;
+  font-size: 16px;
+  background: transparent;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  color: #5c5c5c;
+  margin: 10px 0 25px;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a29279;
+}
+
+.checkbox-row input {
+  width: 16px;
+  height: 16px;
+}
+
+.brochure-form button {
+  /* width: 100%; */
+  padding: 15px;
+  border: none;
+  font-size: 13px;
+  font-family: "Arsenal", sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.brochure-form button:hover {
+  background: #14585a;
+}
+.divider-image {
+  width: 100%;
+  margin-top: 13px;
+  margin-bottom: 13px;
+  /* height: 5px; */
+} /* Input group wrapper */
+.input-group {
+  background: #ffffff;
+  border-radius: 2px;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+}
+
+/* Top-left label inside box */
+.input-group label {
+  font-size: 14px;
+  color: #000000;
+  display: block;
+  margin-bottom: 0px;
+  text-align: left;
+  font-family: "Arsenal", sans-serif;
+}
+
+/* Normal text input */
+.input-group input[type="text"],
+.phone-field input[type="tel"] {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  font-family: "Arsenal", sans-serif;
+  color: #3a2f28;
+  background: transparent;
+  padding: 0;
+}
+
+/* Phone row */
+.phone-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* +91 prefix */
+.phone-field span {
+  color: #b5b0ab;
+  font-size: 14px;
+}
+.schedule-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 8px;
+}
+
+.schedule-title {
+  font-size: 13px;
+  color: #000;
+  margin: 0;
+}
+
+.schedule-calendar-icon {
+  font-size: 16px;
+  color: #a29279;
+}
+
+.schedule-card {
+  width: 720px;
+}
+
+.schedule-title {
+  font-size: 13px;
+  color: #000;
+  text-align: left;
+  margin: 10px 0 8px;
+}
+
+/* Two column layout */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+/* Right time box */
+.time-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Smaller input groups inside time box */
+.input-group.small label {
+  font-size: 12px;
+}
+
+.input-group.small input,
+.input-group.small select {
+  font-size: 13px;
+}
+
+/* Select styling to match inputs */
+.input-group select {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-family: "Arsenal", sans-serif;
+  font-size: 13px;
+}
+
+/* Captcha row */
+.captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.captcha-box {
+  background: #ffffff;
+  border: 1px solid #d9d5cf;
+  padding: 8px 12px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-family: "Arsenal", sans-serif;
+  color: #8a847e;
+}
+
+.captcha-row input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: #ffffff;
+  font-family: "Arsenal", sans-serif;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 991px) {
   .experience-header h2 {
     font-size: 30px;
+  }
+  .brochure-card {
+    padding: 30px 20px;
   }
   .experience-container {
     padding-left: 0;

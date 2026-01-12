@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import Image from "next/image";
 import Hero from "./components/Hero";
@@ -9,8 +9,12 @@ import ExperiencesSlider from "./components/ExperiencesSlider";
 import VayalNaaduSection from "./components/VayalNaaduSection";
 import CoOwnSection from "./components/CoOwnSection";
 import Footer from "./components/Footer";
+import DownloadBrochure from "./components/DownloadBrochure";
+import ScheduleCall from "./components/ScheduleCall";
 
 export default function HomePage() {
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  const [isScheduleCallOpen, setIsScheduleCallOpen] = useState(false);
   useEffect(() => {
     // Initialize AOS with enhanced animation settings
     AOS.init({
@@ -46,7 +50,10 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero />
+      <Hero 
+        onOpenBrochure={() => setIsBrochureOpen(true)} 
+        onOpenScheduleCall={() => setIsScheduleCallOpen(true)} 
+      />
       
       {/* Logo Background - Left Side after Hero - Partially Visible */}
      
@@ -59,10 +66,20 @@ export default function HomePage() {
       <VayalNaaduSection />
       
     
-      <CoOwnSection />
+      <CoOwnSection onOpenBrochure={() => setIsBrochureOpen(true)} />
     
 
-      <Footer />
+      <Footer onOpenScheduleCall={() => setIsScheduleCallOpen(true)} />
+
+      <DownloadBrochure 
+        isOpen={isBrochureOpen} 
+        onClose={() => setIsBrochureOpen(false)} 
+      />
+
+      <ScheduleCall 
+        isOpen={isScheduleCallOpen} 
+        onClose={() => setIsScheduleCallOpen(false)} 
+      />
     </>
   );
 }

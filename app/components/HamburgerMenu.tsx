@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -124,6 +124,13 @@ export default function HamburgerMenu() {
        
         <a 
           href="#" 
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            if (onOpenBrochure) {
+              onOpenBrochure();
+            }
+          }}
           className="navigation-menu group cursor-pointer"
           style={{
             fontSize: '18px',
@@ -140,6 +147,13 @@ export default function HamburgerMenu() {
 
         <a 
           href="#" 
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            if (onOpenScheduleCall) {
+              onOpenScheduleCall();
+            }
+          }}
           className="navigation-menu group cursor-pointer"
           style={{
             fontSize: '18px',
