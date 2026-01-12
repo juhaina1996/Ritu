@@ -1,7 +1,10 @@
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
+import { useIsMobile } from "../hooks";
 
 export default function KeralaFarmHero() {
+  const isMobile = useIsMobile();
+
   return (
     <div className="relative lg:h-screen w-full overflow-hidden">
       {/* Background Image */}
@@ -12,8 +15,8 @@ export default function KeralaFarmHero() {
           loop
           muted
           playsInline
-          className="absolute inset-0  h-[70vh] lg:h-full w-full object-cover"
-          style={{ filter: 'brightness(0.6)' }}
+          className="absolute inset-0  h-[100vh] lg:h-full w-full object-cover"
+          style={{ filter: "brightness(0.6)" }}
           data-aos="zoom-in"
           data-aos-duration="3000"
           data-aos-easing="ease-out-expo"
@@ -21,17 +24,16 @@ export default function KeralaFarmHero() {
       </div>
 
       {/* Navigation */}
-      <nav className="header relative flex items-center justify-between px-20 py-6 pl-20" style={{ zIndex: 100 }}>
+      <nav
+        className="header relative flex items-center justify-between px-20 py-6 pl-20"
+        style={{ zIndex: 100 }}
+      >
         {/* Logo */}
-        <div 
-          className="flex items-center" 
-         
-        >
+        <div className="flex items-center">
           <Image
             src="/images/logoMain.svg"
             alt="Ritu Logo"
             width={130}
-          
             height={66}
             priority
             className="object-contain header-image"
@@ -39,36 +41,57 @@ export default function KeralaFarmHero() {
         </div>
 
         {/* Hamburger Menu */}
-        <div 
-          className="relative"
-          style={{ zIndex: 101 }}
-         
-        >
+        <div className="relative" style={{ zIndex: 101 }}>
           <HamburgerMenu />
         </div>
       </nav>
 
       {/* Hero Content */}
-<div className="relative z-10 flex flex-col items-center justify-center h-[70vh] lg:h-full px-4 -mt-20">
-        <h1 
-          className="experience-main text-white text-5xl md:text-7xl font-light text-center mb-4 tracking-wide"
-          data-aos="wave-in"
-          data-aos-duration="2000"
-          data-aos-delay="1200"
-          data-aos-easing="ease-out-expo"
-        >
-          Experience the farms of kerala
-        </h1>
-
-        <p 
-          className="experience-sub text-white md:text-base text-center mb-12 max-w-2xl opacity-90"
-          data-aos="fade-up"
-          data-aos-duration="1800"
-          data-aos-delay="1600"
-          data-aos-easing="ease-out-quart"
-        >
-          Bridging The Gap Between Urban Living and Farming Culture
-        </p>
+      <div className="relative z-10 flex flex-col items-center justify-center h-[100vh] lg:h-full px-4 -mt-20">
+        {!isMobile && (
+          <h1
+            className="experience-main text-white text-5xl md:text-7xl font-light text-center mb-4 tracking-wide"
+            data-aos="wave-in"
+            data-aos-duration="2000"
+            data-aos-delay="1200"
+            data-aos-easing="ease-out-expo"
+          >
+            Experience the farms of kerala
+          </h1>
+        )}
+        {isMobile && (
+          <h1
+            className="experience-main text-white text-5xl md:text-7xl font-light text-center mb-4 tracking-wide"
+            data-aos="wave-in"
+            data-aos-duration="2000"
+            data-aos-delay="1200"
+            data-aos-easing="ease-out-expo"
+          >
+            Experience the farms <br /> of kerala
+          </h1>
+        )}
+        {!isMobile && (
+          <p
+            className="experience-sub text-white md:text-base text-center mb-12 max-w-2xl opacity-90"
+            data-aos="fade-up"
+            data-aos-duration="1800"
+            data-aos-delay="1600"
+            data-aos-easing="ease-out-quart"
+          >
+            Bridging The Gap Between Urban Living and Farming Culture
+          </p>
+        )}
+        {isMobile && (
+          <p
+            className="experience-sub text-white md:text-base text-center mb-12 max-w-2xl opacity-90"
+            data-aos="fade-up"
+            data-aos-duration="1800"
+            data-aos-delay="1600"
+            data-aos-easing="ease-out-quart"
+          >
+            Bridging The Gap Between Urban Living and <br /> Farming Culture
+          </p>
+        )}
 
         {/* CTA Button */}
         <button

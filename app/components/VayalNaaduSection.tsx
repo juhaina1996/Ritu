@@ -10,7 +10,7 @@ export default function VayalNaaduSection() {
         {/* TOP CONTENT */}
         <div className="grid">
           {/* Heading */}
-          <h2 
+          <h2
             className="reminising text-3xl md:text-4xl font-light italic text-gray-700 leading-snug"
             data-aos="fade-up"
             data-aos-duration="1800"
@@ -18,13 +18,13 @@ export default function VayalNaaduSection() {
             data-aos-easing="ease-out-quart"
           >
             Reminiscing the Glory of <br />
-            <span className="not-italic font-normal tracking-wide">
+            <span className="italic font-normal tracking-wide">
               VAYAL NAADU
             </span>
           </h2>
 
           {/* Description */}
-          <p 
+          <p
             className="reminising-sub text-sm text-gray-600 leading-relaxed"
             data-aos="fade-up"
             data-aos-duration="1600"
@@ -44,9 +44,10 @@ export default function VayalNaaduSection() {
         </div>
 
         {/* MAIN IMAGE */}
-        <div 
-          className={`relative w-full ${isMobile ? 'h-[130px]' : 'h-[250px]'} mb-1`}
-       
+        <div
+          className={`relative w-full ${
+            isMobile ? "h-[130px] mb-[1px]" : "h-[250px] mb-1"
+          }`}
         >
           <Image
             src="/images/image1.png"
@@ -58,11 +59,8 @@ export default function VayalNaaduSection() {
         </div>
 
         {/* IMAGE GRID */}
-        <div className="grid grid-cols-3 gap-1">
-          <div 
-            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
-          
-          >
+        <div className={`grid grid-cols-3 ${isMobile ? "gap-[1px]" : "gap-1"}`}>
+          <div className={`relative ${isMobile ? "h-[200px]" : "h-[360px]"}`}>
             <Image
               src="/images/image2.png"
               alt="Forest view"
@@ -71,10 +69,7 @@ export default function VayalNaaduSection() {
             />
           </div>
 
-          <div 
-            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
-          
-          >
+          <div className={`relative ${isMobile ? "h-[200px]" : "h-[360px]"}`}>
             <Image
               src="/images/image3.png"
               alt="Farm house"
@@ -83,10 +78,7 @@ export default function VayalNaaduSection() {
             />
           </div>
 
-          <div 
-            className={`relative ${isMobile ? 'h-[200px]' : 'h-[360px]'}`}
-           
-          >
+          <div className={`relative ${isMobile ? "h-[200px]" : "h-[360px]"}`}>
             <Image
               src="/images/image4.png"
               alt="Waterfall"

@@ -5,10 +5,13 @@
 .experience-main {
   padding-top: 60px;
   font-family: "Arsenal", sans-serif;
-  font-size: 62px;
+  font-size: 66px;
+  font-weight: 100;
+  color: rgb(255, 255, 255);
 }
 .experience-sub {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 100;
 }
 .hero-buttton {
   margin-top: 20px;
@@ -18,7 +21,7 @@
   margin-top: 280px;
   margin-bottom: 280px;
 } */
- .main {
+.main {
   background: #f7f5f2;
   padding: 280px 50px;
   padding-bottom: 0;
@@ -49,9 +52,10 @@
   /* flex-direction: column; */
   gap: 16px;
   margin-bottom: 40px;
-   
 }
-
+.discover {
+  font-weight: 100;
+}
 .experience-header h2 {
   font-size: 32px;
   font-weight: 300;
@@ -131,6 +135,7 @@
   font-size: 85px;
   font-family: "Arsenal", sans-serif;
   line-height: 83px;
+  font-weight: 100;
 }
 .reminising-sub {
   margin-left: 20%;
@@ -141,7 +146,7 @@
   font-weight: 100;
   line-height: 27px;
   margin-bottom: 25px;
-text-align: justify;
+  text-align: justify;
 }
 .co-own {
   font-family: "Arsenal", sans-serif;
@@ -155,7 +160,7 @@ text-align: justify;
 }
 .be-a-proud {
   font-family: "Arsenal", sans-serif;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 100;
 }
 .dowload {
@@ -163,215 +168,244 @@ text-align: justify;
   font-size: 17px;
   font-weight: 100;
 }
-.experince-sub{
+.experince-sub {
   background: url("/images/experienceMain.png");
-  padding-bottom: 20px;
-  width:90vw;
+  padding-bottom: 50px;
+  width: 90vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .where-experince {
-    font-family: "Arsenal", sans-serif;
+  font-family: "Arsenal", sans-serif;
   font-size: 56px;
   font-weight: 100;
   margin-top: 30px;
 }
 .immerse {
-    font-family: "Arsenal", sans-serif;
+  font-family: "Arsenal", sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 100;
 }
-.experience-section-logo{
-  right:10px;
-  top:1500px;
+.experience-section-logo {
+  right: 10px;
+  top: 1500px;
   z-index: 0;
   height: 500px;
   opacity: 0.5;
 }
-.co-own-back{
-    opacity: 0.7;
-    z-index: 0;
-
+.co-own-back {
+  opacity: 0.7;
+  z-index: 0;
 }
 .download {
   font-family: "Arsenal", sans-serif;
   font-size: 18px;
   font-weight: 100;
   padding: 28px 10px;
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.lettalk{
-   font-family: "Arsenal", sans-serif;
+.lettalk {
+  font-family: "Arsenal", sans-serif;
   font-size: 88px;
   font-weight: 100;
 }
-.contact{
-    font-family: "Arsenal", sans-serif;
+.contact {
+  font-family: "Arsenal", sans-serif;
   font-size: 34px;
   font-weight: 100;
 }
-.contact-sub{
-   font-family: "Arsenal", sans-serif;
+.contact-sub {
+  font-family: "Arsenal", sans-serif;
   font-size: 18px;
   font-weight: 100;
 }
-.navigation-menu{
-     font-family: "Arsenal", sans-serif;
+.navigation-menu {
+  font-family: "Arsenal", sans-serif;
   font-size: 18px;
   font-weight: 100;
 }
-.sz-developer-text{
+.sz-developer-text {
   font-size: 10px;
-       font-family: "Arsenal", sans-serif;
+  font-family: "Arsenal", sans-serif;
   font-weight: 100;
-
 }
-  .immerse-mob{
-   
-    display: none;
-  }
-   .where-experince-mob{
-   
-    display: none;
-  }
-  .contact-mob{
-    font-size: 12px;
-    color:#B4B4B4;
-    width: 60%;
-    text-align: center;
-    margin-bottom:  50px;
-  }
-  .contact-mob-sub{
-    font-size: 12px;
-    color:#B4B4B4;
-  
-    text-align: center;
-  }
-  .contact-mob-div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 20px;
-   align-items: center;
-  }
+.immerse-mob {
+  display: none;
+}
+.where-experince-mob {
+  display: none;
+}
+.contact-mob {
+  font-size: 12px;
+  color: #b4b4b4;
+
+  text-align: center;
+  margin-bottom: 25px;
+}
+.contact-mob-sub {
+  font-size: 12px;
+  color: #919191;
+
+  text-align: center;
+}
+.contact-mob-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+}
+.co-own-text {
+  color: #1a6a6d;
+}
 @media (max-width: 991px) {
-  .experience-header h2{
+  .experience-header h2 {
     font-size: 30px;
   }
-  .bottom-row{
+  .experience-container {
+    padding-left: 0;
+  }
+  .experience-section {
+    margin: 0 20px;
+  }
+  .bottom-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap:40%
+    /* gap: 40%; */
   }
-  .experience-header p{
-font-size: 14px;
-text-align: center;
-margin-right: 0;
+  .contact {
+    font-size: 21px;
   }
-  .experience-slider p{
-font-size: 14px;
+  .contact-sub {
+    font-size: 14px;
+  }
+  .experience-header p {
+    font-size: 10px;
+    text-align: center;
+    margin-right: 0;
+  }
+  .experience-slider p {
+    font-size: 14px;
   }
   .header-image {
-    height: 50px;  
+    height: 50px;
     width: 50px;
   }
   .where-experince {
-   display:none;
-}
-  .header{
-    padding:20px ;
-  }
-  .experience-main{
-    padding-top: 100px;
-    font-size: 30px;
-  }
-  .immerse{
-
     display: none;
   }
-  .where-experince-mob{
-    font-size: 30px;
-    color:#000000;
+  .header {
+    padding: 20px;
+  }
+  .experience-main {
+    padding-top: 100px;
+    font-size: 38px;
+  }
+  .immerse {
+    display: none;
+  }
+  .where-experince-mob {
+    color: #000000;
     padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
   }
-  .experince-sub{
-     padding: 20px;
-     min-height: auto;
-     /* display: none; */
+  .experince-sub {
+    padding: 20px;
+    min-height: auto;
+    height: 300px;
+    /* display: none; */
   }
-  .main{
+  .main {
     padding: 20px;
     min-height: auto;
   }
-  .immerse-mob{
-color:#000000;
-    font-size: 14px;
+  .immerse-mob {
+    color: #000000;
+    font-size: 11px;
     display: block;
     text-align: center;
     margin: 0 20px;
   }
-    .where-experince-mob{
-       font-size: 30px;
-color:#000000;
+  .where-experince-mob {
+    font-size: 21px;
+    color: #000000;
     display: block;
-     text-align: center;
-      margin: 0 20px;
-      padding-top: 70px;
+    text-align: center;
+    margin: 0 20px;
+    padding-top: 70px;
   }
   .experience-section {
     padding-top: 60px;
   }
-  .experience-header{
+  .experience-header {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
   .experience-card {
-  min-width: 200px;
-}
+    min-width: 200px;
+  }
 
-.experience-image {
-  height: 300px;
-
-}
-.experience-arrows{
-  justify-content: center;
-}
-.reminising{
-  font-size: 30px;
-  line-height: 36px;
-  text-align: center;
-}
-.reminising-sub {
-  margin: 20px;
-  font-size: 14px;
-}
-.be-a-proud {
-
-  font-size: 12px;
-}
-.land{
-  font-size: 30px;
-}
-.download{
-  font-size: 10px;
-  padding: 10px;
-}.lettalk {
-  text-align: center;
-  font-size: 40px;
-}
-.lettakButton{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .experience-image {
+    height: 300px;
+  }
+  .experience-image-sub {
+    height: 260px;
+  }
+  .experience-arrows {
+    justify-content: center;
+  }
+  .reminising {
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    margin: 0 20px;
+  }
+  .reminising-sub {
+    margin: 20px;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 100;
+    text-align: justify;
+  }
+  .be-a-proud {
+    font-size: 16px;
+  }
+  .land {
+    font-size: 30px;
+  }
+  .coown-section {
+    padding: 0;
+  }
+  .coown-grid {
+    margin: 0 20px;
+    margin-top: 50px;
+  }
+  .download {
+    font-size: 10px;
+    padding: 10px;
+  }
+  .lettalk {
+    text-align: center;
+    font-size: 50px;
+  }
+  .lettakButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Arrow horizontal moving animation */
 @keyframes pulse-horizontal {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   50% {
@@ -386,4 +420,29 @@ color:#000000;
 /* Pause animation on hover to show the hover effect */
 .group:hover .animate-pulse-horizontal {
   animation-play-state: paused;
+}
+/* Hamburger Menu Social Links Hover Effects */
+.group:hover .group-hover\:w-full {
+  width: 100% !important;
+}
+
+/* Alternative approach using CSS-only hover */
+.social-link {
+  position: relative;
+  display: inline-block;
+}
+
+.social-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 0%;
+  background-color: #a29279;
+  transition: width 0.3s ease-out;
+}
+
+.social-link:hover::after {
+  width: 100%;
 }

@@ -124,53 +124,50 @@ export default function HamburgerMenu() {
        
         <a 
           href="#" 
-                  className="navigation-menu"
-
+          className="navigation-menu group cursor-pointer"
           style={{
             fontSize: '18px',
             color: '#000000',
             textDecoration: 'none',
-            transition: 'opacity 0.3s ease',
             fontWeight: '400'
           }}
-          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
         >
-          Download Brochure
+          <span className="relative">
+            Download Brochure
+            <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+          </span>
         </a>
 
         <a 
           href="#" 
-                  className="navigation-menu"
-
+          className="navigation-menu group cursor-pointer"
           style={{
             fontSize: '18px',
             color: '#000000',
             textDecoration: 'none',
-            transition: 'opacity 0.3s ease',
             fontWeight: '400'
           }}
-          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
         >
-          Schedule a Call
+          <span className="relative">
+            Schedule a Call
+            <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+          </span>
         </a>
 
         <a 
           href="#contact" 
-                  className="navigation-menu"
-
+          className="navigation-menu group cursor-pointer"
           style={{
             fontSize: '18px',
             color: '#000000',
             textDecoration: 'none',
-            transition: 'opacity 0.3s ease',
             fontWeight: '400'
           }}
-          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
         >
-          Contact 
+          <span className="relative">
+            Contact
+            <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+          </span>
         </a>
 
         {/* SOCIAL ICONS */}
@@ -194,7 +191,7 @@ export default function HamburgerMenu() {
             onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
           >
             <Image
-              src="/images/instagramIcon.png"
+              src="/images/instagram.svg"
               alt="Instagram"
               width={32}
               height={32}
@@ -203,8 +200,6 @@ export default function HamburgerMenu() {
 
           <a 
             href="#" 
-                    className="navigation-menu"
-
             aria-label="Facebook" 
             style={{
               transition: 'opacity 0.3s ease',
@@ -216,7 +211,7 @@ export default function HamburgerMenu() {
             onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
           >
             <Image
-              src="/images/facebookIcon.png"
+              src="/images/facebook.svg"
               alt="Facebook"
               width={32}
               height={32}
@@ -246,7 +241,7 @@ export default function HamburgerMenu() {
           }}
         >
           <Image
-            src="/images/szDeveloper.png"
+            src="/images/hamburgerSZ.svg"
             alt="SZ Developers"
             width={102}
             height={60}
