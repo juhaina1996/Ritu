@@ -1,13 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "./Calender.css";
-import { useState } from "react";
+import { saveScheduleCallData } from "../lib/firebaseUtils";
 
 export default function ScheduleCall({ isOpen, onClose }) {
   const [date, setDate] = useState(new Date());
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    whatsapp: '',
+    timeSlot: '',
+    termsAccepted: false,
+    captcha: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -30,10 +39,51 @@ export default function ScheduleCall({ isOpen, onClose }) {
     if (e.target === e.currentTarget) onClose();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Schedule Call Submitted");
-    onClose();
+    setIsSubmitting(true);
+
+    try {
+      const dataToSave = {
+        ...formData,
+        selectedDate: date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }),
+        submittedAt: new Date().toISOString()
+      };
+
+      const result = await saveScheduleCallData(dataToSave);
+      
+      if (result.success) {
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          whatsapp: '',
+          timeSlot: '',
+          termsAccepted: false,
+          captcha: ''
+        });
+        setDate(new Date());
+        onClose();
+      } else {
+        alert('Error submitting request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   return (
@@ -65,14 +115,24 @@ export default function ScheduleCall({ isOpen, onClose }) {
         <form className="brochure-form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Name</label>
-            <input type="text" required />
+            <input 
+              type="text" 
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              required 
+            />
           </div>
 
           <div className="input-group">
             <label>Phone</label>
             <div className="phone-field">
               <span>+91</span>
-              <input type="tel" required />
+              <input 
+                type="tel" 
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                required 
+              />
             </div>
           </div>
 
@@ -80,7 +140,12 @@ export default function ScheduleCall({ isOpen, onClose }) {
             <label>WhatsApp</label>
             <div className="phone-field">
               <span>+91</span>
-              <input type="tel" required />
+              <input 
+                type="tel" 
+                value={formData.whatsapp}
+                onChange={(e) => handleInputChange('whatsapp', e.target.value)}
+                required 
+              />
             </div>
           </div>
 
@@ -122,17 +187,26 @@ export default function ScheduleCall({ isOpen, onClose }) {
 
               <div className="input-group small">
                 <label>Select a time slot</label>
-                <select required>
+                <select 
+                  value={formData.timeSlot}
+                  onChange={(e) => handleInputChange('timeSlot', e.target.value)}
+                  required
+                >
                   <option value="">Select time slot</option>
-                  <option>10:00 AM</option>
-                  <option>11:00 AM</option>
-                  <option>02:00 PM</option>
-                  <option>04:00 PM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="04:00 PM">04:00 PM</option>
                 </select>
               </div>
 
               <label className="checkbox-row">
-                <input type="checkbox" required />
+                <input 
+                  type="checkbox" 
+                  checked={formData.termsAccepted}
+                  onChange={(e) => handleInputChange('termsAccepted', e.target.checked)}
+                  required 
+                />
                 <span>
                   I agree to the <u>terms</u> and <u>privacy policy</u>
                 </span>
@@ -140,10 +214,18 @@ export default function ScheduleCall({ isOpen, onClose }) {
 
               <div className="captcha-row">
                 <span className="captcha-box">NHTT187</span>
-                <input type="text" placeholder="Enter Captcha" required />
+                <input 
+                  type="text" 
+                  placeholder="Enter Captcha" 
+                  value={formData.captcha}
+                  onChange={(e) => handleInputChange('captcha', e.target.value)}
+                  required 
+                />
               </div>
 
-              <button type="submit">Schedule</button>
+              <button className="download-button" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Scheduling...' : 'Schedule'}
+              </button>
             </div>
           </div>
         </form>

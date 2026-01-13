@@ -366,15 +366,20 @@
 }
 
 .brochure-form button {
-  /* width: 100%; */
   padding: 15px;
   border: none;
   font-size: 13px;
   font-family: "Arsenal", sans-serif;
   cursor: pointer;
   transition: background 0.3s ease;
-}
+  
 
+}
+.download-button{
+  background: #1a6a6d;
+    width: 100%;
+
+}
 .brochure-form button:hover {
   background: #14585a;
 }

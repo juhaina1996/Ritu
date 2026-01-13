@@ -49,7 +49,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <>      
       <Hero 
         onOpenBrochure={() => setIsBrochureOpen(true)} 
         onOpenScheduleCall={() => setIsScheduleCallOpen(true)} 

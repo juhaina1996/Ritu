@@ -1,9 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { saveDownloadBrochureData } from "../lib/firebaseUtils";
 
 export default function DownloadBrochure({ isOpen, onClose }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    whatsapp: '',
+    termsAccepted: false
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -27,11 +35,44 @@ export default function DownloadBrochure({ isOpen, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("hey i am her")
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted");
-    onClose();
+    setIsSubmitting(true);
+
+    try {
+      const dataToSave = {
+        ...formData,
+        submittedAt: new Date().toISOString()
+      };
+
+      const result = await saveDownloadBrochureData(dataToSave);
+      if (result.success) {
+       
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          whatsapp: '',
+          termsAccepted: false
+        });
+        onClose();
+      } else {
+        alert('Error submitting request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   return (
@@ -63,7 +104,12 @@ export default function DownloadBrochure({ isOpen, onClose }) {
           {/* Name */}
           <div className="input-group">
             <label>Name</label>
-            <input type="text" required />
+            <input 
+              type="text" 
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              required 
+            />
           </div>
 
           {/* Phone */}
@@ -71,7 +117,12 @@ export default function DownloadBrochure({ isOpen, onClose }) {
             <label>Phone</label>
             <div className="phone-field">
               <span>+91</span>
-              <input type="tel" required />
+              <input 
+                type="tel" 
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                required 
+              />
             </div>
           </div>
 
@@ -80,18 +131,30 @@ export default function DownloadBrochure({ isOpen, onClose }) {
             <label>WhatsApp</label>
             <div className="phone-field">
               <span>+91</span>
-              <input type="tel" required />
+              <input 
+                type="tel" 
+                value={formData.whatsapp}
+                onChange={(e) => handleInputChange('whatsapp', e.target.value)}
+                required 
+              />
             </div>
           </div>
 
           <label className="checkbox-row">
-            <input type="checkbox" required />
+            <input 
+              type="checkbox" 
+              checked={formData.termsAccepted}
+              onChange={(e) => handleInputChange('termsAccepted', e.target.checked)}
+              required 
+            />
             <span>
               I agree to the <u>terms</u> and <u>privacy policy</u>
             </span>
           </label>
 
-          <button type="submit">Submit</button>
+          <button className="download-button" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
         </form>
       </div>
     </div>
