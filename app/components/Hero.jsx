@@ -70,7 +70,7 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
             data-aos-delay="1200"
             data-aos-easing="ease-out-expo"
           >
-            Experience the farms <br /> of kerala
+            Experience the  <br />  farms of kerala
           </h1>
         )}
         {!isMobile && (
@@ -92,7 +92,7 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
             data-aos-delay="1600"
             data-aos-easing="ease-out-quart"
           >
-            Bridging The Gap Between Urban Living and <br /> Farming Culture
+            Bridging the gap between urban living <br /> and farming culture
           </p>
         )}
 

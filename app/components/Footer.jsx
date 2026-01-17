@@ -101,8 +101,8 @@ export default function Footer({ onOpenScheduleCall }) {
             <Image
               src="/images/sz-developerImg.svg"
               alt="SZ Developers"
-              width={167}
-              height={70}
+              width={147}
+              height={60}
               className="object-contain mx-auto"
             />
           </div>
@@ -111,7 +111,7 @@ export default function Footer({ onOpenScheduleCall }) {
           <div className="contact-mob-div">
             {" "}
             <p className="contact-mob">
-              3rd Floor, Nechikkadan Tower, Mini Bypass Rd, near Swapna Nagari,
+              3rd Floor, Nechikkadan Tower, Mini Bypass Rd<br/> near Swapna Nagari,
               Kozhikode, Kerala 673006
             </p>
             <p className="contact-mob-sub">SZ Developers © 2026 </p>

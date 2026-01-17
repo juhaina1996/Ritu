@@ -295,7 +295,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
       {/* HAMBURGER BUTTON */}
       <button
         onClick={handleOpen}
-        className="header-image flex flex-col items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer"
+        className="header-image-ham flex flex-col items-center gap-1 hover:opacity-80 transition-opacity cursor-pointer"
         style={{
           zIndex: 102,
           position: "relative",

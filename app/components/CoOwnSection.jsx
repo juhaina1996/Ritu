@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useIsMobile } from "../hooks";
 
 export default function CoOwnSection({ onOpenBrochure }) {
+    const isMobile = useIsMobile();
+  
   return (
     <section className="coown-section w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-10 lg:px-26 ">
       {/* TOP WATERMARK */}
@@ -42,7 +45,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
         </span>
       </h2>
       {/* CONTENT */}
-      <div className="coown-grid grid grid-cols-2 md:grid-cols-4 gap-6 z-100 relative">
+      <div className="coown-grid grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-2 z-100 relative">
         {/* ROW 1 */}
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
@@ -54,7 +57,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           <div className="land text-4xl text-[#1A6A6D] font-light">
             4.5 Acres
           </div>
-          <p className="text-lg  text-[#1A6A6D]">Total Area</p>
+          <p className="text-lg land-sub  text-[#1A6A6D]">Total Area</p>
         </div>
 
         <div
@@ -65,7 +68,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-back"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">1 Acre</div>
-          <p className="text-lg  text-[#1A6A6D]">Farmland</p>
+          <p className="text-lg  land-sub  text-[#1A6A6D]">Farmland</p>
         </div>
 
         <div
@@ -76,14 +79,14 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-quart"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">57</div>
-          <p className="text-lg  text-[#1A6A6D]">Keys</p>
+          <p className="text-lg  land-sub text-[#1A6A6D]">Keys</p>
         </div>
 
         {/* EMPTY SLOT – TOP RIGHT */}
-        <div className="hidden md:block"></div>
+        <div></div>
 
         {/* ROW 2 */}
-        <div
+       {!isMobile&& <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="zoom-in-right"
           data-aos-duration="1800"
@@ -91,11 +94,22 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-expo"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
-          <p className="text-lg  text-[#1A6A6D]">Rooms</p>
+          <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
         </div>
-
+}      {isMobile&&  <div></div>}
+{isMobile&& <div
+          className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
+          data-aos="zoom-in-right"
+          data-aos-duration="1800"
+          data-aos-delay="900"
+          data-aos-easing="ease-out-expo"
+        >
+          <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
+          <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
+        </div>
+}   
         {/* EMPTY SLOT – CENTER */}
-        <div className="hidden md:block"></div>
+      {!isMobile&&  <div></div>}
 
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
@@ -105,7 +119,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-expo"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">20+</div>
-          <p className="text-lg  text-[#1A6A6D]">Amenities</p>
+          <p className="text-lg  land-sub  text-[#1A6A6D]">Amenities</p>
         </div>
 
         <div

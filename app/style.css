@@ -537,7 +537,10 @@
 
 @media (max-width: 991px) {
   .experience-header h2 {
-    font-size: 30px;
+    font-size: 36px;
+  }
+  .time-box{
+width:100%;
   }
   .brochure-card {
     padding: 30px 20px;
@@ -569,18 +572,26 @@
     font-size: 14px;
   }
   .header-image {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 79px;
+  }
+  .header-image-ham{
+    width:62px;
+    height:62px;
+    display: flex;
+        justify-content: center;
   }
   .where-experince {
     display: none;
   }
   .header {
-    padding: 20px;
+    padding: 10px;
+   
   }
   .experience-main {
     padding-top: 100px;
     font-size: 38px;
+    line-height: 38px;
   }
   .immerse {
     display: none;
@@ -609,7 +620,7 @@
     margin: 0 20px;
   }
   .where-experince-mob {
-    font-size: 21px;
+    font-size: 25px;
     color: #000000;
     display: block;
     text-align: center;
@@ -617,7 +628,7 @@
     padding-top: 70px;
   }
   .experience-section {
-    padding-top: 60px;
+    padding-top: 120px;
   }
   .experience-header {
     flex-direction: column;
@@ -636,6 +647,7 @@
   }
   .experience-arrows {
     justify-content: center;
+    margin-left: 0;
   }
   .reminising {
     font-size: 30px;
@@ -651,10 +663,13 @@
     text-align: justify;
   }
   .be-a-proud {
-    font-size: 16px;
+    font-size: 18px;
   }
   .land {
-    font-size: 30px;
+    font-size: 34px;
+  }
+  .land-sub{
+font-size: 21px;
   }
   .coown-section {
     padding: 0;
@@ -662,14 +677,15 @@
   .coown-grid {
     margin: 0 20px;
     margin-top: 50px;
+    margin-bottom: 30px;
   }
   .download {
-    font-size: 10px;
+    font-size: 13px;
     padding: 10px;
   }
   .lettalk {
     text-align: center;
-    font-size: 50px;
+    font-size: 58px;
   }
   .lettakButton {
     display: flex;
@@ -964,12 +980,14 @@
 
 .time-slot-display {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content:flex-start;
   background: white;
   /* border: 1px solid #eee; */
   border-radius: 4px;
   padding: 8px 12px;
+  text-align: left;
+  padding-left: 0;
   cursor: pointer;
   transition: border-color 0.2s ease;
   min-height: 20px;
