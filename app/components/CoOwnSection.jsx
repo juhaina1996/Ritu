@@ -54,7 +54,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           <div className="land text-4xl text-[#1A6A6D] font-light">
             4.5 Acres
           </div>
-          <p className="text-sm text-[#1A6A6D]">Total Area</p>
+          <p className="text-lg  text-[#1A6A6D]">Total Area</p>
         </div>
 
         <div
@@ -65,7 +65,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-back"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">1 Acre</div>
-          <p className="text-sm text-[#1A6A6D]">Farmland</p>
+          <p className="text-lg  text-[#1A6A6D]">Farmland</p>
         </div>
 
         <div
@@ -76,7 +76,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-quart"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">57</div>
-          <p className="text-sm text-[#1A6A6D]">Keys</p>
+          <p className="text-lg  text-[#1A6A6D]">Keys</p>
         </div>
 
         {/* EMPTY SLOT – TOP RIGHT */}
@@ -91,7 +91,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-expo"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
-          <p className="text-sm text-[#1A6A6D]">Rooms</p>
+          <p className="text-lg  text-[#1A6A6D]">Rooms</p>
         </div>
 
         {/* EMPTY SLOT – CENTER */}
@@ -105,7 +105,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           data-aos-easing="ease-out-expo"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">20+</div>
-          <p className="text-sm text-[#1A6A6D]">Amenities</p>
+          <p className="text-lg  text-[#1A6A6D]">Amenities</p>
         </div>
 
         <div
@@ -128,7 +128,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
             Download Brochure
             <span className="flex items-center justify-center rounded-full">
               <Image
-                src="/images/arrow-right.png"
+                src="/images/arrowDownloadBro.svg"
                 alt="Arrow"
                 width={25}
                 height={25}

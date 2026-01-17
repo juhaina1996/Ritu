@@ -22,7 +22,7 @@ export default function Footer({ onOpenScheduleCall }) {
               <span className="text-sm">Schedule a Call</span>
               <span className="flex h-6 w-6 items-center justify-center animate-pulse-horizontal">
                 <Image
-                  src="/images/arrow.png"
+                  src="/images/arrowIconButton.svg"
                   alt="Arrow"
                   width={25}
                   height={25}
@@ -58,19 +58,31 @@ export default function Footer({ onOpenScheduleCall }) {
           <div>
             <h5 className="text-white mb-3 contact">Social</h5>
 
-            <p className="contact-sub group cursor-pointer">
-              <span className="relative">
-                Instagram
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
-              </span>
-            </p>
+            <div className="flex flex-col">
+              <a 
+                href="https://www.instagram.com/ritufarms?igsh=MTZ6MG01NG55ajZwbA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-sub group cursor-pointer"
+              >
+                <span className="relative">
+                  Instagram
+                  <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+                </span>
+              </a>
 
-            <p className="contact-sub group cursor-pointer">
-              <span className="relative">
-                Facebook
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
-              </span>
-            </p>
+              <a 
+                href="https://www.facebook.com/share/1AKkk3Xe7b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-sub group cursor-pointer"
+              >
+                <span className="relative">
+                  Facebook
+                  <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+                </span>
+              </a>
+            </div>
           </div>
 
           {/* Visit */}

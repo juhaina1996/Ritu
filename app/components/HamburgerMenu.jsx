@@ -40,7 +40,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
     };
   }, [open]);
 
-  const menuContent = open ? (
+  const menuContent = (
     <div
       style={{
         position: "fixed",
@@ -59,6 +59,10 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
         margin: 0,
         padding: "64px 24px",
         boxSizing: "border-box",
+        transform: open ? "translateX(0)" : "translateX(100%)",
+        opacity: open ? 1 : 0,
+        transition: "transform 0.6s ease-in-out, opacity 0.6s ease-in-out",
+        pointerEvents: open ? "auto" : "none",
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -76,7 +80,11 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           fontSize: "32px",
           color: "#A29279",
           cursor: "pointer",
-          transition: "opacity 0.3s ease",
+          opacity: open ? 1 : 0,
+          transform: open ? "scale(1)" : "scale(0.8)",
+          transition: open 
+            ? "opacity 0.6s ease-in-out 0.4s, transform 0.6s ease-in-out 0.4s"
+            : "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
@@ -98,6 +106,11 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           justifyContent: "center",
           width: "100%",
           maxWidth: "600px",
+          opacity: open ? 1 : 0,
+          transform: open ? "translateY(0)" : "translateY(20px)",
+          transition: open 
+            ? "opacity 0.8s ease-in-out 0.3s, transform 0.8s ease-in-out 0.3s"
+            : "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}
       >
         <span
@@ -185,7 +198,9 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           }}
         >
           <a
-            href="#"
+            href="https://www.instagram.com/ritufarms?igsh=MTZ6MG01NG55ajZwbA=="
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             style={{
               transition: "opacity 0.3s ease",
@@ -205,7 +220,9 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           </a>
 
           <a
-            href="#"
+            href="https://www.facebook.com/share/1AKkk3Xe7b/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Facebook"
             style={{
               transition: "opacity 0.3s ease",
@@ -235,6 +252,11 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
           gap: "16px",
           fontSize: "14px",
           color: "#9c8f7a",
+          opacity: open ? 1 : 0,
+          transform: open ? "translateY(0)" : "translateY(20px)",
+          transition: open 
+            ? "opacity 0.7s ease-in-out 0.35s, transform 0.7s ease-in-out 0.35s"
+            : "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}
       >
         <div
@@ -266,7 +288,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
         </p>
       </div>
     </div>
-  ) : null;
+  );
 
   return (
     <>
@@ -295,7 +317,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
       </button>
 
       {/* RENDER MENU IN PORTAL */}
-      {mounted && menuContent && createPortal(menuContent, document.body)}
+      {mounted && createPortal(menuContent, document.body)}
     </>
   );
 }

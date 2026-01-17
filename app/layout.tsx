@@ -2,6 +2,7 @@ import "./globals.css";
 import "./style.css";
 import "./aos-custom.css";
 import "aos/dist/aos.css";
+import Script from "next/script";
 
 export const metadata = {
   title: "Ritu",
@@ -21,7 +22,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src="https://www.google.com/recaptcha/api.js"
+          strategy="lazyOnload"
+        />
+      </body>
     </html>
   );
 }

@@ -100,7 +100,7 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
         <button
           className="hero-buttton
     group
-    flex items-center gap-4
+    flex items-center gap-2
     rounded-full
     bg-[#9b9b9b]/60
 backdrop-blur-none   px-3 py-1
@@ -127,7 +127,7 @@ backdrop-blur-none   px-3 py-1
   "
           >
             <Image
-              src="/images/arrow.png"
+              src="/images/arrowIconButton.svg"
               alt="Arrow"
               width={24}
               height={24}
