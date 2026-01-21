@@ -1,13 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
+  const pathname = usePathname();
+  const isScheduleCallPage = pathname === "/schedule-call";
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
+const hamburgerIcon = isScheduleCallPage
+  ? "/images/hamburgerScheduleCall.svg"   
+  : "/images/hamburger.svg"; 
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -307,7 +312,7 @@ export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
         type="button"
       >
         <Image
-          src="/images/hamburger.svg"
+          src={hamburgerIcon}
           alt="Menu"
           width={50}
           height={25}

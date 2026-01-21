@@ -55,47 +55,47 @@ export default function ScheduleCall({ isOpen, onClose }) {
   const [phoneSearch, setPhoneSearch] = useState('');
   const [whatsappSearch, setWhatsappSearch] = useState('');
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
-    }
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //     document.documentElement.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //     document.documentElement.style.overflow = "unset";
+  //   }
 
-    return () => {
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
-    };
-  }, [isOpen]);
+  //   return () => {
+  //     document.body.style.overflow = "unset";
+  //     document.documentElement.style.overflow = "unset";
+  //   };
+  // }, [isOpen]);
 
   // Close dropdowns when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!event.target.closest('.country-selector') && !event.target.closest('.time-slot-selector')) {
-        setPhoneDropdownOpen(false);
-        setWhatsappDropdownOpen(false);
-        setTimeSlotDropdownOpen(false);
-        setPhoneSearch('');
-        setWhatsappSearch('');
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (!event.target.closest('.country-selector') && !event.target.closest('.time-slot-selector')) {
+  //       setPhoneDropdownOpen(false);
+  //       setWhatsappDropdownOpen(false);
+  //       setTimeSlotDropdownOpen(false);
+  //       setPhoneSearch('');
+  //       setWhatsappSearch('');
+  //     }
+  //   };
 
-    if (phoneDropdownOpen || whatsappDropdownOpen || timeSlotDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+  //   if (phoneDropdownOpen || whatsappDropdownOpen || timeSlotDropdownOpen) {
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //   }
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [phoneDropdownOpen, whatsappDropdownOpen, timeSlotDropdownOpen]);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [phoneDropdownOpen, whatsappDropdownOpen, timeSlotDropdownOpen]);
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+  // const handleOverlayClick = (e) => {
+  //   if (e.target === e.currentTarget) onClose();
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -135,7 +135,7 @@ export default function ScheduleCall({ isOpen, onClose }) {
           recaptchaToken: null
         });
         setDate(new Date());
-        onClose();
+        // onClose();
       } else {
         alert('Error submitting request. Please try again.');
       }
@@ -212,16 +212,16 @@ export default function ScheduleCall({ isOpen, onClose }) {
 
   return (
     <div
-      className="brochure-overlay"
-      onClick={handleOverlayClick}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 10000,
-      }}
+      // className="brochure-overlay"
+      // onClick={handleOverlayClick}
+      // style={{
+      //   position: "fixed",
+      //   top: 0,
+      //   left: 0,
+      //   right: 0,
+      //   bottom: 0,
+      //   zIndex: 10000,
+      // }}
     >
       <div className="brochure-card schedule-card">
         <h2>Schedule a Call</h2>

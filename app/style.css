@@ -2,6 +2,11 @@
   /* background-color: #e4e3e3; */
   border-bottom: 1px solid rgb(255 255 255 / 20%);
 }
+.header-schedule-call{
+  background-color: #F2F0ED;
+    border-bottom: 1px solid #C4C4C4;
+
+}
 .experience-main {
   padding-top: 60px;
   font-family: "Arsenal", sans-serif;
@@ -395,6 +400,179 @@
   margin-bottom: 13px;
   /* height: 5px; */
 } /* Input group wrapper */
+.divider-image-schedule-call {
+  /* width: 100%; */
+  margin-top: 0px;
+  margin-bottom: 48px;
+  /* height: 5px; */
+}
+.reserve-your{
+color:#4D4D4D;
+  font-family: "Arsenal", sans-serif;
+  font-size: 60px;
+}
+.join-exclusive{
+  color:#413529;
+  font-size: 17px;
+  font-weight: 100;
+}
+.only72Coowner-image{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+.investment-section {
+  background-image: url("/images/logoBackground.png");
+  background-repeat: no-repeat;
+  background-position: left -40px top 10px;
+  background-size: 400px;
+  padding-top: 140px;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+.exclusive-partner{
+  color:#413529;
+  font-size: 40px;
+  font-weight: 100;
+    font-family: "Arsenal", sans-serif;
+
+}
+.investment-starts{
+    color:#868484;
+  font-size: 18px;
+  font-weight: 100;
+    font-family: "Arsenal", sans-serif;
+}
+.price, .price-strike{
+    color:#A29279;
+  font-size: 50px;
+  font-weight: 100;
+    font-family: "Arsenal", sans-serif;
+}
+.price-strike{
+  font-size: 40px;
+}
+.save-with{
+  color:#413529;
+  border:1px solid #A29279;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 14px;
+
+}
+.one-time{
+  color:#000;
+  font-size: 14px;
+  font-weight: 100;
+}
+.points{
+  font-size: 12px;
+  font-weight: 100;
+  align-items: center;
+}
+.installment-option{
+  font-size: 15px;
+  font-weight: 100;
+   font-family: "Arsenal", sans-serif;
+   color:#000
+}
+.installment-option-points{
+    font-size: 12px;
+  font-weight: 100;
+   font-family: "Arsenal", sans-serif;
+   align-items: center;
+   margin-bottom: 5px;
+}
+.market-conditions{
+   font-size: 9px;
+  font-weight: 100;
+   font-family: "Arsenal", sans-serif;
+   align-items: center;
+   color:#919191;
+   margin-bottom: 5px;
+}
+.life-time-benefit {
+  color:#413529;
+  font-size: 45px;
+  font-weight: 100;
+}
+.life-time{
+    color:#805C23;
+  font-size: 18px;
+  font-weight: 100;
+  margin-left: 20px;
+}
+.points-benefits{
+  font-size: 12px;
+  font-weight: 100;
+}
+.as-a-co-owner{
+  color:#413529;
+  font-size: 18px;
+  font-weight: 100;
+}
+.benefit-main{
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-bottom: 220px;
+}
+.consultation-section {
+  background-color: #F6F3EE;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+/* Top small title */
+.consultation-top-title {
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #413529;
+  text-transform: uppercase;
+  display: inline-block;
+  border-bottom: 1px solid #A29279;
+
+  padding-bottom: 2px;   /* tiny controlled gap */
+  line-height: 1;        /* removes extra text height */
+}
+
+
+/* Main heading */
+.consultation-heading {
+  margin-top: 60px;
+  
+  font-size: 45px;
+  font-weight: 100;
+  color: #413529;
+}
+
+/* Subtitle text */
+.consultation-subtext {
+  margin-top: 0px;
+  font-size: 16px;
+  color: #413529;
+
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .consultation-heading {
+    font-size: 36px;
+  }
+}
+
+.payment-plan{
+      font-family: "Arsenal", sans-serif;
+
+}
+.payment-plan-main{
+  padding-top: 20px;
+  padding: 15px;
+}
+.saveWithIcon-image {
+  margin-right: auto;
+}
 .input-group {
   background: #ffffff;
   border-radius: 2px;
@@ -527,6 +705,12 @@
   font-family: "Arsenal", sans-serif;
   font-size: 13px;
 }
+.tracking-widest{
+  color:#413529;
+    font-family: "Arsenal", sans-serif;
+  font-size: 22px;
+  font-weight: 100;
+}
 
 /* Responsive */
 @media (max-width: 700px) {
@@ -584,7 +768,8 @@ width:100%;
   .where-experince {
     display: none;
   }
-  .header {
+  .header ,   .header-schedule-call
+{
     padding: 10px;
    
   }
@@ -595,6 +780,72 @@ width:100%;
   }
   .immerse {
     display: none;
+  }
+  .price-main{
+    flex-direction: column;
+    align-items: center;
+    gap:0;
+  }
+  .save-with{
+    display: flex;
+   width: 300px;
+   margin: auto;
+   font-size: 10px;
+  }
+  .payment-plan{
+text-align: center;
+  }.market-conditions {
+    text-align: center;
+  }
+  .life-time-benefit{
+    font-size: 30;
+  }
+  .benefit-main{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .benefits-main{
+    gap:30px;
+  }
+  .price{
+    font-size: 35px;
+  }
+  .price-strike{
+    font-size: 20px;
+  }
+  .reserve-your {
+    font-size: 40px;
+  }
+  .tracking-widest {
+    font-size: 16px;
+  }
+  .divider-image-schedule-call{
+    width:45%;
+  }
+  .join-exclusive{
+font-size: 15px;
+  }
+  .investment-section{
+background-size:300px;
+  }
+  .investment-section{
+padding-right: 2%;
+padding-left: 2%;
+  }
+  .investment-section-sub{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .exclusive-partner {
+    text-align: center;
+    font-size: 32px;
+  }
+  .one-time{
+    text-align: center;
+  }
+  .investment-starts {
+    text-align: center;
+    font-size: 15px;
   }
   .where-experince-mob {
     color: #000000;

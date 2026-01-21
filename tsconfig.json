@@ -33,6 +33,6 @@
     "app/components/Hero.jsx",
     "app/components/HamburgerMenu.jsx",
     "app/components/Footer.jsx"
-  ],
+, "app/components/HeroSection.jsx", "app/components/InvestmentSection.jsx"  ],
   "exclude": ["node_modules"]
 }
