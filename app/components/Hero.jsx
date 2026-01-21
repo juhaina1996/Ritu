@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import HamburgerMenu from "./HamburgerMenu";
 import { useIsMobile } from "../hooks";
 
-export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
+export default function KeralaFarmHero({ onOpenBrochure }) {
   const isMobile = useIsMobile();
+  const router = useRouter();
 
   return (
     <div className="relative lg:h-screen w-full overflow-hidden">
@@ -29,7 +31,10 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
         style={{ zIndex: 100 }}
       >
         {/* Logo */}
-        <div className="flex items-center">
+        <button 
+          onClick={() => router.push('/')}
+          className="flex items-center hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+        >
           <Image
             src="/images/logoMain.svg"
             alt="Ritu Logo"
@@ -38,13 +43,12 @@ export default function KeralaFarmHero({ onOpenBrochure, onOpenScheduleCall }) {
             priority
             className="object-contain header-image"
           />
-        </div>
+        </button>
 
         {/* Hamburger Menu */}
         <div className="relative" style={{ zIndex: 101 }}>
           <HamburgerMenu
             onOpenBrochure={onOpenBrochure}
-            onOpenScheduleCall={onOpenScheduleCall}
           />
         </div>
       </nav>

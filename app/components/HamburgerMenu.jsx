@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-export default function HamburgerMenu({ onOpenBrochure, onOpenScheduleCall }) {
+export default function HamburgerMenu({ onOpenBrochure }) {
   const pathname = usePathname();
+  const router = useRouter();
   const isScheduleCallPage = pathname === "/schedule-call";
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -118,8 +119,13 @@ const hamburgerIcon = isScheduleCallPage
             : "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}
       >
-        <span
-          className="navigation-menu"
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            router.push('/');
+          }}
+          className="navigation-menu cursor-pointer"
           style={{
             padding: "6px 42px",
             border: "1px solid #A29279",
@@ -127,10 +133,11 @@ const hamburgerIcon = isScheduleCallPage
             fontSize: "18px",
             fontWeight: "500",
             color: "#000000",
+            background: "transparent",
           }}
         >
           Home
-        </span>
+        </button>
 
         <a
           href="#"
@@ -160,9 +167,7 @@ const hamburgerIcon = isScheduleCallPage
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
-            if (onOpenScheduleCall) {
-              onOpenScheduleCall();
-            }
+            router.push('/schedule-call');
           }}
           className="navigation-menu group cursor-pointer"
           style={{

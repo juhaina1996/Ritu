@@ -29,7 +29,7 @@ const timeSlotOptions = [
   { value: "evening", label: "Evening (After 6pm)" }
 ];
 
-export default function ScheduleCall({ isOpen, onClose }) {
+export default function ScheduleCall() {
   const timeSlotOptions = [
     { value: "morning", label: "Morning (9am - 12pm)" },
     { value: "afternoon", label: "Afternoon (12pm - 3pm)" },
@@ -211,18 +211,7 @@ export default function ScheduleCall({ isOpen, onClose }) {
   };
 
   return (
-    <div
-      // className="brochure-overlay"
-      // onClick={handleOverlayClick}
-      // style={{
-      //   position: "fixed",
-      //   top: 0,
-      //   left: 0,
-      //   right: 0,
-      //   bottom: 0,
-      //   zIndex: 10000,
-      // }}
-    >
+    <div>
       <div className="brochure-card schedule-card">
         <h2>Schedule a Call</h2>
         <p>Enter your details to schedule a call with our team.</p>

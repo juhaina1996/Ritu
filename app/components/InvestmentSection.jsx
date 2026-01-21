@@ -1,7 +1,9 @@
+import { useRouter } from "next/navigation";
 import { useIsMobile } from "../hooks";
 
 export default function InvestmentSection() {
-        const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
+  const router = useRouter();
   
   return (
     <section className="bg-[#f2f0ed] py-20 investment-section">
@@ -90,7 +92,10 @@ export default function InvestmentSection() {
     </div>
 
     {/* Button */}
-    <button className="w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl text-sm tracking-wide">
+    <button 
+      onClick={() => router.push('/schedule-call')}
+      className="w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl text-sm tracking-wide hover:bg-[#8f7f6b] transition-colors"
+    >
       SCHEDULE A CONSULTATION CALL
     </button>
   </div>

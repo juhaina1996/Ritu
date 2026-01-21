@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useIsMobile } from "../hooks";
 
-export default function Footer({ onOpenScheduleCall }) {
+export default function Footer() {
   const isMobile = useIsMobile();
+  const router = useRouter();
 
   return (
     <section className="w-full bg-[#2f2f2f] py-20">
@@ -16,7 +18,7 @@ export default function Footer({ onOpenScheduleCall }) {
             </h2>
 
             <button 
-              onClick={onOpenScheduleCall}
+              onClick={() => router.push('/schedule-call')}
               className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group"
             >
               <span className="text-sm">Schedule a Call</span>

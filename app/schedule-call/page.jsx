@@ -7,12 +7,13 @@ import HamburgerMenu from "../components/HamburgerMenu";
 import Footer from "../components/Footer";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
 export default function RitusLegacyPage() {
-      const [isBrochureOpen, setIsBrochureOpen] = useState(false);
-      const [isScheduleCallOpen, setIsScheduleCallOpen] = useState(false);
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -21,7 +22,10 @@ export default function RitusLegacyPage() {
         style={{ zIndex: 100 }}
       >
         {/* Logo */}
-        <div className="flex items-center">
+        <button 
+          onClick={() => router.push('/')}
+          className="flex items-center hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+        >
           <Image
             src="/images/logoScheduleCall.svg"
             alt="Ritu Logo"
@@ -30,13 +34,12 @@ export default function RitusLegacyPage() {
             priority
             className="object-contain header-image"
           />
-        </div>
+        </button>
 
         {/* Hamburger Menu */}
         <div className="relative" style={{ zIndex: 101 }}>
           <HamburgerMenu
             onOpenBrochure={() => setIsBrochureOpen(true)} 
-        onOpenScheduleCall={() => setIsScheduleCallOpen(true)} 
           />
         </div>
       </nav>
@@ -44,7 +47,7 @@ export default function RitusLegacyPage() {
       <InvestmentSection />
       <BenefitsSection />
       <ScheduleSection />
-            <Footer onOpenScheduleCall={() => setIsScheduleCallOpen(true)} />
+      <Footer />
 
     </>
   );
