@@ -123,7 +123,10 @@ const hamburgerIcon = isScheduleCallPage
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
-            router.push('/');
+            // Add delay to allow closing animation to complete before navigation
+            setTimeout(() => {
+              router.push('/');
+            }, 600); // Match the transition duration
           }}
           className="navigation-menu cursor-pointer"
           style={{
@@ -144,9 +147,12 @@ const hamburgerIcon = isScheduleCallPage
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
-            if (onOpenBrochure) {
-              onOpenBrochure();
-            }
+            // Add delay to allow closing animation to complete before opening brochure
+            setTimeout(() => {
+              if (onOpenBrochure) {
+                onOpenBrochure();
+              }
+            }, 600); // Match the transition duration
           }}
           className="navigation-menu group cursor-pointer"
           style={{
@@ -167,7 +173,10 @@ const hamburgerIcon = isScheduleCallPage
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
-            router.push('/schedule-call');
+            // Add delay to allow closing animation to complete before navigation
+            setTimeout(() => {
+              router.push('/schedule-call');
+            }, 600); // Match the transition duration
           }}
           className="navigation-menu group cursor-pointer"
           style={{
