@@ -2,7 +2,7 @@ import ScheduleCall from "../components/ScheduleCall";
 
 export default function ScheduleSection() {
   return (
-    <section className="bg-[#f2f0ed] py-20 pt-0">
+    <section id="book-investment" className="bg-[#f2f0ed] py-20 pt-0">
       <div className="max-w-4xl mx-auto text-center">
        <p className="consultation-top-title">
         BOOK YOUR INVESTMENT

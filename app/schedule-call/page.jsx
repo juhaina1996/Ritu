@@ -8,12 +8,52 @@ import Footer from "../components/Footer";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export default function RitusLegacyPage() {
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // Custom smooth scroll function for better control
+    const smoothScrollTo = (element) => {
+      const targetPosition = element.offsetTop - 80; // Offset for header
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; // 1 second duration
+      let start = null;
+
+      const animation = (currentTime) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      // Easing function for smooth animation
+      const easeInOutQuad = (t, b, c, d) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+
+      requestAnimationFrame(animation);
+    };
+
+    // Handle scrolling to hash on page load
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          smoothScrollTo(element);
+        }
+      }, 500); // Wait for page to fully load
+    }
+  }, []);
 
   return (
     <>

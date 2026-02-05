@@ -2,13 +2,11 @@ import Image from "next/image";
 import { useIsMobile } from "../hooks";
 
 export default function HeroSection() {
-      const isMobile = useIsMobile();
-  
+  const isMobile = useIsMobile();
+
   return (
     <section className="bg-[#F2F0ED] py-20 text-center">
-      <p className="tracking-widest">
-        Exclusive Partners Circle
-      </p>
+      <p className="tracking-widest">Exclusive Partners Circle</p>
 
       <Image
         src="/images/lineBorder.svg"
@@ -23,22 +21,27 @@ export default function HeroSection() {
         <span className="italic text-[#A29279]">Ritu’s Legacy</span>
       </h1>
 
-     {!isMobile && <p className="mt-6 max-w-2xl mx-auto join-exclusive">
-        Join the exclusive community of 94 founding partners and secure lifetime<br/> privileges across Ritu’s Luxury portfolio launching in 2028.
-       
-      </p>}
-        {isMobile && <p className="mt-6 max-w-2xl mx-auto join-exclusive">
-        Join the exclusive community of 94 founding partners and secure <br/> lifetime privileges across Ritu’s Luxury portfolio launching in 2028.
-       
-      </p>}
+      {!isMobile && (
+        <p className="mt-6 max-w-2xl mx-auto join-exclusive">
+          Join the exclusive community of 94 founding partners and secure
+          lifetime
+          <br /> privileges across Ritu’s luxury portfolio launching in 2028.
+        </p>
+      )}
+      {isMobile && (
+        <p className="mt-6 max-w-2xl mx-auto join-exclusive">
+          Join the exclusive community of 94 founding partners and secure <br />{" "}
+          lifetime privileges across Ritu’s luxury portfolio launching in 2028.
+        </p>
+      )}
 
-          <Image
-        src="/images/only72Coowner.svg"
-        alt="divider"
-        width={270}
-        height={20}
-        className="only72Coowner-image mx-auto"
-      />
+      <div className="coowner-wrapper">
+        <div className="coowner-glow-border" />
+        <div className="coowner-content">
+          <span className="coowner-dot" />
+          <span className="coowner-text">Only 72 co-owner slots remaining</span>
+        </div>
+      </div>
     </section>
   );
 }

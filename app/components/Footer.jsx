@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useIsMobile } from "../hooks";
+import Link from "next/link";
 
 export default function Footer() {
   const isMobile = useIsMobile();
@@ -17,8 +18,8 @@ export default function Footer() {
               Let's talk
             </h2>
 
-            <button 
-              onClick={() => router.push('/schedule-call')}
+            <button
+              onClick={() => router.push("/schedule-call")}
               className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group"
             >
               <span className="text-sm">Schedule a Call</span>
@@ -54,6 +55,25 @@ export default function Footer() {
             <h5 className="text-white mb-3 contact">Contact</h5>
             <p className="contact-sub">+91 9539 00 33 06</p>
             <p className="contact-sub">info@szdevelopers.com</p>
+
+            {/* Terms & Privacy */}
+            <div className="flex gap-4 mt-1 terms-conditions">
+              <Link
+                href="/terms-and-conditions"
+                className="relative group text-[#bfbfbf]"
+              >
+                Terms & Conditions
+                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+
+              <Link
+                href="/privacy-policy"
+                className="relative group text-[#bfbfbf]"
+              >
+                Privacy Policy
+                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </div>
           </div>
 
           {/* Social */}
@@ -61,7 +81,7 @@ export default function Footer() {
             <h5 className="text-white mb-3 contact">Social</h5>
 
             <div className="flex flex-col">
-              <a 
+              <a
                 href="https://www.instagram.com/ritufarms?igsh=MTZ6MG01NG55ajZwbA=="
                 target="_blank"
                 rel="noopener noreferrer"
@@ -73,7 +93,7 @@ export default function Footer() {
                 </span>
               </a>
 
-              <a 
+              <a
                 href="https://www.facebook.com/share/1AKkk3Xe7b/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -113,8 +133,8 @@ export default function Footer() {
           <div className="contact-mob-div">
             {" "}
             <p className="contact-mob">
-              3rd Floor, Nechikkadan Tower, Mini Bypass Rd<br/> near Swapna Nagari,
-              Kozhikode, Kerala 673006
+              3rd Floor, Nechikkadan Tower, Mini Bypass Rd
+              <br /> near Swapna Nagari, Kozhikode, Kerala 673006
             </p>
             <p className="contact-mob-sub">SZ Developers © 2026 </p>
             <p className="contact-mob-sub">All Rights Reserved</p>

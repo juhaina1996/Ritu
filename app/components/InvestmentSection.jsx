@@ -93,7 +93,7 @@ export default function InvestmentSection() {
 
     {/* Button */}
     <button 
-      onClick={() => router.push('/schedule-call')}
+      onClick={() => router.push('/schedule-call#book-investment')}
       className="w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl text-sm tracking-wide hover:bg-[#8f7f6b] transition-colors"
     >
       SCHEDULE A CONSULTATION CALL

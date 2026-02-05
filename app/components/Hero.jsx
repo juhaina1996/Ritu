@@ -31,8 +31,8 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
         style={{ zIndex: 100 }}
       >
         {/* Logo */}
-        <button 
-          onClick={() => router.push('/')}
+        <button
+          onClick={() => router.push("/")}
           className="flex items-center hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
         >
           <Image
@@ -47,9 +47,7 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
 
         {/* Hamburger Menu */}
         <div className="relative" style={{ zIndex: 101 }}>
-          <HamburgerMenu
-            onOpenBrochure={onOpenBrochure}
-          />
+          <HamburgerMenu onOpenBrochure={onOpenBrochure} />
         </div>
       </nav>
 
@@ -74,7 +72,7 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
             data-aos-delay="1200"
             data-aos-easing="ease-out-expo"
           >
-            Experience the  <br />  farms of kerala
+            Experience the <br /> farms of kerala
           </h1>
         )}
         {!isMobile && (
@@ -85,7 +83,7 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
             data-aos-delay="1600"
             data-aos-easing="ease-out-quart"
           >
-            Bridging The Gap Between Urban Living and Farming Culture
+            Bridging the gap between urban living and farming culture
           </p>
         )}
         {isMobile && (

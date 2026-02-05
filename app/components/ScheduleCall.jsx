@@ -19,14 +19,14 @@ const countries = [
   { code: "+1", flag: "🇨🇦", name: "Canada" },
   { code: "+44", flag: "🇬🇧", name: "UK" },
   { code: "+65", flag: "🇸🇬", name: "Singapore" },
-  { code: "+60", flag: "🇲🇾", name: "Malaysia" }
+  { code: "+60", flag: "🇲🇾", name: "Malaysia" },
 ];
 
 const timeSlotOptions = [
   { value: "morning", label: "Morning (9am - 12pm)" },
   { value: "afternoon", label: "Afternoon (12pm - 3pm)" },
   { value: "late-afternoon", label: "Late Afternoon (3pm - 6pm)" },
-  { value: "evening", label: "Evening (After 6pm)" }
+  { value: "evening", label: "Evening (After 6pm)" },
 ];
 
 export default function ScheduleCall() {
@@ -34,26 +34,26 @@ export default function ScheduleCall() {
     { value: "morning", label: "Morning (9am - 12pm)" },
     { value: "afternoon", label: "Afternoon (12pm - 3pm)" },
     { value: "late-afternoon", label: "Late Afternoon (3pm - 6pm)" },
-    { value: "evening", label: "Evening (After 6pm)" }
+    { value: "evening", label: "Evening (After 6pm)" },
   ];
 
   const [date, setDate] = useState(new Date());
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    whatsapp: '',
+    name: "",
+    phone: "",
+    whatsapp: "",
     phoneCountry: countries[0],
     whatsappCountry: countries[0],
     timeSlot: timeSlotOptions[0].value, // Default to first time slot
     termsAccepted: false,
-    recaptchaToken: null
+    recaptchaToken: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneDropdownOpen, setPhoneDropdownOpen] = useState(false);
   const [whatsappDropdownOpen, setWhatsappDropdownOpen] = useState(false);
   const [timeSlotDropdownOpen, setTimeSlotDropdownOpen] = useState(false);
-  const [phoneSearch, setPhoneSearch] = useState('');
-  const [whatsappSearch, setWhatsappSearch] = useState('');
+  const [phoneSearch, setPhoneSearch] = useState("");
+  const [whatsappSearch, setWhatsappSearch] = useState("");
 
   // useEffect(() => {
   //   if (isOpen) {
@@ -99,12 +99,12 @@ export default function ScheduleCall() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.recaptchaToken) {
-      alert('Please complete the reCAPTCHA verification.');
+      alert("Please complete the reCAPTCHA verification.");
       return;
     }
-    
+
     setIsSubmitting(true);
 
     try {
@@ -117,31 +117,31 @@ export default function ScheduleCall() {
           month: "long",
           year: "numeric",
         }),
-        submittedAt: new Date().toISOString()
+        submittedAt: new Date().toISOString(),
       };
 
       const result = await saveScheduleCallData(dataToSave);
-      
+
       if (result.success) {
         // Reset form
         setFormData({
-          name: '',
-          phone: '',
-          whatsapp: '',
+          name: "",
+          phone: "",
+          whatsapp: "",
           phoneCountry: countries[0],
           whatsappCountry: countries[0],
           timeSlot: timeSlotOptions[0].value, // Reset to first time slot
           termsAccepted: false,
-          recaptchaToken: null
+          recaptchaToken: null,
         });
         setDate(new Date());
         // onClose();
       } else {
-        alert('Error submitting request. Please try again.');
+        alert("Error submitting request. Please try again.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error submitting request. Please try again.');
+      console.error("Error:", error);
+      alert("Error submitting request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -149,64 +149,68 @@ export default function ScheduleCall() {
 
   const handleInputChange = (field, value) => {
     // Auto-capitalize first letter for name field
-    if (field === 'name' && value.length > 0) {
+    if (field === "name" && value.length > 0) {
       value = value.charAt(0).toUpperCase() + value.slice(1);
     }
-    
+
     // Limit name field to 30 characters
-    if (field === 'name' && value.length > 30) {
+    if (field === "name" && value.length > 30) {
       return; // Don't update if exceeds 30 characters
     }
-    
+
     // Validate phone and whatsapp fields - only numbers and max 10 characters
-    if ((field === 'phone' || field === 'whatsapp')) {
+    if (field === "phone" || field === "whatsapp") {
       // Remove any non-numeric characters
-      value = value.replace(/\D/g, '');
+      value = value.replace(/\D/g, "");
       // Limit to 10 characters
       if (value.length > 10) {
         return; // Don't update if exceeds 10 characters
       }
     }
-    
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
-  const filteredPhoneCountries = countries.filter(country => 
-    country.name.toLowerCase().includes(phoneSearch.toLowerCase()) ||
-    country.code.includes(phoneSearch)
+  const filteredPhoneCountries = countries.filter(
+    (country) =>
+      country.name.toLowerCase().includes(phoneSearch.toLowerCase()) ||
+      country.code.includes(phoneSearch)
   );
 
-  const filteredWhatsappCountries = countries.filter(country => 
-    country.name.toLowerCase().includes(whatsappSearch.toLowerCase()) ||
-    country.code.includes(whatsappSearch)
+  const filteredWhatsappCountries = countries.filter(
+    (country) =>
+      country.name.toLowerCase().includes(whatsappSearch.toLowerCase()) ||
+      country.code.includes(whatsappSearch)
   );
 
   const selectPhoneCountry = (country) => {
-    setFormData(prev => ({ ...prev, phoneCountry: country }));
+    setFormData((prev) => ({ ...prev, phoneCountry: country }));
     setPhoneDropdownOpen(false);
-    setPhoneSearch('');
+    setPhoneSearch("");
   };
 
   const selectWhatsappCountry = (country) => {
-    setFormData(prev => ({ ...prev, whatsappCountry: country }));
+    setFormData((prev) => ({ ...prev, whatsappCountry: country }));
     setWhatsappDropdownOpen(false);
-    setWhatsappSearch('');
+    setWhatsappSearch("");
   };
 
   const handleRecaptchaChange = (token) => {
-    setFormData(prev => ({ ...prev, recaptchaToken: token }));
+    setFormData((prev) => ({ ...prev, recaptchaToken: token }));
   };
 
   const selectTimeSlot = (timeSlot) => {
-    setFormData(prev => ({ ...prev, timeSlot: timeSlot.value }));
+    setFormData((prev) => ({ ...prev, timeSlot: timeSlot.value }));
     setTimeSlotDropdownOpen(false);
   };
 
   const getSelectedTimeSlotLabel = () => {
-    const selected = timeSlotOptions.find(option => option.value === formData.timeSlot);
+    const selected = timeSlotOptions.find(
+      (option) => option.value === formData.timeSlot
+    );
     return selected ? selected.label : "Select time slot";
   };
 
@@ -228,12 +232,12 @@ export default function ScheduleCall() {
         <form className="brochure-form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Name</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={formData.name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
+              onChange={(e) => handleInputChange("name", e.target.value)}
               maxLength={30}
-              required 
+              required
             />
           </div>
 
@@ -241,7 +245,7 @@ export default function ScheduleCall() {
             <label>Phone</label>
             <div className="phone-field">
               <div className="country-selector">
-                <div 
+                <div
                   className="country-display"
                   onClick={() => setPhoneDropdownOpen(!phoneDropdownOpen)}
                 >
@@ -249,7 +253,7 @@ export default function ScheduleCall() {
                   <span className="code">{formData.phoneCountry.code}</span>
                   <span className="dropdown-arrow">▼</span>
                 </div>
-                
+
                 {phoneDropdownOpen && (
                   <div className="country-dropdown">
                     <input
@@ -275,14 +279,14 @@ export default function ScheduleCall() {
                   </div>
                 )}
               </div>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
                 maxLength={10}
                 pattern="[0-9]{10}"
                 placeholder="Enter phone number"
-                required 
+                required
               />
             </div>
           </div>
@@ -291,7 +295,7 @@ export default function ScheduleCall() {
             <label>WhatsApp</label>
             <div className="phone-field">
               <div className="country-selector">
-                <div 
+                <div
                   className="country-display"
                   onClick={() => setWhatsappDropdownOpen(!whatsappDropdownOpen)}
                 >
@@ -299,7 +303,7 @@ export default function ScheduleCall() {
                   <span className="code">{formData.whatsappCountry.code}</span>
                   <span className="dropdown-arrow">▼</span>
                 </div>
-                
+
                 {whatsappDropdownOpen && (
                   <div className="country-dropdown">
                     <input
@@ -325,14 +329,14 @@ export default function ScheduleCall() {
                   </div>
                 )}
               </div>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 value={formData.whatsapp}
-                onChange={(e) => handleInputChange('whatsapp', e.target.value)}
+                onChange={(e) => handleInputChange("whatsapp", e.target.value)}
                 maxLength={10}
                 pattern="[0-9]{10}"
                 placeholder="Enter WhatsApp number"
-                required 
+                required
               />
             </div>
           </div>
@@ -376,14 +380,18 @@ export default function ScheduleCall() {
               <div className="input-group small">
                 <label>Select a time slot</label>
                 <div className="time-slot-selector">
-                  <div 
+                  <div
                     className="time-slot-display"
-                    onClick={() => setTimeSlotDropdownOpen(!timeSlotDropdownOpen)}
+                    onClick={() =>
+                      setTimeSlotDropdownOpen(!timeSlotDropdownOpen)
+                    }
                   >
-                    <span className="time-slot-text">{getSelectedTimeSlotLabel()}</span>
+                    <span className="time-slot-text">
+                      {getSelectedTimeSlotLabel()}
+                    </span>
                     <span className="dropdown-arrow">▼</span>
                   </div>
-                  
+
                   {timeSlotDropdownOpen && (
                     <div className="time-slot-dropdown">
                       <div className="time-slot-options">
@@ -393,7 +401,9 @@ export default function ScheduleCall() {
                             className="time-slot-option"
                             onClick={() => selectTimeSlot(timeSlot)}
                           >
-                            <span className="time-slot-label">{timeSlot.label}</span>
+                            <span className="time-slot-label">
+                              {timeSlot.label}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -403,28 +413,36 @@ export default function ScheduleCall() {
               </div>
 
               <label className="checkbox-row">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   checked={formData.termsAccepted}
-                  onChange={(e) => handleInputChange('termsAccepted', e.target.checked)}
-                  required 
+                  onChange={(e) =>
+                    handleInputChange("termsAccepted", e.target.checked)
+                  }
+                  required
                 />
-                <span>
-                  I agree to the <u>terms</u> and <u>privacy policy</u>
-                </span>
+                <span>I agree to the terms and privacy policy</span>
               </label>
 
               <div className="recaptcha-container">
                 <ReCAPTCHA
                   sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test site key - replace with your actual site key
                   onChange={handleRecaptchaChange}
-                  onExpired={() => setFormData(prev => ({ ...prev, recaptchaToken: null }))}
-                  onError={() => setFormData(prev => ({ ...prev, recaptchaToken: null }))}
+                  onExpired={() =>
+                    setFormData((prev) => ({ ...prev, recaptchaToken: null }))
+                  }
+                  onError={() =>
+                    setFormData((prev) => ({ ...prev, recaptchaToken: null }))
+                  }
                 />
               </div>
 
-              <button className="download-button" type="submit" disabled={isSubmitting || !formData.recaptchaToken}>
-                {isSubmitting ? 'Scheduling...' : 'Schedule'}
+              <button
+                className="download-button"
+                type="submit"
+                disabled={isSubmitting || !formData.recaptchaToken}
+              >
+                {isSubmitting ? "Scheduling..." : "Schedule"}
               </button>
             </div>
           </div>

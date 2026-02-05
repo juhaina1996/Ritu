@@ -2,8 +2,8 @@ import Image from "next/image";
 import { useIsMobile } from "../hooks";
 
 export default function CoOwnSection({ onOpenBrochure }) {
-    const isMobile = useIsMobile();
-  
+  const isMobile = useIsMobile();
+
   return (
     <section className="coown-section w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-10 lg:px-26 ">
       {/* TOP WATERMARK */}
@@ -59,7 +59,6 @@ export default function CoOwnSection({ onOpenBrochure }) {
           </div>
           <p className="text-lg land-sub  text-[#1A6A6D]">Total Area</p>
         </div>
-
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="flip-in"
@@ -70,7 +69,6 @@ export default function CoOwnSection({ onOpenBrochure }) {
           <div className="land text-4xl text-[#1A6A6D] font-light">1 Acre</div>
           <p className="text-lg  land-sub  text-[#1A6A6D]">Farmland</p>
         </div>
-
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="slide-up-dramatic"
@@ -81,36 +79,36 @@ export default function CoOwnSection({ onOpenBrochure }) {
           <div className="land text-4xl text-[#1A6A6D] font-light">57</div>
           <p className="text-lg  land-sub text-[#1A6A6D]">Keys</p>
         </div>
-
         {/* EMPTY SLOT – TOP RIGHT */}
         <div></div>
-
         {/* ROW 2 */}
-       {!isMobile&& <div
-          className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
-          data-aos="zoom-in-right"
-          data-aos-duration="1800"
-          data-aos-delay="900"
-          data-aos-easing="ease-out-expo"
-        >
-          <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
-          <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
-        </div>
-}      {isMobile&&  <div></div>}
-{isMobile&& <div
-          className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
-          data-aos="zoom-in-right"
-          data-aos-duration="1800"
-          data-aos-delay="900"
-          data-aos-easing="ease-out-expo"
-        >
-          <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
-          <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
-        </div>
-}   
+        {!isMobile && (
+          <div
+            className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
+            data-aos="zoom-in-right"
+            data-aos-duration="1800"
+            data-aos-delay="900"
+            data-aos-easing="ease-out-expo"
+          >
+            <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
+            <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
+          </div>
+        )}{" "}
+        {isMobile && <div></div>}
+        {isMobile && (
+          <div
+            className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
+            data-aos="zoom-in-right"
+            data-aos-duration="1800"
+            data-aos-delay="900"
+            data-aos-easing="ease-out-expo"
+          >
+            <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
+            <p className="text-lg  land-sub  text-[#1A6A6D]">Rooms</p>
+          </div>
+        )}
         {/* EMPTY SLOT – CENTER */}
-      {!isMobile&&  <div></div>}
-
+        {!isMobile && <div></div>}
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="zoom-in-right"
@@ -121,7 +119,6 @@ export default function CoOwnSection({ onOpenBrochure }) {
           <div className="land text-4xl text-[#1A6A6D] font-light">20+</div>
           <p className="text-lg  land-sub  text-[#1A6A6D]">Amenities</p>
         </div>
-
         <div
           className="border border-[#bdb4a7] p-2 h-[175px] md:h-[280px] flex flex-col justify-between"
           data-aos="fade-up"

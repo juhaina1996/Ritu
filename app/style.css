@@ -1,11 +1,139 @@
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed headers */
+}
+
+/* Enhanced smooth scrolling for all browsers */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Ensure smooth scrolling works on mobile */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Benefits Section Animations */
+.benefit-main .bg-white {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.benefit-main .bg-white:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Staggered animation for benefit cards */
+.benefits-main > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.benefits-main > div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.benefits-main > div:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+/* Subtle pulse animation for icons */
+.benefit-main .absolute img {
+  transition: transform 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.benefit-main .bg-white:hover .absolute img {
+  transform: scale(1.1);
+  animation-play-state: paused;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* List items fade-in animation */
+.points-benefits li {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInLeft 0.6s ease forwards;
+  align-items: center;
+}
+
+.points-benefits li:nth-child(1) {
+  animation-delay: 0.8s;
+}
+
+.points-benefits li:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.points-benefits li:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+.points-benefits li:nth-child(4) {
+  animation-delay: 1.4s;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Card titles animation */
+.life-time {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title animation */
+.life-time-benefit {
+  background: linear-gradient(45deg, #3f3428, #8b6f47);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .header {
   /* background-color: #e4e3e3; */
   border-bottom: 1px solid rgb(255 255 255 / 20%);
 }
-.header-schedule-call{
-  background-color: #F2F0ED;
-    border-bottom: 1px solid #C4C4C4;
-
+.header-schedule-call {
+  background-color: #f2f0ed;
+  border-bottom: 1px solid #c4c4c4;
 }
 .experience-main {
   padding-top: 60px;
@@ -220,7 +348,7 @@
 }
 .contact {
   font-family: "Arsenal", sans-serif;
-  font-size: 34px;
+  font-size: 39px;
   font-weight: 100;
 }
 .contact-sub {
@@ -376,20 +504,15 @@
   font-family: "Arsenal", sans-serif;
   cursor: pointer;
   transition: background 0.3s ease;
-  
-
 }
-.download-button{
+.download-button {
   background: #1a6a6d;
-    width: 100%;
-
+  width: 100%;
 }
-.close-button{
+.close-button {
   padding: 6px 8px;
-    background: #1a6a6d;
-        width: 100%;
-
-
+  background: #1a6a6d;
+  width: 100%;
 }
 .brochure-form button:hover {
   background: #14585a;
@@ -406,17 +529,17 @@
   margin-bottom: 48px;
   /* height: 5px; */
 }
-.reserve-your{
-color:#4D4D4D;
+.reserve-your {
+  color: #4d4d4d;
   font-family: "Arsenal", sans-serif;
   font-size: 60px;
 }
-.join-exclusive{
-  color:#413529;
+.join-exclusive {
+  color: #413529;
   font-size: 17px;
   font-weight: 100;
 }
-.only72Coowner-image{
+.only72Coowner-image {
   margin-top: 20px;
   margin-bottom: 0px;
 }
@@ -429,94 +552,95 @@ color:#4D4D4D;
   padding-left: 8%;
   padding-right: 8%;
 }
-.exclusive-partner{
-  color:#413529;
+.exclusive-partner {
+  color: #413529;
   font-size: 40px;
   font-weight: 100;
-    font-family: "Arsenal", sans-serif;
-
+  font-family: "Arsenal", sans-serif;
 }
-.investment-starts{
-    color:#868484;
+.investment-starts {
+  color: #868484;
   font-size: 18px;
   font-weight: 100;
-    font-family: "Arsenal", sans-serif;
+  margin-bottom: -18px;
+  font-family: "Arsenal", sans-serif;
 }
-.price, .price-strike{
-    color:#A29279;
+.price,
+.price-strike {
+  color: #a29279;
   font-size: 50px;
   font-weight: 100;
-    font-family: "Arsenal", sans-serif;
+  font-family: "Arsenal", sans-serif;
 }
-.price-strike{
+.price-strike {
   font-size: 40px;
 }
-.save-with{
-  color:#413529;
-  border:1px solid #A29279;
+.save-with {
+  color: #413529;
+  border: 1px solid #a29279;
   border-radius: 8px;
   background-color: #ffffff;
   font-size: 14px;
-
 }
-.one-time{
-  color:#000;
+.one-time {
+  color: #000;
   font-size: 14px;
   font-weight: 100;
 }
-.points{
+.points {
   font-size: 12px;
   font-weight: 100;
   align-items: center;
+  margin-bottom: 4px;
 }
-.installment-option{
+.installment-option {
   font-size: 15px;
   font-weight: 100;
-   font-family: "Arsenal", sans-serif;
-   color:#000
+  font-family: "Arsenal", sans-serif;
+  color: #000;
 }
-.installment-option-points{
-    font-size: 12px;
+.installment-option-points {
+  font-size: 15px;
   font-weight: 100;
-   font-family: "Arsenal", sans-serif;
-   align-items: center;
-   margin-bottom: 5px;
+  font-family: "Arsenal", sans-serif;
+  align-items: center;
+  margin-bottom: 5px;
 }
-.market-conditions{
-   font-size: 9px;
+.market-conditions {
+  font-size: 9px;
   font-weight: 100;
-   font-family: "Arsenal", sans-serif;
-   align-items: center;
-   color:#919191;
-   margin-bottom: 5px;
+  font-family: "Arsenal", sans-serif;
+  align-items: center;
+  color: #919191;
+  margin-bottom: 5px;
 }
 .life-time-benefit {
-  color:#413529;
+  color: #413529;
   font-size: 45px;
   font-weight: 100;
 }
-.life-time{
-    color:#805C23;
+.life-time {
+  color: #805c23;
   font-size: 18px;
   font-weight: 100;
   margin-left: 20px;
 }
-.points-benefits{
+.points-benefits {
   font-size: 12px;
   font-weight: 100;
 }
-.as-a-co-owner{
-  color:#413529;
+.as-a-co-owner {
+  color: #413529;
   font-size: 18px;
   font-weight: 100;
 }
-.benefit-main{
+.benefit-main {
   padding-left: 8%;
   padding-right: 8%;
   padding-bottom: 220px;
 }
 .consultation-section {
-  background-color: #F6F3EE;
+  background-color: #f6f3ee;
   padding: 120px 20px;
   text-align: center;
 }
@@ -528,17 +652,20 @@ color:#4D4D4D;
   color: #413529;
   text-transform: uppercase;
   display: inline-block;
-  border-bottom: 1px solid #A29279;
+  border-bottom: 1px solid #a29279;
 
-  padding-bottom: 2px;   /* tiny controlled gap */
-  line-height: 1;        /* removes extra text height */
+  padding-bottom: 2px; /* tiny controlled gap */
+  line-height: 1; /* removes extra text height */
 }
-
+.rc-anchor-normal {
+  height: 64px !important;
+  width: 200px !important;
+}
 
 /* Main heading */
 .consultation-heading {
-  margin-top: 60px;
-  
+  margin-top: 40px;
+
   font-size: 45px;
   font-weight: 100;
   color: #413529;
@@ -562,11 +689,10 @@ color:#4D4D4D;
   }
 }
 
-.payment-plan{
-      font-family: "Arsenal", sans-serif;
-
+.payment-plan {
+  font-family: "Arsenal", sans-serif;
 }
-.payment-plan-main{
+.payment-plan-main {
   padding-top: 20px;
   padding: 15px;
 }
@@ -705,11 +831,22 @@ color:#4D4D4D;
   font-family: "Arsenal", sans-serif;
   font-size: 13px;
 }
-.tracking-widest{
-  color:#413529;
-    font-family: "Arsenal", sans-serif;
+.tracking-widest {
+  color: #413529;
+  font-family: "Arsenal", sans-serif;
   font-size: 22px;
   font-weight: 100;
+}
+.concierge-icon {
+  width: 16px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .concierge-icon {
+    width: 25px;
+    height: 20px;
+  }
 }
 
 /* Responsive */
@@ -723,8 +860,8 @@ color:#4D4D4D;
   .experience-header h2 {
     font-size: 36px;
   }
-  .time-box{
-width:100%;
+  .time-box {
+    width: 100%;
   }
   .brochure-card {
     padding: 30px 20px;
@@ -759,19 +896,18 @@ width:100%;
     height: 40px;
     width: 79px;
   }
-  .header-image-ham{
-    width:62px;
-    height:62px;
+  .header-image-ham {
+    width: 62px;
+    height: 62px;
     display: flex;
-        justify-content: center;
+    justify-content: center;
   }
   .where-experince {
     display: none;
   }
-  .header ,   .header-schedule-call
-{
+  .header,
+  .header-schedule-call {
     padding: 10px;
-   
   }
   .experience-main {
     padding-top: 100px;
@@ -781,36 +917,59 @@ width:100%;
   .immerse {
     display: none;
   }
-  .price-main{
+  .price-main {
     flex-direction: column;
     align-items: center;
-    gap:0;
+    gap: 0;
   }
-  .save-with{
+  .save-with {
     display: flex;
-   width: 300px;
-   margin: auto;
-   font-size: 10px;
+    width: 300px;
+    margin: auto;
+    font-size: 10px;
+    gap: 2px;
   }
-  .payment-plan{
-text-align: center;
-  }.market-conditions {
+  .installment-option-points {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+  .installment-option {
+    font-size: 12px;
+  }
+  .payment-plan {
     text-align: center;
   }
-  .life-time-benefit{
-    font-size: 30;
+  .market-conditions {
+    text-align: center;
   }
-  .benefit-main{
+  .life-time-benefit {
+    font-size: 25;
+  }
+  .as-a-co-owner {
+    font-size: 10px;
+    margin: 0 10%;
+    margin-top: 5px;
+  }
+  .points-benefits {
+    font-size: 10px;
+  }
+  .points-benefits li:first-child {
+    margin-bottom: 0;
+  }
+  .life-time {
+    font-size: 14px;
+  }
+  .benefit-main {
     padding-left: 0;
     padding-right: 0;
   }
-  .benefits-main{
-    gap:30px;
+  .benefits-main {
+    gap: 30px;
   }
-  .price{
+  .price {
     font-size: 35px;
   }
-  .price-strike{
+  .price-strike {
     font-size: 20px;
   }
   .reserve-your {
@@ -819,20 +978,20 @@ text-align: center;
   .tracking-widest {
     font-size: 16px;
   }
-  .divider-image-schedule-call{
-    width:45%;
+  .divider-image-schedule-call {
+    width: 45%;
   }
-  .join-exclusive{
-font-size: 15px;
+  .join-exclusive {
+    font-size: 15px;
   }
-  .investment-section{
-background-size:300px;
+  .investment-section {
+    background-size: 300px;
   }
-  .investment-section{
-padding-right: 2%;
-padding-left: 2%;
+  .investment-section {
+    padding-right: 2%;
+    padding-left: 2%;
   }
-  .investment-section-sub{
+  .investment-section-sub {
     padding-left: 0;
     padding-right: 0;
   }
@@ -840,7 +999,7 @@ padding-left: 2%;
     text-align: center;
     font-size: 32px;
   }
-  .one-time{
+  .one-time {
     text-align: center;
   }
   .investment-starts {
@@ -919,8 +1078,8 @@ padding-left: 2%;
   .land {
     font-size: 34px;
   }
-  .land-sub{
-font-size: 21px;
+  .land-sub {
+    font-size: 21px;
   }
   .coown-section {
     padding: 0;
@@ -1021,9 +1180,8 @@ font-size: 21px;
   font-family: "Arsenal", sans-serif;
   font-size: 12px;
   color: #b5b0ab;
-    border-right: 1px solid #eee;
-    padding-right: 10px;
-
+  border-right: 1px solid #eee;
+  padding-right: 10px;
 }
 
 .country-display .dropdown-arrow {
@@ -1044,6 +1202,14 @@ font-size: 21px;
   z-index: 1000;
   max-height: 200px;
   overflow: hidden;
+}
+.bullet-points {
+  font-size: 28px;
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
 }
 
 .country-search {
@@ -1090,7 +1256,10 @@ font-size: 21px;
   color: #3a2f28;
   min-width: 35px;
 }
-
+.terms-conditions {
+  font-size: 16px;
+  text-decoration: underline;
+}
 /* Update phone field to accommodate country selector */
 .phone-field {
   display: flex;
@@ -1117,48 +1286,128 @@ font-size: 21px;
   color: #b5b0ab;
   font-size: 14px;
 }
+.coowner-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 999px;
+  margin-top: 22px;
+}
+
+/* Main pill */
+.coowner-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 9px 28px;
+  border-radius: 999px;
+  background: #fef0f0;
+  border: 1.5px solid #ffc2c2;
+}
+
+/* Dot */
+.coowner-dot {
+  width: 12px;
+  height: 12px;
+  background: #ff8f91;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Text */
+.coowner-text {
+  color: #e9323d;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.coowner-text strong {
+  font-weight: 600;
+}
+
+.coowner-glow-border {
+  position: absolute;
+  inset: -1px; /* wider glow spread */
+  border-radius: 999px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 143, 145, 0.15),
+    rgba(255, 143, 145, 0.9),
+    rgba(255, 143, 145, 0.15)
+  );
+  animation: glowMove 4s ease-in-out infinite;
+  filter: blur(10px);
+  z-index: 0;
+}
+.coowner-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  background: rgba(255, 143, 145, 0.4);
+  filter: blur(4px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Animation */
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    background-position: 200% 50%;
+    opacity: 0.4;
+  }
+}
 
 /* Mobile responsive adjustments */
 @media (max-width: 991px) {
   .country-dropdown {
     width: 180px;
   }
-  
+
   .country-display .flag {
     font-size: 14px;
   }
-  
+
   .country-display .code {
     font-size: 10px;
     min-width: 30px;
   }
-  
+
   .country-display .dropdown-arrow {
     font-size: 8px;
   }
-  
+
   .country-search {
     font-size: 11px;
     padding: 6px 10px;
   }
-  
+
   .country-option {
     padding: 6px 10px;
   }
-  
+
   .country-option .flag {
     font-size: 12px;
   }
-  
+
   .country-option .code {
     font-size: 10px;
     min-width: 30px;
   }
-  
+
   .phone-field input[type="tel"] {
     font-size: 14px;
   }
-  
+
   .phone-field input[type="tel"]::placeholder {
     font-size: 12px;
   }
@@ -1200,7 +1449,7 @@ font-size: 21px;
   .thank-you-content p {
     font-size: 12px;
   }
-  
+
   .download-link {
     font-size: 12px;
   }
@@ -1217,7 +1466,7 @@ font-size: 21px;
   .recaptcha-container {
     margin: 12px 0;
   }
-  
+
   .recaptcha-container > div {
     transform: scale(0.85);
     transform-origin: center;
@@ -1232,7 +1481,7 @@ font-size: 21px;
 .time-slot-display {
   display: flex;
   align-items: flex-start;
-  justify-content:flex-start;
+  justify-content: flex-start;
   background: white;
   /* border: 1px solid #eee; */
   border-radius: 4px;
@@ -1314,20 +1563,63 @@ font-size: 21px;
   .time-slot-display {
     padding: 6px 10px;
   }
-  
+
   .time-slot-text {
     font-size: 12px;
   }
-  
+
   .time-slot-display .dropdown-arrow {
     font-size: 8px;
   }
-  
+
   .time-slot-option {
     padding: 10px 12px;
   }
-  
+
   .time-slot-label {
     font-size: 12px;
   }
+}
+@keyframes amenities-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-amenities-scroll {
+  display: flex;
+  width: max-content;
+  animation: amenities-scroll 35s linear infinite;
+}
+.experience-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.experience-card {
+  flex: 0 0 auto;
+  width: 260px; /* keep consistent card width */
+}
+.brochure-card {
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
 }

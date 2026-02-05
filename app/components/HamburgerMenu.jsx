@@ -11,9 +11,9 @@ export default function HamburgerMenu({ onOpenBrochure }) {
   const isScheduleCallPage = pathname === "/schedule-call";
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-const hamburgerIcon = isScheduleCallPage
-  ? "/images/hamburgerScheduleCall.svg"   
-  : "/images/hamburger.svg"; 
+  const hamburgerIcon = isScheduleCallPage
+    ? "/images/hamburgerScheduleCall.svg"
+    : "/images/hamburger.svg";
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -58,6 +58,7 @@ const hamburgerIcon = isScheduleCallPage
         height: "100vh",
         zIndex: 999999,
         backgroundColor: "#f6f3ee",
+
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -75,6 +76,8 @@ const hamburgerIcon = isScheduleCallPage
       {/* CLOSE BUTTON */}
       <button
         onClick={handleClose}
+        aria-label="Close menu"
+        type="button"
         style={{
           position: "absolute",
           top: "32px",
@@ -83,21 +86,28 @@ const hamburgerIcon = isScheduleCallPage
           background: "transparent",
           border: "none",
           padding: "8px",
-          fontSize: "32px",
-          color: "#A29279",
           cursor: "pointer",
           opacity: open ? 1 : 0,
           transform: open ? "scale(1)" : "scale(0.8)",
-          transition: open 
+          transition: open
             ? "opacity 0.6s ease-in-out 0.4s, transform 0.6s ease-in-out 0.4s"
             : "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        aria-label="Close menu"
-        type="button"
       >
-        ✕
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          stroke="#A29279"
+          strokeWidth="1.8" // 👈 control thickness here
+          strokeLinecap="round"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
       </button>
 
       {/* NAVIGATION */}
@@ -111,10 +121,14 @@ const hamburgerIcon = isScheduleCallPage
           flex: 1,
           justifyContent: "center",
           width: "100%",
-          maxWidth: "600px",
+          backgroundImage: "url('/images/hamburgerBackground.svg')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+
+          maxWidth: "300px",
           opacity: open ? 1 : 0,
           transform: open ? "translateY(0)" : "translateY(20px)",
-          transition: open 
+          transition: open
             ? "opacity 0.8s ease-in-out 0.3s, transform 0.8s ease-in-out 0.3s"
             : "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}
@@ -125,13 +139,13 @@ const hamburgerIcon = isScheduleCallPage
             setOpen(false);
             // Add delay to allow closing animation to complete before navigation
             setTimeout(() => {
-              router.push('/');
+              router.push("/");
             }, 600); // Match the transition duration
           }}
           className="navigation-menu cursor-pointer"
           style={{
             padding: "6px 42px",
-            border: "1px solid #A29279",
+            border: pathname === '/' ? "1px solid #A29279" : "1px solid transparent",
             borderRadius: "50px",
             fontSize: "18px",
             fontWeight: "500",
@@ -168,29 +182,36 @@ const hamburgerIcon = isScheduleCallPage
           </span>
         </a>
 
-        <a
-          href="#"
+        <button
           onClick={(e) => {
             e.preventDefault();
             setOpen(false);
             // Add delay to allow closing animation to complete before navigation
             setTimeout(() => {
-              router.push('/schedule-call');
+              router.push("/schedule-call");
             }, 600); // Match the transition duration
           }}
-          className="navigation-menu group cursor-pointer"
+          className="navigation-menu cursor-pointer"
           style={{
+            padding: pathname === '/schedule-call' ? "6px 42px" : "0",
+            border: pathname === '/schedule-call' ? "1px solid #A29279" : "1px solid transparent",
+            borderRadius: pathname === '/schedule-call' ? "50px" : "0",
             fontSize: "18px",
             color: "#000000",
             textDecoration: "none",
             fontWeight: "400",
+            background: "transparent",
           }}
         >
-          <span className="relative">
-            Schedule a Call
-            <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
-          </span>
-        </a>
+          {pathname === '/schedule-call' ? (
+            "Schedule a Call"
+          ) : (
+            <span className="relative group">
+              Schedule a Call
+              <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 ease-out group-hover:w-full"></span>
+            </span>
+          )}
+        </button>
 
         <a
           href="#contact"
@@ -273,7 +294,7 @@ const hamburgerIcon = isScheduleCallPage
           color: "#9c8f7a",
           opacity: open ? 1 : 0,
           transform: open ? "translateY(0)" : "translateY(20px)",
-          transition: open 
+          transition: open
             ? "opacity 0.7s ease-in-out 0.35s, transform 0.7s ease-in-out 0.35s"
             : "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}

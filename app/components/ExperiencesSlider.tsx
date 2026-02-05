@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { useIsMobile } from "../hooks";
 
@@ -15,10 +15,41 @@ const experiences = [
   { title: "Sound Therapy", image: "/images/slider6.png" },
 ];
 
+// duplicate for circular effect
+const loopItems = [...experiences, ...experiences];
+
 export default function ExperiencesSlider() {
   const isMobile = useIsMobile();
-
   const sliderRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+
+  const scrollSpeed = 0.5; // 👈 control speed here
+
+  const startAutoScroll = () => {
+    if (isMobile) return;
+
+    const step = () => {
+      if (!sliderRef.current) return;
+
+      sliderRef.current.scrollLeft += scrollSpeed;
+
+      // reset scroll for seamless loop
+      if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth / 2) {
+        sliderRef.current.scrollLeft = 0;
+      }
+
+      animationRef.current = requestAnimationFrame(step);
+    };
+
+    animationRef.current = requestAnimationFrame(step);
+  };
+
+  const stopAutoScroll = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
 
   const scroll = (dir: "left" | "right") => {
     sliderRef.current?.scrollBy({
@@ -27,68 +58,32 @@ export default function ExperiencesSlider() {
     });
   };
 
+  useEffect(() => {
+    return () => stopAutoScroll();
+  }, []);
+
   return (
     <section className="experience-section">
-      <div className="experience-section-logo absolute  pointer-events-none">
-        <Image
-          src="/images/backgroundRight.svg"
-          alt="Logo Background"
-          width={400}
-          height={200}
-          className="object-contain"
-          priority
-        />
-      </div>
       <div className="experience-container">
         {/* Header */}
         <div className="experience-header">
-          {!isMobile && (
-            <h2
-              className="experience-header-one"
-              data-aos="slide-up-dramatic"
-              data-aos-duration="1800"
-              data-aos-delay="200"
-              data-aos-easing="ease-out-back"
-            >
-              <span className="italic">Ex</span>periences.
-            </h2>
-          )}
-          {isMobile && (
-            <h2
-              className="experience-header-one"
-              data-aos="slide-up-dramatic"
-              data-aos-duration="1800"
-              data-aos-delay="200"
-              data-aos-easing="ease-out-back"
-            >
-              <span className="italic">Ex</span>periences.
-            </h2>
-          )}
-
-          {/* Arrows EXACT POSITION */}
-
-          <p
-            className="discover italic"
-            data-aos="wave-in"
-            data-aos-duration="1600"
-            data-aos-delay="500"
-            data-aos-easing="ease-out-quart"
-          >
+          <h2 className="experience-header-one">
+            <span className="italic">Ex</span>periences.
+          </h2>
+          <p className="discover italic">
             DISCOVER SENSORY NATURE FILLED ESCAPES IN WAYANAD
           </p>
         </div>
 
-        {/* Slider */}
-        <div className="experience-slider" ref={sliderRef}>
-          {experiences.map((item, index) => (
-            <div
-              className="experience-card"
-              key={index}
-              data-aos="bounce-in"
-              data-aos-duration="1500"
-              data-aos-delay={800 + index * 150}
-              data-aos-easing="ease-out-elastic"
-            >
+        {/* SLIDER */}
+        <div
+          className="experience-slider"
+          ref={sliderRef}
+          onMouseEnter={startAutoScroll}
+          onMouseLeave={stopAutoScroll}
+        >
+          {loopItems.map((item, index) => (
+            <div className="experience-card" key={index}>
               <div className="experience-image">
                 <Image
                   src={item.image}
@@ -101,37 +96,28 @@ export default function ExperiencesSlider() {
             </div>
           ))}
         </div>
-      </div>
-      <div className="experience-arrows flex items-center gap-6">
-        {/* LEFT ARROW → expand to LEFT */}
-        <button onClick={() => scroll("left")} className="group">
-          <Image
-            src="/images/arrowLeft.svg"
-            alt="Previous"
-            width={38}
-            height={15}
-            className="
-        transition-transform duration-300 ease-out
-        group-hover:scale-x-125
-        origin-right
-      "
-          />
-        </button>
 
-        {/* RIGHT ARROW → expand to RIGHT */}
-        <button onClick={() => scroll("right")} className="group">
-          <Image
-            src="/images/arrowRight.svg"
-            alt="Next"
-            width={38}
-            height={15}
-            className="
-        transition-transform duration-300 ease-out
-        group-hover:scale-x-125
-        origin-left
-      "
-          />
-        </button>
+        {/* ARROWS */}
+        {!isMobile && (
+          <div className="experience-arrows flex items-center gap-6">
+            <button onClick={() => scroll("left")} className="group">
+              <Image
+                src="/images/arrowLeft.svg"
+                alt="Previous"
+                width={38}
+                height={15}
+              />
+            </button>
+            <button onClick={() => scroll("right")} className="group">
+              <Image
+                src="/images/arrowRight.svg"
+                alt="Next"
+                width={38}
+                height={15}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
