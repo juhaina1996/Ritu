@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import ReCAPTCHA from "react-google-recaptcha";
 import "./Calender.css";
-import { saveScheduleCallData } from "../lib/firebaseUtils";
 
 const countries = [
   { code: "+91", flag: "🇮🇳", name: "India" },
@@ -40,6 +39,7 @@ export default function ScheduleCall() {
   const [date, setDate] = useState(new Date());
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     whatsapp: "",
     phoneCountry: countries[0],
@@ -101,47 +101,60 @@ export default function ScheduleCall() {
     e.preventDefault();
 
     if (!formData.recaptchaToken) {
-      alert("Please complete the reCAPTCHA verification.");
       return;
     }
 
     setIsSubmitting(true);
 
     try {
+      const selectedDateFormatted = date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+
       const dataToSave = {
-        ...formData,
+        name: formData.name,
+        email: formData.email || '',
+        phone: formData.phone,
+        whatsapp: formData.whatsapp,
         phoneCountryCode: formData.phoneCountry.code,
         whatsappCountryCode: formData.whatsappCountry.code,
-        selectedDate: date.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }),
-        submittedAt: new Date().toISOString(),
+        selectedDate: selectedDateFormatted,
+        timeSlot: formData.timeSlot,
+        termsAccepted: formData.termsAccepted,
+        recaptchaToken: formData.recaptchaToken,
       };
 
-      const result = await saveScheduleCallData(dataToSave);
+      // Send to API route which handles Google Sheets and Email
+      const response = await fetch('/api/schedule-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSave),
+      });
+
+      const result = await response.json();
 
       if (result.success) {
+
         // Reset form
         setFormData({
           name: "",
+          email: "",
           phone: "",
           whatsapp: "",
           phoneCountry: countries[0],
           whatsappCountry: countries[0],
-          timeSlot: timeSlotOptions[0].value, // Reset to first time slot
+          timeSlot: timeSlotOptions[0].value,
           termsAccepted: false,
           recaptchaToken: null,
         });
         setDate(new Date());
-        // onClose();
-      } else {
-        alert("Error submitting request. Please try again.");
-      }
+      } 
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -238,6 +251,16 @@ export default function ScheduleCall() {
               onChange={(e) => handleInputChange("name", e.target.value)}
               maxLength={30}
               required
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder="your@email.com"
             />
           </div>
 

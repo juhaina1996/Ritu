@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { saveDownloadBrochureData } from "../lib/firebaseUtils";
 
 const countries = [
   { code: "+91", flag: "🇮🇳", name: "India" },
@@ -78,19 +77,30 @@ export default function DownloadBrochure({ isOpen, onClose }) {
   };
 
   const handleSubmit = async (e) => {
-    console.log("hey i am her");
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
       const dataToSave = {
-        ...formData,
+        name: formData.name,
+        phone: formData.phone,
+        whatsapp: formData.whatsapp,
         phoneCountryCode: formData.phoneCountry.code,
         whatsappCountryCode: formData.whatsappCountry.code,
-        submittedAt: new Date().toISOString(),
+        termsAccepted: formData.termsAccepted,
       };
 
-      const result = await saveDownloadBrochureData(dataToSave);
+      // Send to API route which handles Google Sheets and Email
+      const response = await fetch('/api/brochure', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSave),
+      });
+
+      const result = await response.json();
+
       if (result.success) {
         // Reset form
         setFormData({
@@ -105,12 +115,10 @@ export default function DownloadBrochure({ isOpen, onClose }) {
         // Show thank you modal and start download
         setShowThankYou(true);
         startPDFDownload();
-      } else {
-        alert("Error submitting request. Please try again.");
-      }
+      } 
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting request. Please try again.");
+     
     } finally {
       setIsSubmitting(false);
     }
