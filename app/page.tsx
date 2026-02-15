@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import AOS from "aos";
-import Image from "next/image";
 import Hero from "./components/Hero";
 import ExperienceSection from "./components/ExperienceSection";
 import ExperiencesSlider from "./components/ExperiencesSlider";
@@ -11,9 +10,15 @@ import CoOwnSection from "./components/CoOwnSection";
 import Footer from "./components/Footer";
 import DownloadBrochure from "./components/DownloadBrochure";
 import AmenitiesSection from "./components/AmenitiesSection";
+import useSectionScroll from "./hooks/useSectionScroll";
+import AmenitiesMobile from "./components/AmenitiesMobile";
 
 export default function HomePage() {
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  
+  // Enable section-wise auto-scroll
+  useSectionScroll('.scroll-section');
+  
   useEffect(() => {
     // Initialize AOS with enhanced animation settings
     AOS.init({
@@ -49,20 +54,34 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero onOpenBrochure={() => setIsBrochureOpen(true)} />
+      <section className="scroll-section">
+        <Hero onOpenBrochure={() => setIsBrochureOpen(true)} />
+      </section>
 
       {/* Logo Background - Left Side after Hero - Partially Visible */}
 
-      <ExperienceSection />
+      <section className="scroll-section">
+        <ExperienceSection onOpenBrochure={() => setIsBrochureOpen(true)} />
+      </section>
 
-      <ExperiencesSlider />
-      <AmenitiesSection />
+      <section className="scroll-section">
+        <ExperiencesSlider />
+      </section>
+      
+      <section className="scroll-section">
+        <AmenitiesSection />
+      </section>
+      <AmenitiesMobile/>
+      
+      {/* Combined tall section - scroll hook will allow normal scrolling within */}
+      <section className="scroll-section tall-section">
+        <VayalNaaduSection />
+        <CoOwnSection onOpenBrochure={() => setIsBrochureOpen(true)} />
+      </section>
 
-      <VayalNaaduSection />
-
-      <CoOwnSection onOpenBrochure={() => setIsBrochureOpen(true)} />
-
-      <Footer />
+      <section className="scroll-section">
+        <Footer />
+      </section>
 
       <DownloadBrochure
         isOpen={isBrochureOpen}

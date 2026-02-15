@@ -15,41 +15,10 @@ const experiences = [
   { title: "Sound Therapy", image: "/images/slider6.png" },
 ];
 
-// duplicate for circular effect
-const loopItems = [...experiences, ...experiences];
-
 export default function ExperiencesSlider() {
   const isMobile = useIsMobile();
   const sliderRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
-
-  const scrollSpeed = 0.5; // 👈 control speed here
-
-  const startAutoScroll = () => {
-    if (isMobile) return;
-
-    const step = () => {
-      if (!sliderRef.current) return;
-
-      sliderRef.current.scrollLeft += scrollSpeed;
-
-      // reset scroll for seamless loop
-      if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth / 2) {
-        sliderRef.current.scrollLeft = 0;
-      }
-
-      animationRef.current = requestAnimationFrame(step);
-    };
-
-    animationRef.current = requestAnimationFrame(step);
-  };
-
-  const stopAutoScroll = () => {
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-      animationRef.current = null;
-    }
-  };
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
     sliderRef.current?.scrollBy({
@@ -58,19 +27,139 @@ export default function ExperiencesSlider() {
     });
   };
 
+  // Horizontal scroll hijacking
   useEffect(() => {
-    return () => stopAutoScroll();
-  }, []);
+    if (isMobile) return;
+
+    const section = sectionRef.current;
+    const slider = sliderRef.current;
+    if (!section || !slider) return;
+
+    let hasInitializedScrollPosition = false;
+    let currentIndex = 0;
+    let isAnimating = false;
+    let lastScrollTime = 0;
+
+    const getItemWidth = () => {
+      const firstItem = slider.querySelector('.experience-card') as HTMLElement;
+      return firstItem ? firstItem.offsetWidth : 280;
+    };
+
+    const scrollToIndex = (index: number) => {
+      const itemWidth = getItemWidth();
+      const targetScroll = index * itemWidth;
+      
+      slider.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+      
+      isAnimating = true;
+      setTimeout(() => {
+        isAnimating = false;
+      }, 600);
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      const now = Date.now();
+      
+      // Debounce: ignore events that come too quickly (within 400ms)
+      if (now - lastScrollTime < 400) {
+        e.preventDefault();
+        return;
+      }
+
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      
+      const sectionTop = rect.top;
+      const sectionBottom = rect.bottom;
+      const viewportHeight = window.innerHeight;
+      
+      const isActive = sectionTop < viewportHeight * 0.8 && sectionBottom > viewportHeight * 0.2;
+      
+      if (!isActive) {
+        hasInitializedScrollPosition = false;
+        return;
+      }
+
+      const maxIndex = experiences.length - 1;
+      
+      // Initialize scroll position based on scroll direction when entering section
+      if (!hasInitializedScrollPosition) {
+        if (e.deltaY < 0) {
+          currentIndex = maxIndex;
+          scrollToIndex(currentIndex);
+        } else {
+          currentIndex = 0;
+          scrollToIndex(currentIndex);
+        }
+        hasInitializedScrollPosition = true;
+        lastScrollTime = now;
+        e.preventDefault();
+        return;
+      }
+
+      const isAtEnd = currentIndex >= maxIndex;
+      const isAtStart = currentIndex <= 0;
+
+      // Scrolling down (next image)
+      if (e.deltaY > 0) {
+        if (!isAtEnd) {
+          e.preventDefault();
+          e.stopPropagation();
+          lastScrollTime = now;
+          currentIndex++;
+          scrollToIndex(currentIndex);
+        } else {
+          hasInitializedScrollPosition = false;
+        }
+      }
+      // Scrolling up (previous image)
+      else if (e.deltaY < 0) {
+        if (!isAtStart) {
+          e.preventDefault();
+          e.stopPropagation();
+          lastScrollTime = now;
+          currentIndex--;
+          scrollToIndex(currentIndex);
+        } else {
+          hasInitializedScrollPosition = false;
+        }
+      }
+    };
+
+    document.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+
+    return () => {
+      document.removeEventListener('wheel', handleWheel, { capture: true });
+    };
+  }, [isMobile]);
 
   return (
-    <section className="experience-section">
+    <section className="experience-section" ref={sectionRef}>
       <div className="experience-container">
         {/* Header */}
         <div className="experience-header">
-          <h2 className="experience-header-one">
+          <h2 
+            className="experience-header-one"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            data-aos-easing="ease-out-quart"
+          >
             <span className="italic">Ex</span>periences.
           </h2>
-          <p className="discover italic">
+          <p 
+            className="discover italic"
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-delay="200"
+            data-aos-easing="ease-out-quart"
+          >
             DISCOVER SENSORY NATURE FILLED ESCAPES IN WAYANAD
           </p>
         </div>
@@ -79,10 +168,12 @@ export default function ExperiencesSlider() {
         <div
           className="experience-slider"
           ref={sliderRef}
-          onMouseEnter={startAutoScroll}
-          onMouseLeave={stopAutoScroll}
+          data-aos="fade-up"
+          data-aos-duration="1400"
+          data-aos-delay="400"
+          data-aos-easing="ease-out-quart"
         >
-          {loopItems.map((item, index) => (
+          {experiences.map((item, index) => (
             <div className="experience-card" key={index}>
               <div className="experience-image">
                 <Image
@@ -99,7 +190,13 @@ export default function ExperiencesSlider() {
 
         {/* ARROWS */}
         {!isMobile && (
-          <div className="experience-arrows flex items-center gap-6">
+          <div 
+            className="experience-arrows flex items-center gap-6"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="600"
+            data-aos-easing="ease-out-quart"
+          >
             <button onClick={() => scroll("left")} className="group">
               <Image
                 src="/images/arrowLeft.svg"

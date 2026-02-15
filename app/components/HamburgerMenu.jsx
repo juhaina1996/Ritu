@@ -215,6 +215,21 @@ export default function HamburgerMenu({ onOpenBrochure }) {
 
         <a
           href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            
+            // Add delay to allow closing animation to complete before scrolling
+            setTimeout(() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }
+            }, 600); // Match the transition duration
+          }}
           className="navigation-menu group cursor-pointer"
           style={{
             fontSize: "18px",

@@ -7,18 +7,18 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "./Calender.css";
 
 const countries = [
-  { code: "+91", flag: "🇮🇳", name: "India" },
-  { code: "+971", flag: "🇦🇪", name: "UAE" },
-  { code: "+966", flag: "🇸🇦", name: "Saudi Arabia" },
-  { code: "+965", flag: "🇰🇼", name: "Kuwait" },
-  { code: "+974", flag: "🇶🇦", name: "Qatar" },
-  { code: "+973", flag: "🇧🇭", name: "Bahrain" },
-  { code: "+968", flag: "🇴🇲", name: "Oman" },
-  { code: "+1", flag: "🇺🇸", name: "USA" },
-  { code: "+1", flag: "🇨🇦", name: "Canada" },
-  { code: "+44", flag: "🇬🇧", name: "UK" },
-  { code: "+65", flag: "🇸🇬", name: "Singapore" },
-  { code: "+60", flag: "🇲🇾", name: "Malaysia" },
+  { code: "+91", flag: "🇮🇳", name: "India", digits: 10 },
+  { code: "+971", flag: "🇦🇪", name: "UAE", digits: 9 },
+  { code: "+966", flag: "🇸🇦", name: "Saudi Arabia", digits: 9 },
+  { code: "+965", flag: "🇰🇼", name: "Kuwait", digits: 8 },
+  { code: "+974", flag: "🇶🇦", name: "Qatar", digits: 8 },
+  { code: "+973", flag: "🇧🇭", name: "Bahrain", digits: 8 },
+  { code: "+968", flag: "🇴🇲", name: "Oman", digits: 8 },
+  { code: "+1", flag: "🇺🇸", name: "USA", digits: 10 },
+  { code: "+1", flag: "🇨🇦", name: "Canada", digits: 10 },
+  { code: "+44", flag: "🇬🇧", name: "UK", digits: 10 },
+  { code: "+65", flag: "🇸🇬", name: "Singapore", digits: 8 },
+  { code: "+60", flag: "🇲🇾", name: "Malaysia", digits: 10 },
 ];
 
 const timeSlotOptions = [
@@ -44,16 +44,20 @@ export default function ScheduleCall() {
     whatsapp: "",
     phoneCountry: countries[0],
     whatsappCountry: countries[0],
-    timeSlot: timeSlotOptions[0].value, // Default to first time slot
+    timeSlot: "", // Default to empty/blank
     termsAccepted: false,
     recaptchaToken: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [phoneDropdownOpen, setPhoneDropdownOpen] = useState(false);
   const [whatsappDropdownOpen, setWhatsappDropdownOpen] = useState(false);
   const [timeSlotDropdownOpen, setTimeSlotDropdownOpen] = useState(false);
   const [phoneSearch, setPhoneSearch] = useState("");
   const [whatsappSearch, setWhatsappSearch] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [whatsappError, setWhatsappError] = useState("");
 
   // useEffect(() => {
   //   if (isOpen) {
@@ -104,6 +108,26 @@ export default function ScheduleCall() {
       return;
     }
 
+    // Validate time slot is selected
+    if (!formData.timeSlot) {
+      alert("Please select a time slot");
+      return;
+    }
+
+    // Validate phone number
+    const phoneDigits = formData.phoneCountry.digits;
+    if (formData.phone.length !== phoneDigits) {
+      setPhoneError(`Phone number must be exactly ${phoneDigits} digits for ${formData.phoneCountry.name}`);
+      return;
+    }
+    
+    // Validate WhatsApp number
+    const whatsappDigits = formData.whatsappCountry.digits;
+    if (formData.whatsapp.length !== whatsappDigits) {
+      setWhatsappError(`WhatsApp number must be exactly ${whatsappDigits} digits for ${formData.whatsappCountry.name}`);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -138,6 +162,8 @@ export default function ScheduleCall() {
       const result = await response.json();
 
       if (result.success) {
+        // Show confirmation modal
+        setShowConfirmation(true);
 
         // Reset form
         setFormData({
@@ -147,7 +173,7 @@ export default function ScheduleCall() {
           whatsapp: "",
           phoneCountry: countries[0],
           whatsappCountry: countries[0],
-          timeSlot: timeSlotOptions[0].value,
+          timeSlot: "",
           termsAccepted: false,
           recaptchaToken: null,
         });
@@ -171,13 +197,26 @@ export default function ScheduleCall() {
       return; // Don't update if exceeds 30 characters
     }
 
-    // Validate phone and whatsapp fields - only numbers and max 10 characters
+    // Validate phone and whatsapp fields - only numbers
     if (field === "phone" || field === "whatsapp") {
       // Remove any non-numeric characters
       value = value.replace(/\D/g, "");
-      // Limit to 10 characters
-      if (value.length > 10) {
-        return; // Don't update if exceeds 10 characters
+      
+      // Get max digits for the selected country
+      const maxDigits = field === "phone" 
+        ? formData.phoneCountry.digits 
+        : formData.whatsappCountry.digits;
+      
+      // Limit to max digits for the country
+      if (value.length > maxDigits) {
+        return; // Don't update if exceeds max digits
+      }
+      
+      // Clear error when user starts typing
+      if (field === "phone") {
+        setPhoneError("");
+      } else {
+        setWhatsappError("");
       }
     }
 
@@ -203,12 +242,24 @@ export default function ScheduleCall() {
     setFormData((prev) => ({ ...prev, phoneCountry: country }));
     setPhoneDropdownOpen(false);
     setPhoneSearch("");
+    setPhoneError(""); // Clear error when country changes
+    
+    // Validate current phone number against new country
+    if (formData.phone && formData.phone.length !== country.digits) {
+      setPhoneError(`Phone number must be exactly ${country.digits} digits for ${country.name}`);
+    }
   };
 
   const selectWhatsappCountry = (country) => {
     setFormData((prev) => ({ ...prev, whatsappCountry: country }));
     setWhatsappDropdownOpen(false);
     setWhatsappSearch("");
+    setWhatsappError(""); // Clear error when country changes
+    
+    // Validate current WhatsApp number against new country
+    if (formData.whatsapp && formData.whatsapp.length !== country.digits) {
+      setWhatsappError(`WhatsApp number must be exactly ${country.digits} digits for ${country.name}`);
+    }
   };
 
   const handleRecaptchaChange = (token) => {
@@ -226,6 +277,27 @@ export default function ScheduleCall() {
     );
     return selected ? selected.label : "Select time slot";
   };
+
+  const handleConfirmationClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setShowConfirmation(false);
+    }, 300);
+  };
+
+  const CloseButton = ({ onClick }) => (
+    <button className="modal-close-btn" onClick={onClick} aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <path
+          d="M18 6L6 18M6 6L18 18"
+          stroke="#000"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </button>
+  );
 
   return (
     <div>
@@ -257,10 +329,10 @@ export default function ScheduleCall() {
           <div className="input-group">
             <label>Email</label>
             <input
-              type="email"
+              type="text"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
-              placeholder="your@email.com"
+              placeholder=""
             />
           </div>
 
@@ -306,12 +378,12 @@ export default function ScheduleCall() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                maxLength={10}
-                pattern="[0-9]{10}"
-                placeholder="Enter phone number"
+                maxLength={formData.phoneCountry.digits}
+                placeholder={`Enter ${formData.phoneCountry.digits}-digit phone number`}
                 required
               />
             </div>
+            {phoneError && <span className="error-message">{phoneError}</span>}
           </div>
 
           <div className="input-group">
@@ -356,12 +428,12 @@ export default function ScheduleCall() {
                 type="tel"
                 value={formData.whatsapp}
                 onChange={(e) => handleInputChange("whatsapp", e.target.value)}
-                maxLength={10}
-                pattern="[0-9]{10}"
-                placeholder="Enter WhatsApp number"
+                maxLength={formData.whatsappCountry.digits}
+                placeholder={`Enter ${formData.whatsappCountry.digits}-digit WhatsApp number`}
                 required
               />
             </div>
+            {whatsappError && <span className="error-message">{whatsappError}</span>}
           </div>
 
           {/* === Date & Time Section === */}
@@ -471,6 +543,46 @@ export default function ScheduleCall() {
           </div>
         </form>
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirmation && (
+        <div
+          className={`brochure-overlay ${isClosing ? 'fade-out' : 'fade-in'}`}
+          onClick={handleConfirmationClose}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 10000,
+          }}
+        >
+          <div className={`brochure-card thank-you-card ${isClosing ? 'slide-out' : 'slide-in'}`} onClick={(e) => e.stopPropagation()}>
+            <CloseButton onClick={handleConfirmationClose} />
+            
+            <h2>You're All Set!</h2>
+
+            <Image
+              src="/images/threedotsIndicator.svg"
+              alt="divider"
+              width={120}
+              height={20}
+              className="divider-image"
+            />
+
+            <div className="thank-you-content">
+              <p>
+                We've received your request and locked in your preferred time slot. Our team will connect with you as scheduled.
+              </p>
+            </div>
+
+            <button className="close-button" onClick={handleConfirmationClose}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

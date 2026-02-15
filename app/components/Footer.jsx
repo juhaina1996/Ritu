@@ -8,7 +8,7 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <section className="w-full bg-[#2f2f2f] py-20">
+    <section id="contact" className="w-full bg-[#2f2f2f] py-20">
       <div className="max-w-7xl mx-10 md:px-20">
         {/* TOP ROW */}
         <div className="flex flex-col md:flex-row justify-center md:justify-between md:items-baseline mb-16">
@@ -20,7 +20,7 @@ export default function Footer() {
 
             <button
               onClick={() => router.push("/schedule-call")}
-              className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group"
+              className="inline-flex items-center gap-3 bg-[#3b3b3b] text-white px-5 py-2 rounded-full hover:bg-[#444] transition group cursor-pointer"
             >
               <span className="text-sm">Schedule a Call</span>
               <span className="flex h-6 w-6 items-center justify-center animate-pulse-horizontal">
@@ -57,10 +57,11 @@ export default function Footer() {
             <p className="contact-sub">info@szdevelopers.com</p>
 
             {/* Terms & Privacy */}
-            <div className="flex gap-4 mt-1 terms-conditions">
+            {!isMobile &&<div className="flex gap-4 mt-1 terms-conditions">
               <Link
                 href="/terms-and-conditions"
-                className="relative group text-[#bfbfbf]"
+                className="relative group text-[#bfbfbf] no-underline"
+                style={{ textDecoration: 'none' }}
               >
                 Terms & Conditions
                 <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
@@ -68,12 +69,13 @@ export default function Footer() {
 
               <Link
                 href="/privacy-policy"
-                className="relative group text-[#bfbfbf]"
+                className="relative group text-[#bfbfbf] no-underline"
+                style={{ textDecoration: 'none' }}
               >
                 Privacy Policy
                 <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
               </Link>
-            </div>
+            </div>}
           </div>
 
           {/* Social */}
@@ -119,7 +121,7 @@ export default function Footer() {
           )}
         </div>
         {isMobile && (
-          <div className="mt-26 md:mt-0">
+          <div className="mt-[61px] md:mt-0">
             <Image
               src="/images/sz-developerImg.svg"
               alt="SZ Developers"
@@ -129,6 +131,7 @@ export default function Footer() {
             />
           </div>
         )}
+        
         {isMobile && (
           <div className="contact-mob-div">
             {" "}
@@ -136,10 +139,19 @@ export default function Footer() {
               3rd Floor, Nechikkadan Tower, Mini Bypass Rd
               <br /> near Swapna Nagari, Kozhikode, Kerala 673006
             </p>
+             {isMobile && (
+          <div className="terms-mob-div">
+            {" "}
+          
+            <p>Terms & Conditions </p>
+            <p >Privacy Policy</p>
+          </div>
+        )}
             <p className="contact-mob-sub">SZ Developers © 2026 </p>
             <p className="contact-mob-sub">All Rights Reserved</p>
           </div>
         )}
+       
       </div>
     </section>
   );

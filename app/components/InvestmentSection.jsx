@@ -47,7 +47,7 @@ export default function InvestmentSection() {
           </p>}
 
           {/* Bullet points */}
-         {!isMobile&& <ul className="mt-6 space-y-4 text-gray-700">
+         {!isMobile&& <ul className="mt-6 text-gray-700">
             <li className="flex items-start gap-3 points">
               <span className="text-[#A29279] text-[18px]">●</span>
               Lifetime vacation vouchers worth 1 Lakh to 3.5 Lakhs every year
@@ -65,7 +65,7 @@ export default function InvestmentSection() {
   {/* RIGHT CARD */}
   <div className="bg-white border border-[#D8CFC3] rounded-2xl p-8 shadow-sm payment-plan-main">
 
-    <h3 className="payment-plan decoration-[#A29279] decoration-[0.5px] text-[#413529] underline underline-offset-2">
+    <h3 className="payment-plan decoration-[#A29279] decoration-[0.6px] text-[#413529] underline underline-offset-1">
       Payment Plan
     </h3>
 
@@ -75,15 +75,14 @@ export default function InvestmentSection() {
         Installment Option
       </h4>
 
-      <ul className="mt-2 space-y-4 text-gray-600 text-sm leading-relaxed">
+      <ul className="mt-2 text-gray-600 text-sm leading-relaxed">
         <li className="flex items-start gap-3 installment-option-points">
           <span className="text-[#A29279] text-base">●</span>
           Only 25% down-payment required for securing your slot
         </li>
         <li className="flex items-start gap-3 installment-option-points">
           <span className="text-[#A29279] text-base">●</span>
-          Remaining amount can be comfortably paid over 25-Month payment plan
-        </li>
+Remaining amount can be comfortable paid over 2 year Monthly Payment Plan        </li>
         <li className="flex items-start gap-3 installment-option-points">
           <span className="text-[#A29279] text-base">●</span>
           No annual fees or hidden extra charges
@@ -93,10 +92,31 @@ export default function InvestmentSection() {
 
     {/* Button */}
     <button 
-      onClick={() => router.push('/schedule-call#book-investment')}
-      className="w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl text-sm tracking-wide hover:bg-[#8f7f6b] transition-colors"
+      onClick={() => {
+        const scheduleSection = document.getElementById('book-investment');
+        if (scheduleSection) {
+          scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }}
+      className="consultation-button group w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl tracking-wide hover:bg-[#8f7f6b] transition-all duration-300 flex items-center justify-center gap-3"
     >
-      SCHEDULE A CONSULTATION CALL
+      <span>SCHEDULE A CONSULTATION CALL</span>
+      <svg 
+        className="consultation-icon w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+      <svg 
+        className="consultation-icon-hover w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
     </button>
   </div>
 

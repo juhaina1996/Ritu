@@ -181,7 +181,7 @@ export default function BenefitsSection() {
             </h3>
 
             <ul className="mt-6 space-y-4 text-[#3F3428] text-sm leading-relaxed points-benefits">
-              <li className="flex gap-3">
+              <li className="flex gap-3 mb-0">
                 <span className="text-[#8B6F47]">
                   <Circle
                     size={5}
@@ -202,8 +202,10 @@ export default function BenefitsSection() {
                     strokeWidth={0}
                     className="bullet-icon"
                   />
-                </span>{" "}
-                Personal butler services
+                </span>
+                <span>
+                  Personal butler services <span className="hightlighted">(Only for Peak Investors)</span>
+                </span>
               </li>
               <li className="flex gap-3 mb-0">
                 <span className="text-[#8B6F47]">
@@ -214,8 +216,10 @@ export default function BenefitsSection() {
                     strokeWidth={0}
                     className="bullet-icon"
                   />
-                </span>{" "}
-                Personal chef service
+                </span>
+                <span>
+                  Personal chef service <span className="hightlighted">(Only for Peak Investors)</span>
+                </span>
               </li>
               <li className="flex gap-3 mb-0">
                 <span className="text-[#8B6F47]">
@@ -226,9 +230,11 @@ export default function BenefitsSection() {
                     strokeWidth={0}
                     className="bullet-icon"
                   />
-                </span>{" "}
-                Luxury fleet pick-up and drop from Kozhikode & Kannur
-                International Airport (once a year)
+                </span>
+                <span>
+                  Luxury fleet pick-up and drop from Kozhikode & Kannur
+                  International Airport <span className="hightlighted">(Once annually, exclusively for Peak Investors)</span>
+                </span>
               </li>
             </ul>
           </div>

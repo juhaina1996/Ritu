@@ -100,6 +100,7 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
 
         {/* CTA Button */}
         <button
+          onClick={() => router.push("/schedule-call")}
           className="hero-buttton
     group
     flex items-center gap-2
@@ -110,6 +111,7 @@ backdrop-blur-none   px-3 py-1
     text-white
     transition
     hover:bg-[#9b9b9b]/70
+    cursor-pointer
   "
           data-aos="bounce-in"
           data-aos-duration="1500"

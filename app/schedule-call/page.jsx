@@ -5,6 +5,8 @@ import InvestmentSection from "../components/InvestmentSection";
 import ScheduleSection from "../components/ScheduleSection";
 import HamburgerMenu from "../components/HamburgerMenu";
 import Footer from "../components/Footer";
+import DownloadBrochure from "../components/DownloadBrochure";
+import useSectionScroll from "../hooks/useSectionScroll";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -14,6 +16,9 @@ import { useState, useEffect } from "react";
 export default function RitusLegacyPage() {
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   const router = useRouter();
+  
+  // Enable section-wise auto-scroll
+  useSectionScroll('.scroll-section');
 
   useEffect(() => {
     // Custom smooth scroll function for better control
@@ -83,12 +88,31 @@ export default function RitusLegacyPage() {
           />
         </div>
       </nav>
-      <HeroSection />
-      <InvestmentSection />
-      <BenefitsSection />
-      <ScheduleSection />
-      <Footer />
+      
+      <section className="scroll-section">
+        <HeroSection />
+      </section>
+      
+      <section className="scroll-section">
+        <InvestmentSection />
+      </section>
+      
+      <section className="scroll-section">
+        <BenefitsSection />
+      </section>
+      
+      <section className="scroll-section">
+        <ScheduleSection />
+      </section>
+      
+      <section className="scroll-section">
+        <Footer />
+      </section>
 
+      <DownloadBrochure
+        isOpen={isBrochureOpen}
+        onClose={() => setIsBrochureOpen(false)}
+      />
     </>
   );
 }
