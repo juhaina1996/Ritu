@@ -5,7 +5,7 @@ export default function HeroSection() {
   const isMobile = useIsMobile();
 
   return (
-    <section className="bg-[#F2F0ED] py-20 text-center h-[100vh]">
+    <section className="hero-scheduler bg-[#F2F0ED] py-20 text-center h-[100vh]">
       <p className="tracking-widest">Exclusive Partners Circle</p>
 
       <Image

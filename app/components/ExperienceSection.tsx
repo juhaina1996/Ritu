@@ -23,11 +23,11 @@ export default function ExperienceSection({ onOpenBrochure }: ExperienceSectionP
 
       <section className="main relative min-h-screen flex flex-col">
         {/* LOGO BACKGROUND */}
-        <div className="absolute left-[-60px] top-1/2 -translate-y-1/2 z-0 pointer-events-none">
+        <div className="absolute left-[-60px] top-[22%] -translate-y-1/2 z-0 pointer-events-none">
           <Image
             src="/images/logo-background.svg"
             alt="Logo Background"
-            width={600}
+            width={500}
             height={300}
             className="opacity-10"
             priority
@@ -84,7 +84,9 @@ export default function ExperienceSection({ onOpenBrochure }: ExperienceSectionP
               </span>
             </button>
           </div>}
+           
         </div>
+       
       </section>
     </>
   );

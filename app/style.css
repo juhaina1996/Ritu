@@ -38,11 +38,6 @@ html {
   min-height: 100vh;
 }
 
-/* Remove top padding from CoOwn to connect with VayalNaadu */
-.tall-section .coown-section {
-  padding-top: 0 !important;
-}
-
 /* Disable section scroll on mobile for better UX */
 @media (max-width: 991px) {
   .scroll-section {
@@ -79,7 +74,6 @@ html {
 /* Subtle pulse animation for icons */
 .benefit-main .absolute img {
   transition: transform 0.3s ease;
-  animation: float 3s ease-in-out infinite;
 }
 
 .benefit-main .bg-white:hover .absolute img {
@@ -197,6 +191,8 @@ html {
   position: relative;
   margin: 20px 0;
   overflow: hidden;
+  padding-top: 278px;
+
 }
 
 /* SECTION */
@@ -206,12 +202,16 @@ html {
   overflow: hidden;
   padding-top: 0px;
   margin: 0 30px;
+  position: relative;
+  
 }
 
 .experience-container {
   /* max-width: 1400px; */
   margin: 0 auto;
   padding-left: 48px;
+  position: relative;
+    padding-top: 298px;
 }
 
 /* HEADER */
@@ -238,7 +238,7 @@ html {
   display: flex;
   gap: 16px;
   margin-top: 24px;
-  margin-left: 46px;
+
 }
 
 .experience-arrows button {
@@ -262,18 +262,19 @@ html {
   font-weight: 100px;
 }
 
+/* SLIDER WRAPPER */
+.experience-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
 /* SLIDER */
 .experience-slider {
   display: flex;
   gap: 40px;
-  overflow-x: auto;
-  padding-right: 48px; /* 🔥 IMPORTANT */
-  scrollbar-width: none;
-  scroll-behavior: auto; /* Disable CSS smooth scroll since we're using JS */
-}
-
-.experience-slider::-webkit-scrollbar {
-  display: none;
+  will-change: transform;
+  width: max-content;
 }
 
 /* CARD */
@@ -485,7 +486,17 @@ html {
   font-family: "Arsenal", sans-serif;
   margin: 20px auto;
 }
-
+.brochure-card-popup {
+  position: relative;
+  background: #eae9e7;
+  padding: 40px 50px;
+  width: 748px;
+  max-width: 90%;
+  /* text-align: center; */
+  border: 1px solid #ddd;
+  font-family: "Arsenal", sans-serif;
+  margin: 20px auto;
+}
 /* Slide in animation for card */
 .brochure-card.slide-in {
   animation: slideIn 0.3s ease-out forwards;
@@ -615,9 +626,16 @@ html {
   padding: 6px 8px;
   background: #1a6a6d;
   width: 100%;
+  cursor: pointer;
 }
 .brochure-form button:hover {
   background: #14585a;
+}
+.divider-image-terms{
+    width: 100%;
+      margin-top: 13px;
+  margin-bottom: 13px;
+  height: 1px;
 }
 .divider-image {
   width: 100%;
@@ -661,7 +679,7 @@ html {
   background-repeat: no-repeat;
   background-position: left -40px top 10px;
   background-size: 400px;
-  padding-top: 80px;
+  padding-top: 200px;
   padding-left: 8%;
   padding-right: 8%;
 }
@@ -716,7 +734,7 @@ html {
   font-size: 15px;
   font-weight: 100;
   font-family: "Arsenal", sans-serif;
-  align-items: center;
+  align-items:first baseline;
   margin-bottom: 5px;
 }
 .market-conditions {
@@ -739,6 +757,7 @@ html {
   font-size: 22px;
   font-weight: 100;
   margin-left: 20px;
+  width:65%;
 }
 .points-benefits {
   font-size: 15px;
@@ -752,7 +771,7 @@ html {
 .benefit-main {
   padding-left: 8%;
   padding-right: 8%;
-  padding-bottom: 80px;
+  padding-bottom: 200px;
 }
 .consultation-section {
   background-color: #f6f3ee;
@@ -819,8 +838,8 @@ html {
   right: 1.5rem;
 }
 
-.consultation-button:hover .consultation-icon {
-  opacity: 0;
+.consultation-button:hover{
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -984,7 +1003,7 @@ html {
 
 @media (max-width: 640px) {
   .concierge-icon {
-    width: 25px;
+    width: 35px;
     height: 20px;
   }
 }
@@ -1008,6 +1027,7 @@ html {
   }
   .experience-container {
     padding-left: 0;
+    padding-top: 30px;
   }
   .experience-section {
     margin: 0 20px;
@@ -1069,6 +1089,9 @@ html {
     margin: auto;
     font-size: 11px;
     gap: 2px;
+  }
+  .hero-scheduler {
+    height:auto;
   }
   .installment-option-points {
     font-size: 12px;
@@ -1229,6 +1252,7 @@ html {
   }
   .coown-section {
     padding: 0;
+  
   }
   .coown-grid {
     margin: 0 20px;
@@ -1453,6 +1477,7 @@ html {
   border-radius: 999px;
   background: #fef0f0;
   border: 1.5px solid #ffc2c2;
+  padding-left: 12px;
 }
 
 /* Dot */
@@ -1467,7 +1492,7 @@ html {
 /* Text */
 .coowner-text {
   color: #e9323d;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.3px;
 }

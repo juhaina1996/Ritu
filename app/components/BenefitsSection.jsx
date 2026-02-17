@@ -43,7 +43,7 @@ export default function BenefitsSection() {
                 alt=""
                 width={30}
                 height={10}
-                className="w-[30px] sm:w-[30px] max-sm:w-[18px]"
+                className="w-[30px] sm:w-[30px] max-sm:w-[28px]"
               />
             </div>
 
@@ -105,9 +105,9 @@ export default function BenefitsSection() {
               <Image
                 src="/images/returns-icon.svg"
                 alt=""
-                width={28}
-                height={26}
-                className="w-[30px] sm:w-[30px] max-sm:w-[18px]"
+                width={24}
+                height={24}
+                className="w-[30px] sm:w-[30px] max-sm:w-[24px]"
               />
             </div>
 
@@ -172,7 +172,11 @@ export default function BenefitsSection() {
                 alt=""
                 width={16}
                 height={34}
-                className="concierge-icon"
+                                className="w-[30px] sm:w-[30px] max-sm:w-[18px]"
+
+                                // className="concierge-icon"
+
+               
               />
             </div>
 

@@ -1,8 +1,14 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { useIsMobile } from "../hooks";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const experiences = [
   { title: "Farming", image: "/images/slider3.png" },
@@ -19,130 +25,117 @@ export default function ExperiencesSlider() {
   const isMobile = useIsMobile();
   const sliderRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
   const scroll = (dir: "left" | "right") => {
-    sliderRef.current?.scrollBy({
-      left: dir === "right" ? 280 : -280,
-      behavior: "smooth",
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    // Get current x position
+    const currentX = gsap.getProperty(slider, "x") as number;
+    const moveAmount = 320; // card width (280) + gap (40)
+    
+    // Calculate new position
+    const newX = dir === "right" ? currentX - moveAmount : currentX + moveAmount;
+    
+    // Get max scroll distance
+    const sliderWidth = slider.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const maxScroll = -(sliderWidth - viewportWidth);
+    
+    // Clamp the value
+    const clampedX = Math.max(maxScroll, Math.min(0, newX));
+    
+    // Animate to new position
+    gsap.to(slider, {
+      x: clampedX,
+      duration: 0.5,
+      ease: "power2.out"
     });
   };
 
-  // Horizontal scroll hijacking
+  // Wait for component to mount
   useEffect(() => {
-    if (isMobile) return;
+    setIsReady(true);
+  }, []);
 
-    const section = sectionRef.current;
+  // GSAP Horizontal Scroll
+  useEffect(() => {
+    if (!isReady || isMobile) return;
+
+    const container = containerRef.current;
     const slider = sliderRef.current;
-    if (!section || !slider) return;
+    
+    if (!container || !slider) {
+      console.log('Missing refs:', { container, slider });
+      return;
+    }
 
-    let hasInitializedScrollPosition = false;
-    let currentIndex = 0;
-    let isAnimating = false;
-    let lastScrollTime = 0;
-
-    const getItemWidth = () => {
-      const firstItem = slider.querySelector('.experience-card') as HTMLElement;
-      return firstItem ? firstItem.offsetWidth : 280;
-    };
-
-    const scrollToIndex = (index: number) => {
-      const itemWidth = getItemWidth();
-      const targetScroll = index * itemWidth;
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      // Get the actual width of the slider content
+      const sliderWidth = slider.scrollWidth;
+      const viewportWidth = window.innerWidth;
       
-      slider.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
+      console.log('Slider width:', sliderWidth, 'Viewport width:', viewportWidth);
+      
+      if (sliderWidth <= viewportWidth) {
+        console.log('Slider not wide enough for horizontal scroll');
+        return;
+      }
+
+      // Calculate scroll distance - how far we need to move to show all content
+      const scrollDistance = sliderWidth - viewportWidth;
+      
+      // Set initial transform to ensure GSAP can animate it
+      gsap.set(slider, { x: 0 });
+
+      // Create the animation - pin the container when slider is visible
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: slider,
+          start: "top 30%", // Pin when slider top reaches 30% from top of viewport
+          end: () => `+=${scrollDistance}`,
+          pin: container,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          markers: false,
+        },
       });
-      
-      isAnimating = true;
-      setTimeout(() => {
-        isAnimating = false;
-      }, 600);
-    };
 
-    const handleWheel = (e: WheelEvent) => {
-      const now = Date.now();
-      
-      // Debounce: ignore events that come too quickly (within 400ms)
-      if (now - lastScrollTime < 400) {
-        e.preventDefault();
-        return;
-      }
+      tl.to(slider, {
+        x: -scrollDistance,
+        ease: "none",
+        force3D: true,
+      });
 
-      if (isAnimating) {
-        e.preventDefault();
-        return;
-      }
-
-      const rect = section.getBoundingClientRect();
-      
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      const viewportHeight = window.innerHeight;
-      
-      const isActive = sectionTop < viewportHeight * 0.8 && sectionBottom > viewportHeight * 0.2;
-      
-      if (!isActive) {
-        hasInitializedScrollPosition = false;
-        return;
-      }
-
-      const maxIndex = experiences.length - 1;
-      
-      // Initialize scroll position based on scroll direction when entering section
-      if (!hasInitializedScrollPosition) {
-        if (e.deltaY < 0) {
-          currentIndex = maxIndex;
-          scrollToIndex(currentIndex);
-        } else {
-          currentIndex = 0;
-          scrollToIndex(currentIndex);
-        }
-        hasInitializedScrollPosition = true;
-        lastScrollTime = now;
-        e.preventDefault();
-        return;
-      }
-
-      const isAtEnd = currentIndex >= maxIndex;
-      const isAtStart = currentIndex <= 0;
-
-      // Scrolling down (next image)
-      if (e.deltaY > 0) {
-        if (!isAtEnd) {
-          e.preventDefault();
-          e.stopPropagation();
-          lastScrollTime = now;
-          currentIndex++;
-          scrollToIndex(currentIndex);
-        } else {
-          hasInitializedScrollPosition = false;
-        }
-      }
-      // Scrolling up (previous image)
-      else if (e.deltaY < 0) {
-        if (!isAtStart) {
-          e.preventDefault();
-          e.stopPropagation();
-          lastScrollTime = now;
-          currentIndex--;
-          scrollToIndex(currentIndex);
-        } else {
-          hasInitializedScrollPosition = false;
-        }
-      }
-    };
-
-    document.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+      };
+    }, 500);
 
     return () => {
-      document.removeEventListener('wheel', handleWheel, { capture: true });
+      clearTimeout(timer);
     };
-  }, [isMobile]);
+  }, [isMobile, isReady]);
 
   return (
     <section className="experience-section" ref={sectionRef}>
-      <div className="experience-container">
+      <div className="experience-container" ref={containerRef}>
+        {/* Background Image */}
+        <div className="absolute right-[100px] top-[21%] -translate-y-1/2 z-0 pointer-events-none">
+          <Image
+            src="/images/leftBack.svg"
+            alt="Logo Background"
+            width={360}
+            height={300}
+            priority
+          />
+        </div>
+
         {/* Header */}
         <div className="experience-header">
           <h2 
@@ -164,38 +157,33 @@ export default function ExperiencesSlider() {
           </p>
         </div>
 
-        {/* SLIDER */}
-        <div
-          className="experience-slider"
-          ref={sliderRef}
-          data-aos="fade-up"
-          data-aos-duration="1400"
-          data-aos-delay="400"
-          data-aos-easing="ease-out-quart"
-        >
-          {experiences.map((item, index) => (
-            <div className="experience-card" key={index}>
-              <div className="experience-image">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                />
+        {/* SLIDER WRAPPER */}
+        <div className="experience-slider-wrapper">
+          <div
+            className="experience-slider"
+            ref={sliderRef}
+          >
+            {experiences.map((item, index) => (
+              <div className="experience-card" key={index}>
+                <div className="experience-image">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p>{item.title}</p>
               </div>
-              <p>{item.title}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* ARROWS */}
         {!isMobile && (
           <div 
             className="experience-arrows flex items-center gap-6"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="600"
-            data-aos-easing="ease-out-quart"
+            
           >
             <button onClick={() => scroll("left")} className="group">
               <Image

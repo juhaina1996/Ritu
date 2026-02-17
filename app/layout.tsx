@@ -5,8 +5,11 @@ import "aos/dist/aos.css";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Ritu",
-  description: "Ritu",
+  title: "Ritu - A Luxury Farm Resort in Wayanad",
+  description: "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +27,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Script
-          src="https://www.google.com/recaptcha/api.js"
-          strategy="lazyOnload"
-        />
       </body>
     </html>
   );

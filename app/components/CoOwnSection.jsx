@@ -5,7 +5,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
   const isMobile = useIsMobile();
 
   return (
-    <div className="coown-section w-full bg-[#f6f3ee] p-[20px] lg:py-20 relative overflow-hidden pb-60 px-10 lg:px-26 ">
+    <div className="coown-section w-full bg-[#f6f3ee] p-[20px] relative overflow-hidden pb-60 px-10 lg:px-26 pt-[200px]">
       {/* TOP WATERMARK */}
       <div className="co-own-back absolute top-[40px] left-[40px] z-0 pointer-events-none hidden md:block">
         <Image
@@ -51,7 +51,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="bounce-in"
           data-aos-duration="800"
-          data-aos-delay="400"
+          data-aos-delay="200"
           data-aos-easing="ease-out-elastic"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">
@@ -63,7 +63,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="flip-in"
           data-aos-duration="900"
-          data-aos-delay="500"
+          data-aos-delay="200"
           data-aos-easing="ease-out-back"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">1 Acre</div>
@@ -73,7 +73,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="slide-up-dramatic"
           data-aos-duration="1000"
-          data-aos-delay="600"
+          data-aos-delay="200"
           data-aos-easing="ease-out-quart"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">57</div>
@@ -87,7 +87,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
             className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
             data-aos="zoom-in-right"
             data-aos-duration="1000"
-            data-aos-delay="700"
+            data-aos-delay="200"
             data-aos-easing="ease-out-expo"
           >
             <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
@@ -100,7 +100,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
             className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
             data-aos="zoom-in-right"
             data-aos-duration="1000"
-            data-aos-delay="700"
+            data-aos-delay="200"
             data-aos-easing="ease-out-expo"
           >
             <div className="land text-4xl text-[#1A6A6D] font-light">70</div>
@@ -113,7 +113,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           className="border border-[#bdb4a7] p-2 h-[175px] lg:min-h-[280px] flex flex-col justify-between"
           data-aos="zoom-in-right"
           data-aos-duration="1100"
-          data-aos-delay="800"
+          data-aos-delay="200"
           data-aos-easing="ease-out-expo"
         >
           <div className="land text-4xl text-[#1A6A6D] font-light">20+</div>
@@ -123,7 +123,7 @@ export default function CoOwnSection({ onOpenBrochure }) {
           className="border border-[#bdb4a7] p-2 h-[175px] md:h-[280px] flex flex-col justify-between"
           data-aos="fade-up"
           data-aos-duration="800"
-          data-aos-delay="900"
+          data-aos-delay="200"
           data-aos-easing="ease-out-quart"
         >
           <p className="be-a-proud text-[#1A6A6D] leading-relaxed">

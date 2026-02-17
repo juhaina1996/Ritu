@@ -101,22 +101,8 @@ Remaining amount can be comfortable paid over 2 year Monthly Payment Plan       
       className="consultation-button group w-full mt-6 bg-[#A29279] text-white py-7 rounded-xl tracking-wide hover:bg-[#8f7f6b] transition-all duration-300 flex items-center justify-center gap-3"
     >
       <span>SCHEDULE A CONSULTATION CALL</span>
-      <svg 
-        className="consultation-icon w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-      </svg>
-      <svg 
-        className="consultation-icon-hover w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute" 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-      </svg>
+     
+      
     </button>
   </div>
 

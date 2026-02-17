@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
-import ReCAPTCHA from "react-google-recaptcha";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import "./Calender.css";
 
 const countries = [
@@ -46,7 +46,7 @@ export default function ScheduleCall() {
     whatsappCountry: countries[0],
     timeSlot: "", // Default to empty/blank
     termsAccepted: false,
-    recaptchaToken: null,
+    captchaToken: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -104,7 +104,8 @@ export default function ScheduleCall() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.recaptchaToken) {
+    if (!formData.captchaToken) {
+      alert("Please complete the captcha verification");
       return;
     }
 
@@ -147,7 +148,7 @@ export default function ScheduleCall() {
         selectedDate: selectedDateFormatted,
         timeSlot: formData.timeSlot,
         termsAccepted: formData.termsAccepted,
-        recaptchaToken: formData.recaptchaToken,
+        captchaToken: formData.captchaToken,
       };
 
       // Send to API route which handles Google Sheets and Email
@@ -175,7 +176,7 @@ export default function ScheduleCall() {
           whatsappCountry: countries[0],
           timeSlot: "",
           termsAccepted: false,
-          recaptchaToken: null,
+          captchaToken: null,
         });
         setDate(new Date());
       } 
@@ -263,7 +264,7 @@ export default function ScheduleCall() {
   };
 
   const handleRecaptchaChange = (token) => {
-    setFormData((prev) => ({ ...prev, recaptchaToken: token }));
+    setFormData((prev) => ({ ...prev, captchaToken: token }));
   };
 
   const selectTimeSlot = (timeSlot) => {
@@ -275,7 +276,7 @@ export default function ScheduleCall() {
     const selected = timeSlotOptions.find(
       (option) => option.value === formData.timeSlot
     );
-    return selected ? selected.label : "Select time slot";
+    return selected ? selected.label : "-";
   };
 
   const handleConfirmationClose = () => {
@@ -346,7 +347,21 @@ export default function ScheduleCall() {
                 >
                   <span className="flag">{formData.phoneCountry.flag}</span>
                   <span className="code">{formData.phoneCountry.code}</span>
-                  <span className="dropdown-arrow">▼</span>
+                  <svg 
+                    className="dropdown-arrow" 
+                    width="12" 
+                    height="8" 
+                    viewBox="0 0 12 8" 
+                    fill="none"
+                  >
+                    <path 
+                      d="M1 1L6 6L11 1" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
 
                 {phoneDropdownOpen && (
@@ -396,7 +411,21 @@ export default function ScheduleCall() {
                 >
                   <span className="flag">{formData.whatsappCountry.flag}</span>
                   <span className="code">{formData.whatsappCountry.code}</span>
-                  <span className="dropdown-arrow">▼</span>
+                  <svg 
+                    className="dropdown-arrow" 
+                    width="12" 
+                    height="8" 
+                    viewBox="0 0 12 8" 
+                    fill="none"
+                  >
+                    <path 
+                      d="M1 1L6 6L11 1" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
 
                 {whatsappDropdownOpen && (
@@ -484,7 +513,21 @@ export default function ScheduleCall() {
                     <span className="time-slot-text">
                       {getSelectedTimeSlotLabel()}
                     </span>
-                    <span className="dropdown-arrow">▼</span>
+                    <svg 
+                      className="dropdown-arrow" 
+                      width="12" 
+                      height="8" 
+                      viewBox="0 0 12 8" 
+                      fill="none"
+                    >
+                      <path 
+                        d="M1 1L6 6L11 1" 
+                        stroke="currentColor" 
+                        strokeWidth="1.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
 
                   {timeSlotDropdownOpen && (
@@ -520,14 +563,14 @@ export default function ScheduleCall() {
               </label>
 
               <div className="recaptcha-container">
-                <ReCAPTCHA
-                  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test site key - replace with your actual site key
-                  onChange={handleRecaptchaChange}
-                  onExpired={() =>
-                    setFormData((prev) => ({ ...prev, recaptchaToken: null }))
+                <HCaptcha
+                  sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001"}
+                  onVerify={handleRecaptchaChange}
+                  onExpire={() =>
+                    setFormData((prev) => ({ ...prev, captchaToken: null }))
                   }
                   onError={() =>
-                    setFormData((prev) => ({ ...prev, recaptchaToken: null }))
+                    setFormData((prev) => ({ ...prev, captchaToken: null }))
                   }
                 />
               </div>
@@ -535,7 +578,7 @@ export default function ScheduleCall() {
               <button
                 className="download-button"
                 type="submit"
-                disabled={isSubmitting || !formData.recaptchaToken}
+                disabled={isSubmitting || !formData.captchaToken}
               >
                 {isSubmitting ? "Scheduling..." : "Schedule"}
               </button>

@@ -1,14 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useIsMobile } from "../hooks";
 import Link from "next/link";
+import TermsModal from "./TermsModal";
+import PrivacyModal from "./PrivacyModal";
 
 export default function Footer() {
   const isMobile = useIsMobile();
   const router = useRouter();
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   return (
-    <section id="contact" className="w-full bg-[#2f2f2f] py-20">
+    <section id="contact" className="w-full bg-[#2f2f2f] py-20 h-full">
       <div className="max-w-7xl mx-10 md:px-20">
         {/* TOP ROW */}
         <div className="flex flex-col md:flex-row justify-center md:justify-between md:items-baseline mb-16">
@@ -58,23 +65,29 @@ export default function Footer() {
 
             {/* Terms & Privacy */}
             {!isMobile &&<div className="flex gap-4 mt-1 terms-conditions">
-              <Link
-                href="/terms-and-conditions"
-                className="relative group text-[#bfbfbf] no-underline"
+              <button
+                onClick={() => {
+                  console.log('Terms clicked');
+                  setIsTermsOpen(true);
+                }}
+                className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
                 style={{ textDecoration: 'none' }}
               >
                 Terms & Conditions
                 <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              </button>
 
-              <Link
-                href="/privacy-policy"
-                className="relative group text-[#bfbfbf] no-underline"
+              <button
+                onClick={() => {
+                  console.log('Privacy clicked');
+                  setIsPrivacyOpen(true);
+                }}
+                className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
                 style={{ textDecoration: 'none' }}
               >
                 Privacy Policy
                 <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              </button>
             </div>}
           </div>
 
@@ -143,8 +156,18 @@ export default function Footer() {
           <div className="terms-mob-div">
             {" "}
           
-            <p>Terms & Conditions </p>
-            <p >Privacy Policy</p>
+            <button 
+              onClick={() => setIsTermsOpen(true)}
+              className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
+            >
+              Terms & Conditions
+            </button>
+            <button 
+              onClick={() => setIsPrivacyOpen(true)}
+              className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
+            >
+              Privacy Policy
+            </button>
           </div>
         )}
             <p className="contact-mob-sub">SZ Developers © 2026 </p>
@@ -153,6 +176,10 @@ export default function Footer() {
         )}
        
       </div>
+
+      {/* Modals */}
+      <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
+      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </section>
   );
 }

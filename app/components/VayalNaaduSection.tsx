@@ -5,7 +5,7 @@ export default function VayalNaaduSection() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="w-full py-20">
+    <div className="w-full py-20 md:pt-[200px]">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         {/* TOP CONTENT */}
         <div className="grid">
