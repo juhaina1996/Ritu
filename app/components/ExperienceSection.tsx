@@ -50,7 +50,11 @@ export default function ExperienceSection({
 
           {/* IMAGE */}
           <Image
-            src="/images/web ritu landscape.png"
+            src={
+              isMobile
+                ? "/images/ritu landscape mobile.png"
+                : "/images/ritu landscape web.png"
+            }
             alt="Resort Experience"
             width={1200}
             height={500}
