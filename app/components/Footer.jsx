@@ -60,35 +60,37 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h5 className="text-white mb-3 contact">Contact</h5>
-            <p className="contact-sub">+91 9539 00 33 06</p>
+            <p className="contact-sub">+91 86060 02281</p>
             <p className="contact-sub">info@szdevelopers.com</p>
 
             {/* Terms & Privacy */}
-            {!isMobile &&<div className="flex gap-4 mt-1 terms-conditions">
-              <button
-                onClick={() => {
-                  console.log('Terms clicked');
-                  setIsTermsOpen(true);
-                }}
-                className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
-                style={{ textDecoration: 'none' }}
-              >
-                Terms & Conditions
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
-              </button>
+            {!isMobile && (
+              <div className="flex gap-4 mt-1 terms-conditions">
+                <button
+                  onClick={() => {
+                    console.log("Terms clicked");
+                    setIsTermsOpen(true);
+                  }}
+                  className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
+                  style={{ textDecoration: "none" }}
+                >
+                  Terms & Conditions
+                  <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
+                </button>
 
-              <button
-                onClick={() => {
-                  console.log('Privacy clicked');
-                  setIsPrivacyOpen(true);
-                }}
-                className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
-                style={{ textDecoration: 'none' }}
-              >
-                Privacy Policy
-                <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            </div>}
+                <button
+                  onClick={() => {
+                    console.log("Privacy clicked");
+                    setIsPrivacyOpen(true);
+                  }}
+                  className="relative group text-[#bfbfbf] no-underline bg-transparent border-none cursor-pointer"
+                  style={{ textDecoration: "none" }}
+                >
+                  Privacy Policy
+                  <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#A29279] transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Social */}
@@ -144,7 +146,7 @@ export default function Footer() {
             />
           </div>
         )}
-        
+
         {isMobile && (
           <div className="contact-mob-div">
             {" "}
@@ -152,34 +154,35 @@ export default function Footer() {
               3rd Floor, Nechikkadan Tower, Mini Bypass Rd
               <br /> near Swapna Nagari, Kozhikode, Kerala 673006
             </p>
-             {isMobile && (
-          <div className="terms-mob-div">
-            {" "}
-          
-            <button 
-              onClick={() => setIsTermsOpen(true)}
-              className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
-            >
-              Terms & Conditions
-            </button>
-            <button 
-              onClick={() => setIsPrivacyOpen(true)}
-              className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
-            >
-              Privacy Policy
-            </button>
-          </div>
-        )}
+            {isMobile && (
+              <div className="terms-mob-div">
+                {" "}
+                <button
+                  onClick={() => setIsTermsOpen(true)}
+                  className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
+                >
+                  Terms & Conditions
+                </button>
+                <button
+                  onClick={() => setIsPrivacyOpen(true)}
+                  className="bg-transparent border-none cursor-pointer text-[#bfbfbf]"
+                >
+                  Privacy Policy
+                </button>
+              </div>
+            )}
             <p className="contact-mob-sub">SZ Developers © 2026 </p>
             <p className="contact-mob-sub">All Rights Reserved</p>
           </div>
         )}
-       
       </div>
 
       {/* Modals */}
       <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
-      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <PrivacyModal
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
+      />
     </section>
   );
 }

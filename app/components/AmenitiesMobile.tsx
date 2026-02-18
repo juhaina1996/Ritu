@@ -18,9 +18,7 @@ export default function AmenitiesMobile() {
   return (
     <section className="bg-[#f6f3ee] py-10">
       {/* TITLE */}
-      <h2 className="text-3xl font-light text-[#555] px-4 pl-10">
-        Amenities.
-      </h2>
+      <h2 className="text-3xl font-light text-[#555] px-4 pl-10">Amenities.</h2>
 
       {/* TOP FULL WIDTH LINE */}
       <div className="h-px bg-[#9c8f7a]/60 w-full" />
@@ -28,7 +26,7 @@ export default function AmenitiesMobile() {
       {amenities.map((item, index) => (
         <div key={index}>
           {/* ROW */}
-          <div className="grid grid-cols-[16px_1px_120px_1px_1fr] gap-3">
+          <div className="grid grid-cols-[16px_1px_180px_1px_1fr] gap-3">
             {/* LEFT GUTTER */}
             <div />
 
@@ -49,9 +47,7 @@ export default function AmenitiesMobile() {
             <div className="bg-[#9c8f7a]/60" />
 
             {/* TEXT */}
-            <p className="text-sm font-light text-[#555] mt-1">
-              {item.title}
-            </p>
+            <p className="text-sm font-light text-[#555] mt-1">{item.title}</p>
           </div>
 
           {/* BOTTOM FULL WIDTH LINE */}

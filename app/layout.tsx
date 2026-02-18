@@ -6,9 +6,10 @@ import Script from "next/script";
 
 export const metadata = {
   title: "Ritu - A Luxury Farm Resort in Wayanad",
-  description: "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
+  description:
+    "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
   icons: {
-    icon: '/favicon.png',
+    icon: "/favicon.svg",
   },
 };
 
@@ -25,9 +26,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

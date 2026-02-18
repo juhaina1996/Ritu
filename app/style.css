@@ -192,7 +192,6 @@ html {
   margin: 20px 0;
   overflow: hidden;
   padding-top: 278px;
-
 }
 
 /* SECTION */
@@ -203,7 +202,6 @@ html {
   padding-top: 0px;
   margin: 0 30px;
   position: relative;
-  
 }
 
 .experience-container {
@@ -211,7 +209,7 @@ html {
   margin: 0 auto;
   padding-left: 48px;
   position: relative;
-    padding-top: 298px;
+  padding-top: 298px;
 }
 
 /* HEADER */
@@ -238,7 +236,6 @@ html {
   display: flex;
   gap: 16px;
   margin-top: 24px;
-
 }
 
 .experience-arrows button {
@@ -567,8 +564,8 @@ html {
   font-family: "Arsenal", sans-serif;
   background: white;
 }
-.hightlighted{
-  color:#805C23;
+.hightlighted {
+  color: #805c23;
   white-space: normal;
 }
 .phone-field {
@@ -631,9 +628,9 @@ html {
 .brochure-form button:hover {
   background: #14585a;
 }
-.divider-image-terms{
-    width: 100%;
-      margin-top: 13px;
+.divider-image-terms {
+  width: 100%;
+  margin-top: 13px;
   margin-bottom: 13px;
   height: 1px;
 }
@@ -734,7 +731,7 @@ html {
   font-size: 15px;
   font-weight: 100;
   font-family: "Arsenal", sans-serif;
-  align-items:first baseline;
+  align-items: first baseline;
   margin-bottom: 5px;
 }
 .market-conditions {
@@ -757,7 +754,7 @@ html {
   font-size: 22px;
   font-weight: 100;
   margin-left: 20px;
-  width:65%;
+  width: 65%;
 }
 .points-benefits {
   font-size: 15px;
@@ -838,13 +835,16 @@ html {
   right: 1.5rem;
 }
 
-.consultation-button:hover{
+.consultation-button:hover {
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
   .consultation-button {
     font-size: 16px;
+  }
+  .brochure-card-popup {
+    padding: 20px 20px;
   }
 }
 
@@ -1091,7 +1091,7 @@ html {
     gap: 2px;
   }
   .hero-scheduler {
-    height:auto;
+    height: auto;
   }
   .installment-option-points {
     font-size: 12px;
@@ -1189,7 +1189,7 @@ html {
     padding: 20px;
     min-height: auto;
     padding-top: 0;
-        margin-top: 20px;
+    margin-top: 20px;
   }
   .immerse-mob {
     color: #000000;
@@ -1252,7 +1252,6 @@ html {
   }
   .coown-section {
     padding: 0;
-  
   }
   .coown-grid {
     margin: 0 20px;
@@ -1627,11 +1626,11 @@ html {
   .download-link {
     font-size: 12px;
   }
-  .image-ameneties{
-/* margin-left: 20px; */
-margin-top: 10px;
-margin-bottom: 10px;
-height:206px !important;
+  .image-ameneties {
+    /* margin-left: 20px; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 206px !important;
   }
 }
 /* reCAPTCHA Container Styles */
@@ -1765,19 +1764,19 @@ height:206px !important;
     font-size: 12px;
   }
   .experience-download {
-padding: 4px 18px;
-font-size: 13px;
+    padding: 4px 18px;
+    font-size: 13px;
   }
-  .experince-main-image{
+  .experince-main-image {
     height: 27vh;
   }
-  .terms-mob-div{
-    font-size: 12px;
+  .terms-mob-div {
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   margin-bottom: 23px;
+    margin-bottom: 23px;
   }
 }
 @keyframes amenities-scroll {

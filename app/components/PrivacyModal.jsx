@@ -32,7 +32,7 @@ export default function PrivacyModal({ isOpen, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         className="brochure-card-popup slide-in"
-        style={{ maxHeight: '85vh', overflow: 'auto' }}
+        style={{ maxHeight: "85vh", overflow: "auto" }}
       >
         {/* CLOSE BUTTON */}
         <button
@@ -57,22 +57,23 @@ export default function PrivacyModal({ isOpen, onClose }) {
             height={20}
             className="divider-image"
           />
-
         </div>
 
         {/* CONTENT AREA */}
-        <div >
-          <div className="bg-[#FCFCFB] shadow-sm rounded-sm
-                          max-h-[60vh] overflow-y-auto p-6 md:p-10">
+        <div>
+          <div
+            className="bg-[#FCFCFB] shadow-sm rounded-sm
+                          max-h-[60vh] overflow-y-auto p-6 md:p-10"
+          >
             <p className="text-xs text-gray-500 mb-6">
               Last Updated: January 2026
             </p>
 
             <div className="space-y-5 text-sm text-[#3F3428] leading-relaxed">
               <p>
-                <strong>S Zone Developers LLP</strong> (also known as SZ Developers)
-                respects your privacy and is committed to protecting the personal
-                information you share with us through our website.
+                <strong>S Zone Developers LLP</strong> (also known as SZ
+                Developers) respects your privacy and is committed to protecting
+                the personal information you share with us through our website.
               </p>
 
               <p>
@@ -117,7 +118,8 @@ export default function PrivacyModal({ isOpen, onClose }) {
               </ul>
 
               <p>
-                We do not sell or rent your personal information to third parties.
+                We do not sell or rent your personal information to third
+                parties.
               </p>
 
               <h3 className="text-lg font-semibold mt-6">
@@ -142,13 +144,11 @@ export default function PrivacyModal({ isOpen, onClose }) {
                 6. Cookies & Analytics
               </h3>
               <p>
-                We may use cookies or analytics tools to improve user experience.
-                These do not personally identify users.
+                We may use cookies or analytics tools to improve user
+                experience. These do not personally identify users.
               </p>
 
-              <h3 className="text-lg font-semibold mt-6">
-                7. Your Consent
-              </h3>
+              <h3 className="text-lg font-semibold mt-6">7. Your Consent</h3>
               <p>
                 By submitting your information, you consent to this Privacy
                 Policy.
@@ -166,9 +166,10 @@ export default function PrivacyModal({ isOpen, onClose }) {
                 9. Contact Information
               </h3>
               <p>
-                <strong>Project Ritu – S Zone Developers LLP</strong><br />
-                📧 info@szdevelopers.com<br />
-                📞 +91 9539002266
+                <strong>Project Ritu – S Zone Developers LLP</strong>
+                <br />
+                📧 info@szdevelopers.com
+                <br />
               </p>
             </div>
           </div>
