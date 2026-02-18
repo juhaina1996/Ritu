@@ -1652,7 +1652,7 @@ html {
   }
 
   .recaptcha-container > div {
-    transform: scale(0.7);
+    transform: scale(1.29);
     transform-origin: center;
   }
 }
