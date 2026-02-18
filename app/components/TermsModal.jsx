@@ -44,8 +44,8 @@ export default function TermsModal({ isOpen, onClose }) {
         </button>
 
         {/* HEADER */}
-        <div className="text-center pt-10 pb-6 px-6">
-          <h2 className="text-3xl md:text-4xl font-light text-[#3F3428]">
+        <div className=" text-center pt-10 pb-6 px-6">
+          <h2 className=" top-text text-3xl md:text-4xl font-light text-[#3F3428]">
             Terms & Conditions
           </h2>
 

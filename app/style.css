@@ -274,6 +274,24 @@ html {
   width: max-content;
 }
 
+/* Mobile: Enable touch scrolling */
+@media (max-width: 991px) {
+  .experience-slider {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .experience-slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .experience-card {
+    scroll-snap-align: start;
+  }
+}
+
 /* CARD */
 .experience-card {
   min-width: 280px;
@@ -1654,6 +1672,9 @@ html {
   .recaptcha-container > div {
     transform: scale(1.29);
     transform-origin: center;
+  }
+  .top-text {
+    margin-top: -40px;
   }
 }
 /* Time Slot Selector Styles */

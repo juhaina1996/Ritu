@@ -122,6 +122,46 @@ export default function ExperiencesSlider() {
     };
   }, [isMobile, isReady]);
 
+  // Touch swipe for mobile
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDragging = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // Scroll speed multiplier
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+    };
+
+    slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+    slider.addEventListener('touchmove', handleTouchMove, { passive: false });
+    slider.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      slider.removeEventListener('touchstart', handleTouchStart);
+      slider.removeEventListener('touchmove', handleTouchMove);
+      slider.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isMobile]);
+
   return (
     <section className="experience-section" ref={sectionRef}>
       <div className="experience-container" ref={containerRef}>
