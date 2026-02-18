@@ -5,9 +5,11 @@ interface ExperienceSectionProps {
   onOpenBrochure?: () => void;
 }
 
-export default function ExperienceSection({ onOpenBrochure }: ExperienceSectionProps) {
-    const isMobile = useIsMobile();
-  
+export default function ExperienceSection({
+  onOpenBrochure,
+}: ExperienceSectionProps) {
+  const isMobile = useIsMobile();
+
   return (
     <>
       {/* MOBILE TITLE */}
@@ -48,7 +50,7 @@ export default function ExperienceSection({ onOpenBrochure }: ExperienceSectionP
 
           {/* IMAGE */}
           <Image
-            src="/images/experinceImage.svg"
+            src="/images/web ritu landscape.png"
             alt="Resort Experience"
             width={1200}
             height={500}
@@ -56,37 +58,37 @@ export default function ExperienceSection({ onOpenBrochure }: ExperienceSectionP
           />
 
           {/* ✅ BOTTOM BAR */}
-        {!isMobile&&  <div className="mt-3 flex items-center justify-between text-white">
-            <span className="text-sm opacity-80">
-              Ritu, Wayanad
-            </span>
+          {!isMobile && (
+            <div className="mt-3 flex items-center justify-between text-white">
+              <span className="text-sm opacity-80">Ritu, Wayanad</span>
 
-            <button 
-              onClick={onOpenBrochure}
-              className="experience-download flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-sm hover:bg-white/20 transition cursor-pointer"
-            >
-              Download Brochure
-              <span   className=" bg-green-500 w-8 h-8 rounded-full flex items-center justify-center
+              <button
+                onClick={onOpenBrochure}
+                className="experience-download flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-sm hover:bg-white/20 transition cursor-pointer"
+              >
+                Download Brochure
+                <span
+                  className=" bg-green-500 w-8 h-8 rounded-full flex items-center justify-center
     flex h-7 w-7 items-center justify-center
     rounded-full
    
     transition-transform
     group-hover:translate-x-0.5
     animate-pulse-horizontal
-  ">
-                <Image
-                              src="/images/arrowIconButton.svg"
-                              alt="Arrow"
-                              width={24}
-                              height={24}
-                              className="object-contain"
-                            />
-              </span>
-            </button>
-          </div>}
-           
+  "
+                >
+                  <Image
+                    src="/images/arrowIconButton.svg"
+                    alt="Arrow"
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                </span>
+              </button>
+            </div>
+          )}
         </div>
-       
       </section>
     </>
   );

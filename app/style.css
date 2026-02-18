@@ -282,11 +282,11 @@ html {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
-  
+
   .experience-slider::-webkit-scrollbar {
     display: none;
   }
-  
+
   .experience-card {
     scroll-snap-align: start;
   }
@@ -1789,7 +1789,7 @@ html {
     font-size: 13px;
   }
   .experince-main-image {
-    height: 27vh;
+    height: 41vh;
   }
   .terms-mob-div {
     font-size: 16px;
