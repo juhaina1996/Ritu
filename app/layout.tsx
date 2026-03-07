@@ -9,8 +9,35 @@ export const metadata = {
   description:
     "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
+  openGraph: {
+    title: "Ritu - A Luxury Farm Resort in Wayanad",
+    description:
+      "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
+    url: "https://www.rituresort.com/",
+    siteName: "Ritu - Luxury Farm Resort",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Ritu - A Luxury Farm Resort in Wayanad",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ritu - A Luxury Farm Resort in Wayanad",
+    description:
+      "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
+    images: ["/favicon.png"],
+  },
+  metadataBase: new URL("https://www.rituresort.com/"),
 };
 
 export default function RootLayout({
