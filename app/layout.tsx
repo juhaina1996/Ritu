@@ -52,6 +52,24 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet"
         />
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.rituresort.com/" />
+        <meta property="og:title" content="Ritu - A Luxury Farm Resort in Wayanad" />
+        <meta property="og:description" content="Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits." />
+        <meta property="og:image" content="https://www.rituresort.com/favicon.png" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.rituresort.com/" />
+        <meta property="twitter:title" content="Ritu - A Luxury Farm Resort in Wayanad" />
+        <meta property="twitter:description" content="Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits." />
+        <meta property="twitter:image" content="https://www.rituresort.com/favicon.png" />
       </head>
       <body>{children}</body>
     </html>
