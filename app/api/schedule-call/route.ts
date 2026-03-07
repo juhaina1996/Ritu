@@ -12,10 +12,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify reCAPTCHA token
-    if (!body.recaptchaToken) {
+    // Verify captcha token
+    if (!body.captchaToken) {
       return NextResponse.json(
-        { success: false, error: 'reCAPTCHA verification required' },
+        { success: false, error: 'Captcha verification required' },
         { status: 400 }
       );
     }
@@ -59,6 +59,58 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await response.json();
+
+    // Send email via Sender.net if email is provided
+    if (body.email) {
+      try {
+        const senderApiKey = process.env.SENDER_API_KEY;
+        const templateId = process.env.SENDER_TEMPLATE_ID;
+
+        if (senderApiKey && templateId) {
+          const emailPayload = {
+            to: {
+              email: body.email,
+              name: body.name,
+            },
+            variables: {
+              firstname: body.name,
+              lastname: '',
+              email: body.email,
+              phone: `${body.phoneCountryCode} ${body.phone}`,
+              whatsapp: `${body.whatsappCountryCode} ${body.whatsapp}`,
+              date: body.selectedDate,
+              timeslot: body.timeSlot,
+              contact: `Phone: ${body.phoneCountryCode} ${body.phone}, WhatsApp: ${body.whatsappCountryCode} ${body.whatsapp}`,
+            },
+          };
+
+          console.log('Sending email via Sender.net:', emailPayload);
+
+          const emailResponse = await fetch(`https://api.sender.net/v2/message/${templateId}/send`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${senderApiKey}`,
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify(emailPayload),
+          });
+
+          if (!emailResponse.ok) {
+            const errorData = await emailResponse.json();
+            console.error('Sender.net API error:', errorData);
+          } else {
+            const emailData = await emailResponse.json();
+            console.log('Email sent successfully:', emailData);
+          }
+        } else {
+          console.log('Sender.net not configured, skipping email');
+        }
+      } catch (emailError) {
+        console.error('Error sending email:', emailError);
+        // Don't fail the whole request if email fails
+      }
+    }
 
     return NextResponse.json({
       success: true,
