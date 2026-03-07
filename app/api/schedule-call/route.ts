@@ -67,6 +67,14 @@ export async function POST(request: NextRequest) {
         const templateId = process.env.SENDER_TEMPLATE_ID;
 
         if (senderApiKey && templateId) {
+          // Map time slot value to label
+          const timeSlotLabels: { [key: string]: string } = {
+            'morning': 'Morning (9am - 12pm)',
+            'afternoon': 'Afternoon (12pm - 3pm)',
+            'late-afternoon': 'Late Afternoon (3pm - 6pm)',
+            'evening': 'Evening (After 6pm)',
+          };
+
           const emailPayload = {
             to: {
               email: body.email,
@@ -76,10 +84,8 @@ export async function POST(request: NextRequest) {
               firstname: body.name,
               lastname: '',
               email: body.email,
-              phone: `${body.phoneCountryCode} ${body.phone}`,
-              whatsapp: `${body.whatsappCountryCode} ${body.whatsapp}`,
               date: body.selectedDate,
-              timeslot: body.timeSlot,
+              timeslot: timeSlotLabels[body.timeSlot] || body.timeSlot,
               contact: `Phone: ${body.phoneCountryCode} ${body.phone}, WhatsApp: ${body.whatsappCountryCode} ${body.whatsapp}`,
             },
           };
