@@ -86,7 +86,8 @@ export async function POST(request: NextRequest) {
               email: body.email,
               date: body.selectedDate,
               timeslot: timeSlotLabels[body.timeSlot] || body.timeSlot,
-              contact: `Phone: ${body.phoneCountryCode} ${body.phone}, WhatsApp: ${body.whatsappCountryCode} ${body.whatsapp}`,
+              phone: `${body.phoneCountryCode} ${body.phone}`,
+              whatsapp: `${body.whatsappCountryCode} ${body.whatsapp}`,
             },
           };
 

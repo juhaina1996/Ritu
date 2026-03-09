@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const countries = [
   { code: "+91", flag: "🇮🇳", name: "India", digits: 10 },
@@ -26,6 +27,7 @@ export default function DownloadBrochure({ isOpen, onClose }) {
     phoneCountry: countries[0],
     whatsappCountry: countries[0],
     termsAccepted: false,
+    captchaToken: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -90,6 +92,11 @@ export default function DownloadBrochure({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (!formData.captchaToken) {
+      alert("Please complete the captcha verification");
+      return;
+    }
+    
     // Validate phone number
     const phoneDigits = formData.phoneCountry.digits;
     if (formData.phone.length !== phoneDigits) {
@@ -136,6 +143,7 @@ export default function DownloadBrochure({ isOpen, onClose }) {
           phoneCountry: countries[0],
           whatsappCountry: countries[0],
           termsAccepted: false,
+          captchaToken: null,
         });
 
         // Show thank you modal and start download
@@ -210,6 +218,10 @@ export default function DownloadBrochure({ isOpen, onClose }) {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const handleCaptchaChange = (token) => {
+    setFormData((prev) => ({ ...prev, captchaToken: token }));
   };
 
   const filteredPhoneCountries = countries.filter(
@@ -424,10 +436,23 @@ export default function DownloadBrochure({ isOpen, onClose }) {
                 <span>I agree to the terms and privacy policy</span>
               </label>
 
+              <div className="recaptcha-container">
+                <HCaptcha
+                  sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001"}
+                  onVerify={handleCaptchaChange}
+                  onExpire={() =>
+                    setFormData((prev) => ({ ...prev, captchaToken: null }))
+                  }
+                  onError={() =>
+                    setFormData((prev) => ({ ...prev, captchaToken: null }))
+                  }
+                />
+              </div>
+
               <button
                 className="download-button"
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !formData.captchaToken}
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
