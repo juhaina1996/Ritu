@@ -2,16 +2,15 @@ import "./globals.css";
 import "./style.css";
 import "./aos-custom.css";
 import "aos/dist/aos.css";
-import Script from "next/script";
 
 export const metadata = {
   title: "Ritu - A Luxury Farm Resort in Wayanad",
   description:
     "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/linkPreviewRitu.png",
+    shortcut: "/linkPreviewRitu.png",
+    apple: "/linkPreviewRitu.png",
   },
   openGraph: {
     title: "Ritu - A Luxury Farm Resort in Wayanad",
@@ -21,7 +20,7 @@ export const metadata = {
     siteName: "Ritu - Luxury Farm Resort",
     images: [
       {
-        url: "/favicon.png",
+        url: "/linkPreviewRitu.png",
         width: 1200,
         height: 630,
         alt: "Ritu - A Luxury Farm Resort in Wayanad",
@@ -35,7 +34,7 @@ export const metadata = {
     title: "Ritu - A Luxury Farm Resort in Wayanad",
     description:
       "Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits.",
-    images: ["/favicon.png"],
+    images: ["/linkPreviewRitu.png"],
   },
   metadataBase: new URL("https://www.rituresort.com/"),
 };
@@ -53,23 +52,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {/* Favicon */}
-        <link rel="icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="icon" href="/linkPreviewRitu.png" />
+        <link rel="shortcut icon" href="/linkPreviewRitu.png" />
+        <link rel="apple-touch-icon" href="/linkPreviewRitu.png" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.rituresort.com/" />
         <meta property="og:title" content="Ritu - A Luxury Farm Resort in Wayanad" />
         <meta property="og:description" content="Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits." />
-        <meta property="og:image" content="https://www.rituresort.com/favicon.png" />
+        <meta property="og:image" content="https://www.rituresort.com/linkPreviewRitu.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.rituresort.com/" />
         <meta property="twitter:title" content="Ritu - A Luxury Farm Resort in Wayanad" />
         <meta property="twitter:description" content="Experience the farms of Kerala at Ritu, a luxury farm resort in Wayanad. Co-own the crown jewel of Wayanad with exclusive lifetime benefits." />
-        <meta property="twitter:image" content="https://www.rituresort.com/favicon.png" />
+        <meta property="twitter:image" content="https://www.rituresort.com/linkPreviewRitu.png" />
       </head>
       <body>{children}</body>
     </html>
