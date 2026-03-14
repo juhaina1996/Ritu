@@ -42,7 +42,7 @@ export default function ExperiencesSlider() {
     // Get max scroll distance - add padding to ensure last slide is fully visible
     const sliderWidth = slider.scrollWidth;
     const viewportWidth = window.innerWidth;
-    const maxScroll = -(sliderWidth - viewportWidth + 200);
+    const maxScroll = -(sliderWidth - viewportWidth + 100);
     
     // Clamp the value
     const clampedX = Math.max(maxScroll, Math.min(0, newX));
@@ -87,7 +87,7 @@ export default function ExperiencesSlider() {
 
       // Calculate scroll distance - how far we need to move to show all content
       // Add extra padding to ensure last slide is fully visible
-      const scrollDistance = sliderWidth - viewportWidth + 200;
+      const scrollDistance = sliderWidth - viewportWidth + 100;
       
       // Set initial transform to ensure GSAP can animate it
       gsap.set(slider, { x: 0 });

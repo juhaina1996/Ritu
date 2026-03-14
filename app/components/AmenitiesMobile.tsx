@@ -9,6 +9,10 @@ const amenities = [
   { title: "Village Tea Shop", image: "/images/yoga-deck.png" },
   { title: "Mini Golf Court", image: "/images/tea-shop.png" },
   { title: "Multicuisine Restaurant", image: "/images/restaurant.png" },
+    { title: "Open Amphitheatre", image: "/images/Open Amphitheatre.png" },
+  { title: "Kids Swimming Pool", image: "/images/Kids Swimming Pool.png" },
+  { title: "Health Club", image: "/images/Health Club.png" },
+  { title: "Cycling", image: "/images/Cycling.png" },
 ];
 
 export default function AmenitiesMobile() {

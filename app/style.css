@@ -1818,7 +1818,13 @@ html {
 }
 
 /* Amenities slider - removed auto animation */
+.amenities-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
 .amenities-slider {
+  display: flex;
   scroll-behavior: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -1858,4 +1864,34 @@ html {
 
 .modal-close-btn:hover {
   background: rgba(0, 0, 0, 0.05);
+}
+/* Amenities Mobile Horizontal Scroll */
+.amenities-mobile-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0;
+}
+
+.amenities-mobile-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.amenities-mobile-slider {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+  width: max-content;
+}
+
+.amenities-mobile-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
