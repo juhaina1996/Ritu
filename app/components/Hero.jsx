@@ -12,7 +12,7 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <video
-          src="https://odoos.in/ritu/images/banner.mp4" // or external URL
+          src="/bannerVideo.webm" // or external URL
           autoPlay
           loop
           muted
