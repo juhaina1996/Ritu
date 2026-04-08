@@ -19,9 +19,9 @@ export default function KeralaFarmHero({ onOpenBrochure }) {
           playsInline
           className="absolute inset-0  h-[100vh] lg:h-full w-full object-cover"
           style={{ filter: "brightness(0.6)" }}
-          data-aos="zoom-in"
-          data-aos-duration="3000"
-          data-aos-easing="ease-out-expo"
+          data-aos="fade-in"
+          data-aos-duration="1200"
+          data-aos-easing="ease-out"
         />
       </div>
 
